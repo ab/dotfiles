@@ -1,0 +1,70 @@
+# connection sharing
+#Host *
+#ControlMaster auto
+#ControlPath ~/.ssh/sockets/%r@%h-%p
+
+host alberge
+hostname alberge.org
+user andy
+
+host oz
+hostname oz.lan.abrody.com
+user andy
+
+host oz-tunnel
+hostname localhost
+hostkeyalias oz
+port 2222
+user andy
+
+host zara-tunnel
+hostname localhost
+hostkeyalias zara
+port 2220
+user andy
+
+host eggplant-tunnels
+hostname eggplant.selfip.net
+user root
+BatchMode yes
+ExitOnForwardFailure yes
+LocalForward 2220 192.168.1.20:22
+LocalForward 2222 192.168.1.22:22
+
+host eggplant
+hostname eggplant.selfip.net
+user root
+
+host zara
+hostname zara.lan.abrody.com
+user andy
+
+host dellblue
+hostname dellblue.lan.abrody.com
+user andy
+
+host dellaptop
+hostname dellaptop.lan.abrody.com
+user andy
+
+host dellaptop-remote
+hostname alberge.is-a-geek.com
+user andy
+port 2243
+
+host hcs
+hostname hcs.harvard.edu
+user abrody
+
+host pops
+hostname hcs.harvard.edu
+user pops
+
+host fas
+hostname fas.harvard.edu
+user abrody
+
+host eecs
+hostname eecs.harvard.edu
+user abrody
+
