@@ -1,5 +1,5 @@
 " ~/.vimrc
-" agb rev 4
+" agb rev 5
 
 " === General ===
 
@@ -15,11 +15,11 @@ filetype plugin on
 " load indent files for specific filetypes
 filetype indent on
 
-" dark background
-set background=dark
-
 " syntax highlighting
 syntax on
+
+" dark background
+set background=dark
 
 " make backspace work normal (indent, eol, start)
 " set backspace=2
@@ -27,19 +27,19 @@ syntax on
 " allow backspace and cursor keys to cross line boundaries
 set whichwrap+=<,>,h,l
 
-"" use the mouse for everything
+" use the mouse
 "set mouse=a
+set mouse=cih
 
 " highlight as you type
 set incsearch
+set hlsearch
 
 " take indent for new line from previous line
 set autoindent
 
 " sane tabs
 set tabstop=4
-
-" unify
 set shiftwidth=4
 
 " tabs, not spaces
@@ -57,4 +57,7 @@ autocmd FileType ruby set shiftwidth=2
 
 " ROT13
 map <F12> ggVGg?
+
+" make ctrl+c copy to system clipboard when in visual mode
+vmap <C-c> "+y
 
