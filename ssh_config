@@ -3,14 +3,51 @@
 #ControlMaster auto
 #ControlPath ~/.ssh/sockets/%r@%h-%p
 
-host alberge
-hostname alberge.org
+# ====== Home ======
+host dellblue
+hostname dellblue.lan.abrody.com
 user andy
 
+host dellaptop
+hostname dellaptop.lan.abrody.com
+user andy
+
+#host oz
+#hostname oz.lan.abrody.com
+#user andy
+
+#host zara
+#hostname zara.lan.abrody.com
+#user andy
+
+#host wisp
+#hostname wisp.lan.abrody.com
+#user andy
+
+# ====== Home - Remote ======
+host dellaptop-remote
+hostname alberge.is-a-geek.com
+# hostname dellaptop.abrody.com
+user andy
+port 2243
+
+host oz-remote
+hostname abrody.com
+port 2222
+user andy
+
+host dellblue-remote
+hostname dellblue.abrody.com
+# hostname abrody.com
+user andy
+
+# ====== Harvard LAN ======
+# aliases not really needed thanks to router
 host oz
-hostname oz.lan.abrody.com
+hostname oz-eth1
 user andy
 
+# ===== Harvard Tunnels =====
 host oz-tunnel
 hostname localhost
 hostkeyalias oz
@@ -28,30 +65,28 @@ hostname eggplant.selfip.net
 user root
 BatchMode yes
 ExitOnForwardFailure yes
-LocalForward 2220 192.168.1.20:22
 LocalForward 2222 192.168.1.22:22
+LocalForward 2220 192.168.1.20:22
 
 host eggplant
 hostname eggplant.selfip.net
 user root
 
-host zara
-hostname zara.lan.abrody.com
-user andy
+# ====== Harvard ======
+host fas
+hostname fas.harvard.edu
+user abrody
 
-host dellblue
-hostname dellblue.lan.abrody.com
-user andy
+host nice
+hostname nice.fas.harvard.edu
+user abrody
 
-host dellaptop
-hostname dellaptop.lan.abrody.com
-user andy
+host eecs
+hostname eecs.harvard.edu
+user abrody
 
-host dellaptop-remote
-hostname alberge.is-a-geek.com
-user andy
-port 2243
 
+# ====== HCS ======
 host hcs
 hostname hcs.harvard.edu
 user abrody
@@ -60,11 +95,7 @@ host pops
 hostname hcs.harvard.edu
 user pops
 
-host fas
-hostname fas.harvard.edu
-user abrody
-
-host eecs
-hostname eecs.harvard.edu
+host caesar
+hostname caesar.hcs.harvard.edu
 user abrody
 
