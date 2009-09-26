@@ -1,4 +1,4 @@
-# v 2.4
+# v 2.7
 
 # connection sharing
 Host *
@@ -58,13 +58,19 @@ user andy
 host oz-tunnel
 hostname localhost
 hostkeyalias oz
-port 2222
+port 2221
+user andy
+
+host oz-tunnel0
+hostname localhost
+hostkeyalias oz
+port 2221
 user andy
 
 host oz-tunnel1
 hostname localhost
 hostkeyalias oz
-port 2221
+port 2222
 user andy
 
 host zara-tunnel
@@ -169,10 +175,21 @@ host cicero
 hostname cicero.hcs.harvard.edu
 user abrody
 
-
-host hera
-hostname hera.hcs.harvard.edu
+host marcus
+hostname marcus.hcs.harvard.edu
 user abrody
+
+host augustus
+hostname augustus.hcs.harvard.edu
+user abrody
+
+host flavius
+hostname flavius.hcs.harvard.edu
+user abrody
+
+host trajan
+hostname trajan.hcs.harvard.edu
+user hcs
 
 host dellius
 hostname dellius.hcs.harvard.edu
@@ -180,7 +197,32 @@ user bootstrap
 
 host virgil
 hostname virgil.hcs.harvard.edu
-user bstrap
+user hcs
+
+host hera
+hostname hera.hcs.harvard.edu
+user abrody
+
+# == hypervisors ==
+host romulus
+hostname romulus.hcs.harvard.edu
+user hcs
+
+host remus
+hostname remus.hcs.harvard.edu
+user hcs
+
+host luke
+hostname luke.hcs.harvard.edu
+user hcs
+
+host leia
+hostname leia.hcs.harvard.edu
+user hcs
+
+host han
+hostname han.hcs.harvard.edu
+user hcs
 
 # ===== Crimson =====
 host katsuo
@@ -199,16 +241,35 @@ host grover
 hostname 10.0.0.205
 user andy
 
+host apollo
+hostname 10.0.0.251
+hostkeyalias apollo
+user abrody
+
+host artemis
+hostname 10.0.0.252
+hostkeyalias artemis
+user abrody
+
+host ws1
+hostname crimson-ws1.hcs.harvard.edu
+user abrody
+
+host ws2
+hostname crimson-ws2.hcs.harvard.edu
+user abrody
+
 # ====== scvngr =====
 
-host yoda
+host yoda-lan
+hostkeyalias yoda
 #hostname 10.0.0.15
 hostname scvngr-yoda.ath.cx
 user andy
 
-host yoda-remote
-hostname southend.ath.cx
+host yoda
 hostkeyalias yoda
+hostname southend.ath.cx
 port 222
 user andy
 
@@ -224,11 +285,6 @@ port 7822
 user daedalus
 
 host promo
-hostname promo.scvngr.com
-port 7822
-user andy
-
-host dev
 hostname promo.scvngr.com
 port 7822
 user andy
