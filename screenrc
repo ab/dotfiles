@@ -1,0 +1,5 @@
+#change the hardstatus settings to give an window list at the bottom of the
+#screen, with the time and date and with the current window highlighted
+hardstatus alwayslastline
+hardstatus string '%{= kW}%-Lw%{= kG}%50> %n%f* %t%{= kW}%+Lw%< %{= kW}%-=%c%{-}'
+
