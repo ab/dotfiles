@@ -30,25 +30,61 @@ def read_file_list():
     
     return config_map
 
-def rsync(conf, dest, verbose):
-    opts = '-v' if verbose else ''
-    call(['rsync', '-a', opts, conf, dest])
+class Runner(object):
+    def __init__(self, conf_map, verbose=True):
+        self.config_map = conf_map
+        self.verbose = verbose
+    
+    def pre_run(self):
+        pass
+    
+    def post_run(self):
+        pass
+    
+    def action(self, conf, dest):
+        raise NotImplementedError("No copy action defined for this class")
+    
+    def run(self):
+        self.pre_run()
+        
+        for conf, (basedir, fname) in self.config_map.iteritems():
+            self.action(conf, os.path.join(basedir, fname))
+        
+        self.post_run()
 
-def copy(conf, dest, verbose):
-    opts = '-v' if verbose else ''
-    call(['cp', '-a', opts, conf, dest])
+class CopyRunner(Runner):
+    def action(self, conf, dest):
+        opts = '-v' if self.verbose else ''
+        call(['cp', '-a', opts, conf, dest])
 
-def link(conf, dest, verbose):
-    opts = '-v' if verbose else ''
-    call(['ln', opts, '-s', conf, dest])
+class LinkRunner(Runner):
+    def action(self, conf, dest):
+        opts = '-v' if self.verbose else ''
+        call(['ln', opts, '-s', conf, dest])
 
+class RsyncRunner(Runner):
+    def action(self, conf, dest):
+        opts = '-v' if self.verbose else ''
+        call(['rsync', '-a', opts, conf, dest])
 
-def run(action, verbose=True):
-    config_map = read_file_list()
-    for conf, (basedir, fname) in config_map.iteritems():
-        action(conf, os.path.join(basedir, fname), verbose)
+class RsyncDryRunner(RsyncRunner):
+    def action(self, conf, dest):
+        opts = '-vn' if self.verbose else '-n'
+        call(['rsync', '-a', opts, conf, dest])
 
 if __name__ == '__main__':
-    action = rsync
-    run(action)
+    filelist = read_file_list()
+    
+    verbose = True
+    runner = None
+
+    if '-q' in sys.argv:
+        verbose = False
+    if '-n' in sys.argv:
+        runner = RsyncDryRunner(filelist, verbose)
+
+    if not runner:
+        runner = RsyncRunner(filelist, verbose)
+
+    runner.run()
 
