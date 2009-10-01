@@ -1,4 +1,4 @@
-# v 2.7
+# v 2.8
 
 # connection sharing
 Host *
@@ -228,6 +228,10 @@ user hcs
 host katsuo
 hostname katsuo.thecrimson.net
 user andy
+
+host it3
+hostname portal.thecrimson.com
+user abrody
 
 host ernie
 hostname 10.0.0.220
