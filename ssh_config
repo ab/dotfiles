@@ -232,6 +232,10 @@ user andy
 host it3
 hostname portal.thecrimson.com
 user abrody
+host it3-local
+hostname it3.thecrimson.net
+user abrody
+hostkeyalias it3
 
 host ernie
 hostname 10.0.0.220
