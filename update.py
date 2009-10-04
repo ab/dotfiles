@@ -64,13 +64,14 @@ class LinkRunner(Runner):
 
 class RsyncRunner(Runner):
     def action(self, conf, dest):
-        opts = '-v' if self.verbose else ''
-        call(['rsync', '-a', opts, conf, dest])
+        v = 'v' if self.verbose else ''
+        call(['rsync', '-ac' + v, conf, dest])
 
 class RsyncDryRunner(RsyncRunner):
     def action(self, conf, dest):
-        opts = '-vn' if self.verbose else '-n'
-        call(['rsync', '-a', opts, conf, dest])
+        v = 'v' if self.verbose else ''
+        call(['rsync', '-acn' + v, conf, dest])
+        call(['echo', 'rsync', '-acn' + v, conf, dest])
 
 if __name__ == '__main__':
     filelist = read_file_list()
