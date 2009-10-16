@@ -1,9 +1,4 @@
-# v 2.8
-
-# connection sharing
-Host *
-ControlMaster auto
-ControlPath ~/.ssh/sockets/%r@%h-%p
+# v 2.9
 
 # keepalive
 ServerAliveInterval 30
@@ -137,6 +132,15 @@ hostname oz1.abrody.com
 # hostname 140.247.180.55
 user andy
 
+host oz-x11
+hostkeyalias oz
+hostname oz0.abrody.com
+LocalForward 5900 localhost:5900
+LocalForward 5901 localhost:5901
+ForwardX11 yes
+ControlMaster no
+ExitOnForwardFailure yes
+
 # ====== Harvard Servers ======
 host fas
 hostname fas.harvard.edu
@@ -194,6 +198,10 @@ user hcs
 host dellius
 hostname dellius.hcs.harvard.edu
 user bootstrap
+
+host titus
+hostname titus.hcs.harvard.edu
+user hcs
 
 host virgil
 hostname virgil.hcs.harvard.edu
@@ -306,3 +314,11 @@ hostname 10.0.0.21
 hostkeyalias slowmac
 #user sethpriebatsch
 user andy
+
+# ====== Globals ======
+
+# connection sharing
+Host *
+ControlMaster auto
+ControlPath ~/.ssh/sockets/%r@%h-%p
+
