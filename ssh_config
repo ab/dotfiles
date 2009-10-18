@@ -214,11 +214,11 @@ user abrody
 # == hypervisors ==
 host romulus
 hostname romulus.hcs.harvard.edu
-user hcs
+user abrody
 
 host remus
 hostname remus.hcs.harvard.edu
-user hcs
+user abrody
 
 host luke
 hostname luke.hcs.harvard.edu
