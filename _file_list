@@ -4,4 +4,5 @@ ssh_config	$HOME	.ssh/config
 screenrc	$HOME	.screenrc
 vimrc	$HOME	.vimrc
 inputrc	$HOME	.inputrc
+bash_aliases	$HOME	.bash_aliases
 
