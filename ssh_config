@@ -170,7 +170,6 @@ user pops
 host caesar
 hostname caesar.hcs.harvard.edu
 user abrody
-
 host cato
 hostname cato.hcs.harvard.edu
 user abrody
@@ -178,7 +177,6 @@ user abrody
 host cicero
 hostname cicero.hcs.harvard.edu
 user abrody
-
 host marcus
 hostname marcus.hcs.harvard.edu
 user abrody
@@ -186,7 +184,6 @@ user abrody
 host augustus
 hostname augustus.hcs.harvard.edu
 user abrody
-
 host flavius
 hostname flavius.hcs.harvard.edu
 user abrody
@@ -197,10 +194,21 @@ user hcs
 
 host dellius
 hostname dellius.hcs.harvard.edu
-user bootstrap
+user hcs
+
+host pentadius
+hostname pentadius.hcs.harvard.edu
+user hcs
+
+host aquila
+hostname aquila.hcs.harvard.edu
+user abrody
 
 host titus
 hostname titus.hcs.harvard.edu
+user hcs
+host petreius
+hostname petreius.hcs.harvard.edu
 user hcs
 
 host virgil
@@ -219,6 +227,10 @@ user abrody
 host remus
 hostname remus.hcs.harvard.edu
 user abrody
+
+host hersilia
+hostname hersilia.hcs.harvard.edu
+user hcs
 
 host luke
 hostname luke.hcs.harvard.edu
