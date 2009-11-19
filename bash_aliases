@@ -28,3 +28,4 @@ ssh-aupdate() {
 	ssh -t $remotehost "sudo aptitude update && sudo aptitude safe-upgrade $*"
 }
 
+alias sml='rlwrap sml -Cprint.depth=3000 -Cprint.length=3000'
