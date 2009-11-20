@@ -21,6 +21,9 @@ alias ashow='aptitude show'
 alias aupdate='sudo aptitude update && sudo aptitude safe-upgrade'
 alias aupgrade='sudo aptitude full-upgrade'
 
+# php syntax check
+alias phpcheck='for file in *.php; do php -l $file; done'
+
 ssh-aupdate() {
 	remotehost=$1
 	shift
