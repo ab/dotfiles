@@ -53,6 +53,14 @@ autocmd FileType ruby set expandtab
 autocmd FileType ruby set tabstop=2
 autocmd FileType ruby set shiftwidth=2
 
+" === stuff ===
+"" Hilight trailing whitespace and lines longer than 80 characters
+"hi OverLength ctermbg=black guibg=black ctermfg=white cterm=none
+hi OverLength cterm=underline gui=underline
+hi ExtraWhitespace ctermbg=red guibg=red
+call matchadd("ExtraWhitespace", '[^\s]+\s\+$')
+"call matchadd("OverLength", '\%81v.\+')
+
 " === Mappings ===
 
 " ROT13
@@ -61,3 +69,5 @@ map <F12> ggVGg?
 " make ctrl+c copy to system clipboard when in visual mode
 vmap <C-c> "+y
 
+" make ctrl+v paste from the system clipboard when in normal mode
+nmap <C-p> :set paste<cr>"+p
