@@ -283,6 +283,11 @@ host ws1
 hostname crimson-ws1.hcs.harvard.edu
 user abrody
 
+host ws1-new
+hostkeyalias crimson-ws1.hcs.harvard.edu
+hostname 140.247.89.140
+user abrody
+
 host ws2
 hostname crimson-ws2.hcs.harvard.edu
 user abrody
