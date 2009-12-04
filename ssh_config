@@ -1,4 +1,4 @@
-# v 2.9
+# v 2.10
 
 # keepalive
 ServerAliveInterval 30
@@ -190,6 +190,13 @@ user abrody
 
 host trajan
 hostname trajan.hcs.harvard.edu
+user hcs
+
+host gracchus
+hostname gracchus.hcs.harvard.edu
+user hcs
+host vento
+hostname vento.hcs.harvard.edu
 user hcs
 
 host dellius
