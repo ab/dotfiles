@@ -31,4 +31,9 @@ ssh-aupdate() {
 	ssh -t $remotehost "sudo aptitude update && sudo aptitude safe-upgrade $*"
 }
 
+# grep ignoring .svn folders
+grep-svn() {
+	find . -path '*/.svn' -prune -o -type f -print0 | xargs -0 -e grep $*
+}
+
 alias sml='rlwrap sml -Cprint.depth=3000 -Cprint.length=3000'
