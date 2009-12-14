@@ -295,9 +295,28 @@ hostkeyalias crimson-ws1.hcs.harvard.edu
 hostname 140.247.89.140
 user abrody
 
+host ws2-new
+hostkeyalias crimson-ws2.hcs.harvard.edu
+hostname 140.247.89.141
+user abrody
+
 host ws2
 hostname crimson-ws2.hcs.harvard.edu
 user abrody
+
+host ws1-munin
+hostname crimson-ws1.hcs.harvard.edu
+LocalForward 8080 localhost:80
+user abrody
+
+host ws2-munin
+hostname crimson-ws2.hcs.harvard.edu
+LocalForward 8081 localhost:80
+user abrody
+
+host staging
+hostname 10.0.0.157
+user crimson
 
 # ====== scvngr =====
 
