@@ -13,22 +13,22 @@ host dellaptop
 hostname dellaptop.lan.abrody.com
 user andy
 
-#host oz
-#hostname oz.lan.abrody.com
-#user andy
+host oz
+hostname oz.lan.abrody.com
+user andy
 
-#host zara
-#hostname zara.lan.abrody.com
-#user andy
+host zara
+hostname zara.lan.abrody.com
+user andy
 
 host zara-wifi
 hostname 10.10.10.30
 hostkeyalias zara
 user andy
 
-#host wisp
-#hostname wisp.lan.abrody.com
-#user andy
+host wisp
+hostname wisp.lan.abrody.com
+user andy
 
 
 # ====== Home - Remote ======
