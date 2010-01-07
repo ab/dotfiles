@@ -1,8 +1,6 @@
-# v 2.10
+# v 2.11
 
-# keepalive
-ServerAliveInterval 30
-ServerAliveCountMax 4
+# (globals are at bottom)
 
 # ====== Home ======
 host dellblue
@@ -360,8 +358,16 @@ user andy
 
 # ====== Globals ======
 
-# connection sharing
 Host *
-ControlMaster auto
-ControlPath ~/.ssh/sockets/%r@%h-%p
+  # connection sharing
+  ControlMaster auto
+  ControlPath ~/.ssh/sockets/%r@%h-%p
+
+  # keepalive
+  ServerAliveInterval 30
+  ServerAliveCountMax 4
+
+  # no gssapi
+  # this might be overriden in /etc/ssh/config... not sure how it works
+  GSSAPIAuthentication no
 

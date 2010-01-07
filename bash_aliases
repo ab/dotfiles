@@ -21,6 +21,29 @@ alias ashow='aptitude show'
 alias aupdate='sudo aptitude update && sudo aptitude safe-upgrade'
 alias aupgrade='sudo aptitude full-upgrade'
 
+# git aliases
+alias g='git'
+alias gb='git br'
+alias gs='git status'
+alias gd='git diff'
+alias gbr='git br'
+alias gco='git checkout'
+alias gca='git commit -a'
+alias gcam='git commit -a --amend'
+alias gst='git stash'
+alias gsd='git svn dcommit'
+alias gsr='git svn rebase'
+alias gbl='git blame'
+alias gl='git log'
+alias glg='git log --graph'
+alias grh='git reset --hard'
+alias grs='git reset'
+alias gpush='git push'
+alias gpull='git pull'
+alias gf='git fetch'
+alias grb='git rebase'
+
+
 # php syntax check
 alias phpcheck='for file in *.php; do php -l $file; done'
 
