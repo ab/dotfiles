@@ -264,11 +264,11 @@ hostkeyalias it3
 
 host ernie
 hostname 10.0.0.220
-user andy
+user abrody
 
 host bert
 hostname 10.0.0.214
-user andy
+user abrody
 
 host grover
 hostname 10.0.0.205
