@@ -1,3 +1,4 @@
+# Various aliases
 alias gcc='gcc -std=c99 -Wall'
 alias dir='ls --color=auto --format=vertical'
 alias vdir='ls --color=auto --format=long'
@@ -61,3 +62,11 @@ grep-svn() {
 }
 
 alias sml='rlwrap sml -Cprint.depth=3000 -Cprint.length=3000'
+
+# Shell Sink (save bash history to the cloud)
+# http://shell-sink.blogspot.com/
+#export SHELL_SINK_COMMAND=shellsink-client
+#export SHELL_SINK_ID=d7bac19862729300675470595b0d54fa
+#export PROMPT_COMMAND="history -a;$SHELL_SINK_COMMAND"
+# colon:delimited:tags
+#export SHELL_SINK_TAGS=`hostname`
