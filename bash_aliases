@@ -11,7 +11,7 @@ alias lless='ll --color=always | less -r'	# colored scrolling ll
 # smtp port forwarding
 alias abfasmail='ssh -Nf -L 2525:smtp.fas.harvard.edu:25 abrody@fas.harvard.edu'
 
-alias cdh='cd "/home/andy/documents/Harvard/Junior 1/"'
+alias cdh='cd "/home/andy/documents/Harvard/Junior 2/"'
 
 # aptitude aliases for brevity
 alias ainstall='sudo aptitude install'
