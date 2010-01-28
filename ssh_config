@@ -11,22 +11,22 @@ host dellaptop
 hostname dellaptop.lan.abrody.com
 user andy
 
-host oz
-hostname oz.lan.abrody.com
-user andy
+#host oz
+#hostname oz.lan.abrody.com
+#user andy
 
-host zara
-hostname zara.lan.abrody.com
-user andy
+#host zara
+#hostname zara.lan.abrody.com
+#user andy
 
 host zara-wifi
 hostname 10.10.10.30
 hostkeyalias zara
 user andy
 
-host wisp
-hostname wisp.lan.abrody.com
-user andy
+#host wisp
+#hostname wisp.lan.abrody.com
+#user andy
 
 
 # ====== Home - Remote ======
@@ -47,7 +47,7 @@ hostname dellblue.abrody.com
 # hostname abrody.com
 user andy
 
-# ===== Harvard Tunnels =====
+# ====== Harvard Tunnels ======
 host oz-tunnel
 hostname localhost
 hostkeyalias oz
@@ -224,6 +224,11 @@ host hera
 hostname hera.hcs.harvard.edu
 user abrody
 
+# == hvirt ==
+host hvirt-dev
+hostname hvirt-dev.hcs.harvard.edu
+user hvirt
+
 # == hypervisors ==
 host romulus
 hostname romulus.hcs.harvard.edu
@@ -249,7 +254,7 @@ host han
 hostname han.hcs.harvard.edu
 user hcs
 
-# ===== Crimson =====
+# ====== Crimson ======
 host katsuo
 hostname katsuo.thecrimson.net
 user andy
@@ -316,7 +321,12 @@ host staging
 hostname 10.0.0.157
 user crimson
 
-# ====== scvngr =====
+# ====== mit ======
+host mit
+hostname linux.dialup.mit.edu
+user abrody
+
+# ====== scvngr ======
 
 host yoda-lan
 hostkeyalias yoda
