@@ -1,4 +1,4 @@
-# v 2.11
+# v 2.12
 
 # (globals are at bottom)
 
@@ -200,6 +200,14 @@ user hcs
 host dellius
 hostname dellius.hcs.harvard.edu
 user hcs
+host dellius-munin
+  hostname dellius.hcs.harvard.edu
+  LocalForward 8080 localhost:80
+  user hcs
+host dellius-zenoss
+  hostname dellius.hcs.harvard.edu
+  LocalForward 8080 localhost:8080
+  user hcs
 
 host pentadius
 hostname pentadius.hcs.harvard.edu
