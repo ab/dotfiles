@@ -13,6 +13,7 @@ alias lless='ll --color=always | less -r'	# colored scrolling ll
 alias abfasmail='ssh -Nf -L 2525:smtp.fas.harvard.edu:25 abrody@fas.harvard.edu'
 
 alias cdh='cd "/home/andy/documents/Harvard/Junior 2/"'
+alias cds='cd /var/tmp/abrody/svn-config/'
 
 # aptitude aliases for brevity
 alias ainstall='sudo aptitude install'
