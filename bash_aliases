@@ -51,6 +51,10 @@ alias grb='git rebase'
 alias phpcheck='for file in *.php; do php -l $file; done'
 
 ssh-aupdate() {
+	if [ -z $1 ]; then
+		echo ssh-aupdate HOST
+		return 2
+	fi
 	remotehost=$1
 	shift
 	echo ssh $remotehost aupdate
