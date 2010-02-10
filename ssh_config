@@ -224,6 +224,10 @@ host petreius
 hostname petreius.hcs.harvard.edu
 user hcs
 
+host nero
+hostname nero.hcs.harvard.edu
+user abrody
+
 host virgil
 hostname virgil.hcs.harvard.edu
 user hcs
