@@ -67,6 +67,7 @@ grep-svn() {
 }
 
 alias sml='rlwrap sml -Cprint.depth=3000 -Cprint.length=3000'
+alias tcl='rlwrap tclsh'
 
 # Shell Sink (save bash history to the cloud)
 # http://shell-sink.blogspot.com/
