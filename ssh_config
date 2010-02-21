@@ -330,7 +330,15 @@ LocalForward 8081 localhost:80
 user abrody
 
 host staging
-hostname 10.0.0.157
+hostname staging.thecrimson.net
+user crimson
+
+host test1
+hostname test1.thecrimson.net
+user crimson
+
+host test2
+hostname test2.thecrimson.net
 user crimson
 
 # ====== mit ======
