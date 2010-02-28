@@ -236,6 +236,10 @@ host hera
 hostname hera.hcs.harvard.edu
 user abrody
 
+host serenity
+hostname serenity.hcs.harvard.edu
+user hcs
+
 # == hvirt ==
 host hvirt-dev
 hostname hvirt-dev.hcs.harvard.edu
