@@ -228,6 +228,16 @@ host nero
 hostname nero.hcs.harvard.edu
 user abrody
 
+host needa
+hostname needa.hcs.harvard.edu
+user abrody
+
+# == hvirt ==
+host hvirt-dev
+hostname hvirt-dev.hcs.harvard.edu
+user hvirt
+
+# == Physical Machines ==
 host virgil
 hostname virgil.hcs.harvard.edu
 user hcs
@@ -240,11 +250,6 @@ host serenity
 hostname serenity.hcs.harvard.edu
 user hcs
 
-# == hvirt ==
-host hvirt-dev
-hostname hvirt-dev.hcs.harvard.edu
-user hvirt
-
 # == hypervisors ==
 host romulus
 hostname romulus.hcs.harvard.edu
@@ -256,6 +261,10 @@ user abrody
 
 host hersilia
 hostname hersilia.hcs.harvard.edu
+user hcs
+
+host gawain
+hostname gawain.eecs.harvard.edu
 user hcs
 
 host luke
