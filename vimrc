@@ -70,5 +70,5 @@ map <F12> ggVGg?
 " make ctrl+c copy to system clipboard when in visual mode
 vmap <C-c> "+y
 
-" make ctrl+v paste from the system clipboard when in normal mode
+" make ctrl+p paste from the system clipboard when in normal mode
 nmap <C-p> :set paste<cr>"+p:set nopaste<cr>:<esc><esc>
