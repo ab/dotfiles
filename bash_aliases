@@ -46,6 +46,8 @@ alias gpull='git pull'
 alias gf='git fetch'
 alias grb='git rebase'
 
+# bzr aliases
+alias b='bzr'
 
 # php syntax check
 alias phpcheck='for file in *.php; do php -l $file; done'
