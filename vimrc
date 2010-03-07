@@ -41,6 +41,7 @@ set autoindent
 " sane tabs
 set tabstop=4
 set shiftwidth=4
+set smarttab
 
 " tabs, not spaces
 set noexpandtab
@@ -70,4 +71,4 @@ map <F12> ggVGg?
 vmap <C-c> "+y
 
 " make ctrl+v paste from the system clipboard when in normal mode
-nmap <C-p> :set paste<cr>"+p
+nmap <C-p> :set paste<cr>"+p:set nopaste<cr>:<esc><esc>
