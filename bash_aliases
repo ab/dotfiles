@@ -48,6 +48,8 @@ alias grb='git rebase'
 
 # bzr aliases
 alias b='bzr'
+alias bd='bzr diff --using=meld'
+alias bl='bzr log --short -r -7..'
 
 # php syntax check
 alias phpcheck='for file in *.php; do php -l $file; done'
@@ -66,6 +68,15 @@ ssh-aupdate() {
 # grep ignoring .svn folders
 grep-svn() {
 	find . -path '*/.svn' -prune -o -type f -print0 | xargs -0 -e grep $*
+}
+
+# cd && ll
+function c () {
+	if [ -z "$*" ]; then
+		cd && ll --color
+	else
+		cd "$*" && ll --color
+	fi
 }
 
 alias sml='rlwrap sml -Cprint.depth=3000 -Cprint.length=3000'
