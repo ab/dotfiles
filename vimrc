@@ -1,5 +1,5 @@
 " ~/.vimrc
-" agb rev 5
+" agb rev 6
 
 " === General ===
 
