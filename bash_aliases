@@ -48,8 +48,13 @@ alias grb='git rebase'
 
 # bzr aliases
 alias b='bzr'
+alias ba='bzr add'
+alias bcom='bzr commit -m'
 alias bd='bzr diff --using=meld'
 alias bl='bzr log --short -r -7..'
+alias bpull='bzr pull'
+alias bpush='bzr push'
+alias bs='bzr status'
 
 # php syntax check
 alias phpcheck='for file in *.php; do php -l $file; done'
