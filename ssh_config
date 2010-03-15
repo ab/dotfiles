@@ -4,30 +4,32 @@
 
 # ====== Home ======
 host dellblue
-hostname dellblue.lan.abrody.com
+hostname dellblue.l.abrody.com
 user andy
 
 host dellaptop
-hostname dellaptop.lan.abrody.com
+hostname dellaptop.l.abrody.com
 user andy
 
 #host oz
-#hostname oz.lan.abrody.com
+#hostname oz.l.abrody.com
 #user andy
 
 #host zara
-#hostname zara.lan.abrody.com
+#hostname zara.l.abrody.com
 #user andy
 
 host zara-wifi
-hostname 10.10.10.30
-hostkeyalias zara
+hostname zara-wifi.l.abrody.com
 user andy
 
 #host wisp
-#hostname wisp.lan.abrody.com
+#hostname wisp.l.abrody.com
 #user andy
 
+host wisp-wifi
+hostname wisp-wifi.l.abrody.com
+user andy
 
 # ====== Home - Remote ======
 host dellaptop-remote
@@ -85,11 +87,6 @@ LocalForward 2220 192.168.1.20:22
 host wisp
 #hostname wisp.client.student.harvard.edu
 hostname dhcp-0036235599-a8-27.client.student.harvard.edu
-user andy
-
-host wisp2
-hostkeyalias wisp
-hostname 140.247.161.200
 user andy
 
 host zara
