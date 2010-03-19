@@ -127,7 +127,7 @@ hostname oz1.abrody.com
 # hostname 140.247.180.55
 user andy
 
-host oz-x11
+host oz-vnc
 hostkeyalias oz
 hostname oz0.abrody.com
 LocalForward 5900 localhost:5900
