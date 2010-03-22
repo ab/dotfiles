@@ -282,7 +282,7 @@ hostname katsuo.thecrimson.net
 user andy
 
 host it3
-hostname portal.thecrimson.com
+hostname sbs.thecrimson.com
 user abrody
 host it3-local
 hostname it3.thecrimson.net
