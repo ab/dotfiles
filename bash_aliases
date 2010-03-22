@@ -7,7 +7,7 @@ alias la='ls -A'
 alias lla='ll -a'
 alias l='ls -CF'
 alias lt='ll -tr'
-alias lless='ll --color=always | less -r'	# colored scrolling ll
+alias lless='ll --color=always | less -R -F'	# colored scrolling ll
 
 # smtp port forwarding
 alias abfasmail='ssh -Nf -L 2525:smtp.fas.harvard.edu:25 abrody@fas.harvard.edu'
@@ -50,7 +50,7 @@ alias grb='git rebase'
 alias b='bzr'
 alias ba='bzr add'
 alias bcom='bzr commit -m'
-alias bd='bzr cdiff | less -r -F'
+alias bd='bzr cdiff | less -R -F'
 alias bdm='bzr diff --using=meld'
 alias bl='bzr log --short -r -7..'
 alias bpull='bzr pull'
