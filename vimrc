@@ -1,5 +1,5 @@
 " ~/.vimrc
-" agb rev 6
+" agb rev 7
 
 " === General ===
 
@@ -72,3 +72,9 @@ vmap <C-c> "+y
 
 " make ctrl+p paste from the system clipboard when in normal mode
 nmap <C-p> :set paste<cr>"+p:set nopaste<cr>:<esc><esc>
+
+" rewrap current paragraph
+map <F5> {gq}
+imap <F5> <esc>{gq}kA
+
+
