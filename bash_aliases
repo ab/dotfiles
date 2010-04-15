@@ -85,6 +85,18 @@ function c () {
 	fi
 }
 
+function hcs () {
+	if [ -z "$1" ]; then
+		host=abrody@hcs.harvard.edu
+	elif [[ $1 == *@* ]]; then
+		host=$1.hcs.harvard.edu
+	else
+		host=abrody@$1.hcs.harvard.edu
+	fi
+
+	ssh $host
+}
+
 # programming
 alias sml='rlwrap sml -Cprint.depth=3000 -Cprint.length=3000'
 alias tcl='rlwrap tclsh'
