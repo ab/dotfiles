@@ -1,5 +1,5 @@
 " ~/.vimrc
-" agb rev 7
+" agb rev 8
 
 " === General ===
 
@@ -59,7 +59,19 @@ autocmd FileType ruby set shiftwidth=2
 "hi OverLength ctermbg=black guibg=black ctermfg=white cterm=none
 hi OverLength cterm=underline gui=underline
 hi ExtraWhitespace ctermbg=red guibg=red
-call matchadd("ExtraWhitespace", '[^\s]+\s\+$')
+
+" '\s\+$'         all trailing whitespace
+" '\S\+\s\+'      whitespace following non-whitespace (highlight whole line)
+" '\S\+\zs\s\+'   whitespace following non-whitespace
+" '\S\+\zs\s\+\%#\@<!$'  as above, but don't highlight current line
+call matchadd("ExtraWhitespace", '\S\+\zs\s\+\%#\@<!$')
+"call matchadd("ExtraWhitespace", '\S\+\zs\s\+$')
+autocmd InsertLeave * redraw!
+
+"autocmd BufEnter * match ExtraWhitespace /\s\+$/
+"autocmd InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
+"autocmd InsertLeave * match ExtraWhiteSpace /\s\+$/
+
 "call matchadd("OverLength", '\%81v.\+')
 
 " === Mappings ===
@@ -67,14 +79,32 @@ call matchadd("ExtraWhitespace", '[^\s]+\s\+$')
 " ROT13
 map <F12> ggVGg?
 
+" make ctrl+x save
+map <C-x> <esc>:confirm w<cr>
+
 " make ctrl+c copy to system clipboard when in visual mode
 vmap <C-c> "+y
 
 " make ctrl+p paste from the system clipboard when in normal mode
 nmap <C-p> :set paste<cr>"+p:set nopaste<cr>:<esc><esc>
 
+" make ctrl+h fill out the form of a global find and replace
+map <C-h> <esc>:%s///g<left><left><left>
+
+" steal ctrl+k from emacs
+nmap <C-k> D
+imap <C-k> <C-o>D
+
 " rewrap current paragraph
 map <F5> {gq}
 imap <F5> <esc>{gq}kA
 
+" make w!! run sudo to write to a file
+cmap w!! w !sudo tee > /dev/null %
 
+" I accidentally hold down shift all the time
+command W w
+command Wq wq
+
+" Comment a block
+" TODO
