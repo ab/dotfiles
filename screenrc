@@ -3,6 +3,8 @@
 hardstatus alwayslastline
 hardstatus string '%{= kW}%-Lw%{= kG}%50> %n%f* %t%{= kW}%+Lw%< %{= kW}%-=%c%{-}'
 
+startup_message off
+
 # use ` as the escape character, not ctrl+a
 # to enter a raw '`', press ` followed by ctrl+`
 escape `^`
