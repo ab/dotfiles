@@ -8,6 +8,7 @@ alias lla='ll -a'
 alias l='ls -CF'
 alias lt='ll -tr'
 alias lless='ll --color=always | less -R -FX'	# colored scrolling ll
+alias open=xdg-open
 
 # smtp port forwarding
 alias abfasmail='ssh -Nf -L 2525:smtp.fas.harvard.edu:25 abrody@fas.harvard.edu'
