@@ -57,6 +57,7 @@ alias bl='bzr log --short -r -7..'
 alias bpull='bzr pull'
 alias bpush='bzr push'
 alias bs='bzr status'
+alias bup='bzr update'
 
 # php syntax check
 alias phpcheck='for file in *.php; do php -l $file; done'
