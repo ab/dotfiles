@@ -214,6 +214,10 @@ host aquila
 hostname aquila.hcs.harvard.edu
 user abrody
 
+host nasica
+hostname nasica.hcs.harvard.edu
+user abrody
+
 host titus
 hostname titus.hcs.harvard.edu
 user hcs
