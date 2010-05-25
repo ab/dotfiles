@@ -11,21 +11,21 @@ host dellaptop
 hostname dellaptop.l.abrody.com
 user andy
 
-#host oz
-#hostname oz.l.abrody.com
-#user andy
+host oz-l
+hostname oz.l.abrody.com
+user andy
 
-#host zara
-#hostname zara.l.abrody.com
-#user andy
+host zara-l
+hostname zara.l.abrody.com
+user andy
 
 host zara-wifi
 hostname zara-wifi.l.abrody.com
 user andy
 
-#host wisp
-#hostname wisp.l.abrody.com
-#user andy
+host wisp-l
+hostname wisp.l.abrody.com
+user andy
 
 host wisp-wifi
 hostname wisp-wifi.l.abrody.com
@@ -232,6 +232,10 @@ user abrody
 host needa
 hostname needa.hcs.harvard.edu
 user abrody
+
+host scipio
+hostname scipio.hcs.harvard.edu
+user bootstrap
 
 # == hvirt ==
 host hvirt-dev
