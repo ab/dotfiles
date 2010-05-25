@@ -251,6 +251,14 @@ host serenity
 hostname serenity.hcs.harvard.edu
 user hcs
 
+host appleseed
+hostname appleseed.hcs.harvard.edu
+user hcs
+
+host bunyan
+hostname bunyan.hcs.harvard.edu
+user hcs
+
 # == hypervisors ==
 host romulus
 hostname romulus.hcs.harvard.edu
