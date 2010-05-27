@@ -45,6 +45,7 @@ port 2222
 user andy
 
 host oz
+hostkeyalias oz
 hostname abrody.com
 port 2222
 user andy
