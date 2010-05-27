@@ -44,6 +44,11 @@ hostname abrody.com
 port 2222
 user andy
 
+host oz
+hostname abrody.com
+port 2222
+user andy
+
 host dellblue-remote
 hostname dellblue.abrody.com
 # hostname abrody.com
@@ -111,7 +116,7 @@ hostname eggplant.abrody.com
 port 2222
 user andy
 
-host oz
+host oz-h
 hostname oz0.abrody.com
 user andy
 
