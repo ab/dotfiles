@@ -55,6 +55,15 @@ hostname dellblue.abrody.com
 # hostname abrody.com
 user andy
 
+host dellblue-vnc
+hostname dellblue.abrody.com
+user andy
+LocalForward 5900 localhost:5900
+ForwardX11 yes
+ControlMaster no
+ExitOnForwardFailure yes
+
+
 # ====== Harvard Tunnels ======
 host oz-tunnel
 hostname localhost
