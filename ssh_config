@@ -243,6 +243,15 @@ host scipio
 hostname scipio.hcs.harvard.edu
 user bootstrap
 
+# == test ==
+host tarkin
+hostname tarkin.hcs.harvard.edu
+user bootstrap
+
+host piett
+hostname piett.hcs.harvard.edu
+user bootstrap
+
 # == hvirt ==
 host hvirt-dev
 hostname hvirt-dev.hcs.harvard.edu
