@@ -287,19 +287,6 @@ host bunyan
 hostname bunyan.hcs.harvard.edu
 user hcs
 
-# == hypervisors ==
-host romulus
-hostname romulus.hcs.harvard.edu
-user abrody
-
-host remus
-hostname remus.hcs.harvard.edu
-user abrody
-
-host hersilia
-hostname hersilia.hcs.harvard.edu
-user hcs
-
 host gawain
 hostname gawain.eecs.harvard.edu
 user hcs
@@ -314,6 +301,23 @@ user hcs
 
 host han
 hostname han.hcs.harvard.edu
+user hcs
+
+host c3po
+hostname c3po.hcs.harvard.edu
+user hcs
+
+# == hypervisors ==
+host romulus
+hostname romulus.hcs.harvard.edu
+user abrody
+
+host remus
+hostname remus.hcs.harvard.edu
+user abrody
+
+host hersilia
+hostname hersilia.hcs.harvard.edu
 user hcs
 
 # ====== Crimson ======
