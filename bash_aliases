@@ -13,7 +13,7 @@ alias open=xdg-open
 # smtp port forwarding
 alias abfasmail='ssh -Nf -L 2525:smtp.fas.harvard.edu:25 abrody@fas.harvard.edu'
 
-alias cdh='cd "/home/andy/documents/Harvard/Junior 2/"'
+alias cdh='cd -P "/home/andy/documents/Harvard/cur/"'
 alias cds='cd /var/tmp/abrody/svn-config/'
 
 # aptitude aliases for brevity
