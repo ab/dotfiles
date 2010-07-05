@@ -47,7 +47,9 @@ user andy
 host oz
 hostkeyalias oz
 hostname abrody.com
-port 2222
+#port 2222
+# using 3389 because of Imperial College's stupid firewall
+port 3389
 user andy
 
 host dellblue-remote
@@ -301,6 +303,10 @@ user hcs
 
 host han
 hostname han.hcs.harvard.edu
+user hcs
+
+host vader
+hostname vader.hcs.harvard.edu
 user hcs
 
 host c3po
