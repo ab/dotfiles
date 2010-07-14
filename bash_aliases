@@ -106,6 +106,21 @@ alias math='rlwrap math'
 alias py='ipython'
 alias pysh='ipython -p sh'
 
+# time long-running jobs
+LONG_JOBS=30
+function timer_start {
+  timer=${timer:-$SECONDS}
+}
+function timer_stop {
+  timer_show=$(($SECONDS - $timer))
+  if (( $timer_show > $LONG_JOBS )); then
+    echo [time: ${timer_show}s]
+  fi
+  unset timer
+}
+trap 'timer_start' DEBUG
+PROMPT_COMMAND=timer_stop
+
 # Shell Sink (save bash history to the cloud)
 # http://shell-sink.blogspot.com/
 #export SHELL_SINK_COMMAND=shellsink-client
