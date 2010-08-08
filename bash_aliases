@@ -21,8 +21,10 @@ function unbak() {
 # smtp port forwarding
 alias abfasmail='ssh -Nf -L 2525:smtp.fas.harvard.edu:25 abrody@fas.harvard.edu'
 
+# frequent cd paths
+export HCS_CONFIG_REPO=/var/tmp/abrody/svn-config/
+alias cds='cd $HCS_CONFIG_REPO'
 alias cdh='cd "/home/andy/documents/Harvard/Junior Summer/"'
-alias cds='cd /var/tmp/abrody/svn-config/'
 
 # aptitude aliases for brevity
 alias ainstall='sudo aptitude install'
