@@ -263,6 +263,10 @@ host piett
 hostname piett.hcs.harvard.edu
 user bootstrap
 
+host veers
+hostname veers.hcs.harvard.edu
+user abrody
+
 # == hvirt ==
 host hvirt-dev
 hostname hvirt-dev.hcs.harvard.edu
