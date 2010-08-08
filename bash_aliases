@@ -10,6 +10,14 @@ alias lt='ll -tr'
 alias lless='ll --color=always | less -R -FX'	# colored scrolling ll
 alias open=xdg-open
 
+function bak() {
+	mv -v "$1"{,~}
+}
+# NB: vim's syntax highlighting doesn't like nested quotes, but it does work
+function unbak() {
+	mv -v "$1" "$(dirname "$1")/$(basename "$1" '~')"
+}
+
 # smtp port forwarding
 alias abfasmail='ssh -Nf -L 2525:smtp.fas.harvard.edu:25 abrody@fas.harvard.edu'
 
