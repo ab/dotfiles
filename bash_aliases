@@ -132,7 +132,7 @@ function timer_stop {
   unset timer
 }
 trap 'timer_start' DEBUG
-PROMPT_COMMAND=timer_stop
+PROMPT_COMMAND="$PROMPT_COMMAND;timer_stop"
 
 # Shell Sink (save bash history to the cloud)
 # http://shell-sink.blogspot.com/
