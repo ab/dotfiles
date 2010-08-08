@@ -107,13 +107,18 @@ alias py='ipython'
 alias pysh='ipython -p sh'
 
 # time long-running jobs
-LONG_JOBS=30
+TIMER_LONG_JOBS=30
+TIMER_IGNORE_COMMANDS=( ssh vim bash )
+function timer_parse_cmd {
+  echo $(basename "$1")
+}
 function timer_start {
+  #timer_parse_cmd $BASH_COMMAND
   timer=${timer:-$SECONDS}
 }
 function timer_stop {
   timer_show=$(($SECONDS - $timer))
-  if (( $timer_show > $LONG_JOBS )); then
+  if (( $timer_show > $TIMER_LONG_JOBS )); then
     echo [time: ${timer_show}s]
   fi
   unset timer
