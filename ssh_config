@@ -44,12 +44,20 @@ hostname abrody.com
 port 2222
 user andy
 
+host oz-remote-vnc
+hostkeyalias oz
+hostname abrody.com
+port 2222
+LocalForward 5900 localhost:5900
+LocalForward 5901 localhost:5901
+ForwardX11 yes
+ControlMaster no
+ExitOnForwardFailure yes
+
 host oz
 hostkeyalias oz
 hostname abrody.com
-#port 2222
-# using 3389 because of Imperial College's stupid firewall
-port 3389
+port 2222
 user andy
 
 host dellblue-remote
@@ -126,6 +134,12 @@ host oz-forward
 hostkeyalias oz
 hostname eggplant.abrody.com
 port 2222
+user andy
+
+host oz-dynamic
+hostkeyalias oz
+hostname alberge.is-a-geek.com
+port 22
 user andy
 
 host oz-h
