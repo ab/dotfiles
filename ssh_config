@@ -281,6 +281,10 @@ host veers
 hostname veers.hcs.harvard.edu
 user abrody
 
+host biggs
+hostname biggs.hcs.harvard.edu
+user abrody
+
 # == hvirt ==
 host hvirt-dev
 hostname hvirt-dev.hcs.harvard.edu
