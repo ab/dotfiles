@@ -1,4 +1,4 @@
-# v 2.12
+# v 2.13
 
 # (globals are at bottom)
 
@@ -54,11 +54,11 @@ ForwardX11 yes
 ControlMaster no
 ExitOnForwardFailure yes
 
-host oz
-hostkeyalias oz
-hostname abrody.com
-port 2222
-user andy
+#host oz
+#hostkeyalias oz
+#hostname abrody.com
+#port 2222
+#user andy
 
 host dellblue-remote
 hostname dellblue.abrody.com
@@ -140,6 +140,10 @@ host oz-dynamic
 hostkeyalias oz
 hostname alberge.is-a-geek.com
 port 22
+user andy
+
+host oz
+hostname oz.abrody.com
 user andy
 
 host oz-h
