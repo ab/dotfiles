@@ -1,4 +1,4 @@
-# v 2.13
+# v 2.14
 
 # (globals are at bottom)
 
@@ -288,6 +288,10 @@ user abrody
 host biggs
 hostname biggs.hcs.harvard.edu
 user abrody
+
+host porkins
+hostname porkins.hcs.harvard.edu
+user hcs
 
 # == hvirt ==
 host hvirt-dev
