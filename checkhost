@@ -1,0 +1,43 @@
+#!/bin/sh
+known_hosts="$1"
+
+if [ -z "$known_hosts" ]; then
+	known_hosts="$HOME/.ssh/known_hosts.zara"
+fi
+
+if [ ! -f "$known_hosts" ]; then
+	echo "ssh known_hosts file not found: '$known_hosts'"
+fi
+
+echo "Paste the message ssh prints starting with 'The authenticity...'"
+
+while read ans; do
+	if [ -z "$host" ]; then
+		host=$(echo "$ans" | sed -rn "s/^The authenticity of host '(.*) \(.*\)' can't be established.$/\1/p")
+	fi
+	if [ -z "$ip" ]; then
+		ip=$(echo "$ans" | sed -rn "s/^The authenticity of host '.* \((.*)\)' can't be established.$/\1/p")
+	fi
+	if [ -z "$print" ]; then
+		print=$(echo "$ans" | sed -rn "s/^RSA key fingerprint is (.*)\.$/\1/p")
+	fi
+
+	if [ -n "$host" -a -n "$print" -a -n "$ip" ]; then
+		break
+	fi
+done
+
+echo "+ ssh-keygen -lF '$host' -f '$known_hosts'"
+if ssh-keygen -lF "$host" -f "$known_hosts" | grep "$print"; then
+	echo "OK, FINGERPRINT CHECKS OUT"
+	exit 0
+else
+	echo "+ ssh-keygen -lF '$ip' -f '$known_hosts'"
+	if ssh-keygen -lF "$ip" -f "$known_hosts" | grep "$print"; then
+		echo "FINGERPRINT CHECKS OUT BY IP ONLY"
+		exit 0
+	fi
+fi
+
+echo "NOT FOUND"
+exit 5
