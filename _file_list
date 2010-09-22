@@ -1,5 +1,7 @@
 #conf	base_dir	fname
 
+known_hosts	$HOME	.ssh/known_hosts
+checkhost	$HOME	bin/checkhost
 ssh_config	$HOME	.ssh/config
 screenrc	$HOME	.screenrc
 vimrc	$HOME	.vimrc
