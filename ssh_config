@@ -171,6 +171,12 @@ ForwardX11 yes
 ControlMaster no
 ExitOnForwardFailure yes
 
+# ====== Personal VMs ======
+host lion
+hostkeyalias lion
+hostname 192.168.122.83
+user andy
+
 # ====== Harvard Servers ======
 host fas
 hostname fas.harvard.edu
@@ -354,7 +360,7 @@ user abrody
 
 host hersilia
 hostname hersilia.hcs.harvard.edu
-user hcs
+user abrody
 
 # ====== Crimson ======
 host katsuo
