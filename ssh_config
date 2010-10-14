@@ -111,7 +111,8 @@ LocalForward 2220 192.168.1.20:22
 # ====== Harvard DHCP =====
 host wisp
 #hostname wisp.client.student.harvard.edu
-hostname dhcp-0036235599-a8-27.client.student.harvard.edu
+#hostname dhcp-0036235599-a8-27.client.student.harvard.edu
+hostname wisp-wifi.h.abrody.com
 user andy
 
 host zara
@@ -292,6 +293,13 @@ user abrody
 host porkins
 hostname porkins.hcs.harvard.edu
 user hcs
+
+# == services ==
+host code
+hostkeyalias code.hcs.harvard.edu
+hostname config1.hcs.harvard.edu
+port 2222
+user abrody
 
 # == hvirt ==
 host hvirt-dev
