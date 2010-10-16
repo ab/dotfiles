@@ -279,6 +279,20 @@ host scipio
 hostname scipio.hcs.harvard.edu
 user bootstrap
 
+host cfg1
+hostname cfg1.hcs.harvard.edu
+user hcs
+host cfg2
+hostname cfg2.hcs.harvard.edu
+user hcs
+
+host code1
+hostname code1.hcs.harvard.edu
+user hcs
+host code2
+hostname code2.hcs.harvard.edu
+user hcs
+
 # == test ==
 host tarkin
 hostname tarkin.hcs.harvard.edu
@@ -303,7 +317,7 @@ user hcs
 # == services ==
 host code
 hostkeyalias code.hcs.harvard.edu
-hostname config1.hcs.harvard.edu
+hostname code1.hcs.harvard.edu
 port 2222
 user abrody
 
