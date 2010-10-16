@@ -2,7 +2,11 @@
 known_hosts="$1"
 
 if [ -z "$known_hosts" ]; then
-	known_hosts="$HOME/.ssh/known_hosts.zara"
+	if [ -f "$HOME/.ssh/known_hosts.zara" ]; then
+		known_hosts="$HOME/.ssh/known_hosts.zara"
+	else
+		known_hosts="$HOME/.ssh/known_hosts"
+	fi
 fi
 
 if [ ! -f "$known_hosts" ]; then
