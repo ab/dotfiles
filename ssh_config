@@ -112,7 +112,8 @@ LocalForward 2220 192.168.1.20:22
 host wisp
 #hostname wisp.client.student.harvard.edu
 #hostname dhcp-0036235599-a8-27.client.student.harvard.edu
-hostname wisp-wifi.h.abrody.com
+#hostname wisp-wifi.h.abrody.com
+hostname dhcp-0059595205-7e-81.client.student.harvard.edu
 user andy
 
 host zara
