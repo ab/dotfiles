@@ -9,6 +9,7 @@ alias l='ls -CF'
 alias lt='ll -tr'
 alias lless='ll --color=always | less -R -FX'	# colored scrolling ll
 alias open=xdg-open
+alias asa='. auto-ssh-agent'
 
 function bak() {
 	mv -v "$1"{,~}
