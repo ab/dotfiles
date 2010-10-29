@@ -436,7 +436,7 @@ user abrody
 
 host ws2-new
 hostkeyalias crimson-ws2.hcs.harvard.edu
-hostname 140.247.89.141
+hostname 140.247.89.178
 user abrody
 
 host ws2
