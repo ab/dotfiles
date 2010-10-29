@@ -57,6 +57,7 @@ alias gpush='git push'
 alias gpull='git pull'
 alias gf='git fetch'
 alias grb='git rebase'
+alias gr='git push origin HEAD:refs/for/master'
 
 # bzr aliases
 alias b='bzr'
