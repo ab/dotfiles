@@ -315,10 +315,15 @@ host porkins
 hostname porkins.hcs.harvard.edu
 user hcs
 
+host lobot
+hostname 140.247.182.54
+hostkeyalias lobot.hcs.harvard.edu
+user hcs
+
 # == services ==
 host code
-hostkeyalias code.hcs.harvard.edu
-hostname code1.hcs.harvard.edu
+hostname code.hcs.harvard.edu
+hostkeyalias code.hcs.harvard.edu:2222
 port 2222
 user abrody
 
