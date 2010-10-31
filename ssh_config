@@ -294,6 +294,13 @@ host code2
 hostname code2.hcs.harvard.edu
 user hcs
 
+host ldap1
+hostname ldap1.hcs.harvard.edu
+user hcs
+host ldap2
+hostname ldap2.hcs.harvard.edu
+user hcs
+
 # == test ==
 host tarkin
 hostname tarkin.hcs.harvard.edu
