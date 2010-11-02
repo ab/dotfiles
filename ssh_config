@@ -301,6 +301,13 @@ host ldap2
 hostname ldap2.hcs.harvard.edu
 user hcs
 
+host apt1
+hostname apt1.hcs.harvard.edu
+user hcs
+host apt2
+hostname apt2.hcs.harvard.edu
+user hcs
+
 # == test ==
 host tarkin
 hostname tarkin.hcs.harvard.edu
