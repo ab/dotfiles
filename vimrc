@@ -126,4 +126,46 @@ command W w
 command Wq wq
 
 " Comment a block
-" TODO
+function! CommentBlock(...) range
+	if a:0 >= 1
+		let comment_regex = a:1
+	else
+		let slash_langs = ['php', 'c', 'cs', 'cpp', 'javascript', 'java']
+		if index(slash_langs, &filetype) != -1
+			let comment_regex = '// '
+		elseif &filetype == 'tex'
+			let comment_regex = '%\~ '
+		elseif &filetype == 'vim'
+			let comment_regex = '"\~ '
+		else
+			let comment_regex = '#\~ '
+		endif
+	endif
+	let num_com = 0
+	let num_un = 0
+	" Step through each line in the range:
+	for linenum in range(a:firstline, a:lastline)
+		let line = getline(linenum)
+		if line =~ '\s*' . comment_regex
+			" remove comment
+			let new = substitute(line, comment_regex, '', '')
+			let num_un += 1
+		else
+			" add comment
+			let new = substitute(line, '^\(\s*\)', '\1' . comment_regex, '')
+			let num_com += 1
+		endif
+		call setline(linenum, new)
+	endfor
+
+	" Report what was done
+	if num_com && num_un
+		echo num_com "lines commented," num_un "lines uncommented"
+	elseif num_com
+		echo num_com "lines commented"
+	elseif num_un
+		echo num_un "lines uncommented"
+	endif
+endfunction
+vmap <C-e> :call CommentBlock()<cr>
+
