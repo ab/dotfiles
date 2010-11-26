@@ -116,6 +116,10 @@ host wisp
 hostname dhcp-0059595205-7e-81.client.student.harvard.edu
 user andy
 
+host wisp-wired
+hostname wisp-wired.h.abrody.com
+user andy
+
 host zara
 #hostname zara.client.student.harvard.edu
 hostname dhcp-0000058497-64-e5.client.student.harvard.edu
@@ -330,8 +334,7 @@ hostname porkins.hcs.harvard.edu
 user hcs
 
 host lobot
-hostname 140.247.182.54
-hostkeyalias lobot.hcs.harvard.edu
+hostname hcs-backup.seas.harvard.edu
 user hcs
 
 # == services ==
@@ -483,6 +486,11 @@ user crimson
 host mit
 hostname linux.dialup.mit.edu
 user abrody
+
+# ===== other =====
+host sid
+hostname silenceisdefeat.com
+user ab
 
 # ====== scvngr ======
 
