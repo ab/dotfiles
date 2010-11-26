@@ -1,5 +1,5 @@
 " ~/.vimrc
-" agb rev 8
+" agb rev 9
 
 " === General ===
 
@@ -34,6 +34,13 @@ set mouse=cih
 " highlight as you type
 set incsearch
 set hlsearch
+" ignore case when searching except if Caps
+set ignorecase
+set smartcase
+
+" title customizations
+set title
+set titlestring=%{$USER}@%{hostname()}:\ vim\ %(%h\ %)%F\ %M
 
 " take indent for new line from previous line
 set autoindent
@@ -48,11 +55,14 @@ set noexpandtab
 
 " python files: indent with spaces
 autocmd FileType python set expandtab
+autocmd FileType python set textwidth=79
+autocmd FileType python let g:detectindent_preferred_expandtab = 1
 
 " ruby files: indent with 2 spaces
 autocmd FileType ruby set expandtab
 autocmd FileType ruby set tabstop=2
 autocmd FileType ruby set shiftwidth=2
+autocmd FileType ruby let g:detectindent_preferred_expandtab = 1
 
 " === stuff ===
 "" Hilight trailing whitespace and lines longer than 80 characters
@@ -98,6 +108,15 @@ imap <C-k> <C-o>D
 " rewrap current paragraph
 map <F5> {gq}
 imap <F5> <esc>{gq}kA
+
+" spell checking
+function! SpellOn()
+	if ! &spell
+		setlocal spell spelllang=en_us
+		echo ":setlocal spell spelllang=en_us"
+	endif
+endfunction
+map <silent> <F7> :call SpellOn()<cr>]s
 
 " make w!! run sudo to write to a file
 cmap w!! w !sudo tee > /dev/null %
