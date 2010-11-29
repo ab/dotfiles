@@ -8,6 +8,7 @@ alias lla='ll -a'
 alias l='ls -CF'
 alias lt='ll -tr'
 alias lless='ll --color=always | less -R -FX'	# colored scrolling ll
+alias sll='sudo ls -l --color=auto'
 alias open=xdg-open
 alias asa='. auto-ssh-agent'
 
