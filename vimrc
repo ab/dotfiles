@@ -40,7 +40,7 @@ set smartcase
 
 " title customizations
 set title
-set titlestring=%{$USER}@%{hostname()}:\ vim\ %(%h\ %)%F\ %M
+set titlestring=(%t)\ %{$USER}@%{hostname()}:\ vim\ %(%h\ %)%F\ %M titlelen=150
 
 " take indent for new line from previous line
 set autoindent
