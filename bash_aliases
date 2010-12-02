@@ -35,6 +35,7 @@ alias asearch='aptitude search'
 alias ashow='aptitude show'
 alias aupdate='sudo aptitude update && sudo aptitude safe-upgrade'
 alias aupgrade='sudo aptitude full-upgrade'
+alias awhy='aptitude why'
 
 # git aliases
 alias g='git'
