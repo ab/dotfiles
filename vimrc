@@ -37,6 +37,8 @@ set hlsearch
 " ignore case when searching except if Caps
 set ignorecase
 set smartcase
+" replace globally by default
+set gdefault
 
 " title customizations
 set title
@@ -95,6 +97,13 @@ map <F12> ggVGg?
 
 " make ctrl+x save
 map <C-x> <esc>:confirm w<cr>
+
+" make F1 not open a help browser
+noremap <F1> <esc>
+" TODO check that this actually works
+
+" don't require shift when you want :
+nnoremap ; :
 
 " make ctrl+c copy to system clipboard when in visual mode
 vmap <C-c> "+y
