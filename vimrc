@@ -57,12 +57,16 @@ set noexpandtab
 autocmd FileType python set expandtab
 autocmd FileType python set textwidth=79
 autocmd FileType python let g:detectindent_preferred_expandtab = 1
+" also add a shebang automatically in new files
+autocmd BufNewFile *.py 0put =\"#!/usr/bin/env python\<nl>\"|$
 
 " ruby files: indent with 2 spaces
 autocmd FileType ruby set expandtab
 autocmd FileType ruby set tabstop=2
 autocmd FileType ruby set shiftwidth=2
 autocmd FileType ruby let g:detectindent_preferred_expandtab = 1
+" also add a shebang automatically in new files
+autocmd BufNewFile *.rb 0put =\"#!/usr/bin/env ruby\<nl>\"|$
 
 " === stuff ===
 "" Hilight trailing whitespace and lines longer than 80 characters
