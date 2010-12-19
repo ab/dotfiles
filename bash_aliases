@@ -20,6 +20,10 @@ function unbak() {
 	mv -v "$1" "$(dirname "$1")/$(basename "$1" '~')"
 }
 
+function say() {
+	echo "$*" | festival --tts
+}
+
 # smtp port forwarding
 alias abfasmail='ssh -Nf -L 2525:smtp.fas.harvard.edu:25 abrody@fas.harvard.edu'
 

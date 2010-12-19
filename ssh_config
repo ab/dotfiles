@@ -1,4 +1,4 @@
-# v 2.14
+# v 2.15
 
 # (globals are at bottom)
 
@@ -183,6 +183,11 @@ hostkeyalias lion
 hostname 192.168.122.83
 user andy
 
+host crimdev
+hostkeyalias crimdev
+hostname 192.168.122.168
+user abrody
+
 # ====== Harvard Servers ======
 host fas
 hostname fas.harvard.edu
@@ -312,6 +317,13 @@ host apt2
 hostname apt2.hcs.harvard.edu
 user hcs
 
+host apps1
+hostname apps1.hcs.harvard.edu
+user hcs
+host apps2
+hostname apps2.hcs.harvard.edu
+user hcs
+
 # == test ==
 host tarkin
 hostname tarkin.hcs.harvard.edu
@@ -393,6 +405,10 @@ user hcs
 host c3po
 hostname c3po.hcs.harvard.edu
 user hcs
+
+host wedge
+hostname wedge.hcs.harvard.edu
+user bootstrap
 
 # == hypervisors ==
 host romulus
