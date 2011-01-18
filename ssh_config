@@ -205,6 +205,11 @@ host cs61
 hostname cs61.seas.harvard.edu
 user abrody
 
+host hackharvard
+hostname hackharvard.org
+user hack
+port 2200
+
 # ====== HCS ======
 host hcs
 hostname hcs.harvard.edu
@@ -348,6 +353,10 @@ user hcs
 host lobot
 hostname hcs-backup.seas.harvard.edu
 user hcs
+
+host fett
+hostname fett.hcs.harvard.edu
+user bootstrap
 
 # == services ==
 host code
