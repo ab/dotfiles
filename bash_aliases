@@ -30,7 +30,7 @@ alias abfasmail='ssh -Nf -L 2525:smtp.fas.harvard.edu:25 abrody@fas.harvard.edu'
 # frequent cd paths
 export HCS_CONFIG_REPO=/var/tmp/abrody/svn-config/
 alias cds='cd $HCS_CONFIG_REPO'
-alias cdh='cd "/home/andy/documents/Harvard/Senior 1/"'
+alias cdh='cd "/home/andy/documents/Harvard/Senior 2/"'
 
 # aptitude aliases for brevity
 alias ainstall='sudo aptitude install'
