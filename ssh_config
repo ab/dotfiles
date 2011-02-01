@@ -201,8 +201,8 @@ host eecs
 hostname eecs.harvard.edu
 user abrody
 
-host cs61
-hostname cs61.seas.harvard.edu
+host cs161
+hostname cs161.seas.harvard.edu
 user abrody
 
 host hackharvard
