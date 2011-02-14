@@ -9,9 +9,13 @@ alias l='ls -CF'
 alias lt='ll -tr'
 alias lless='ll --color=always | less -R -FX'	# colored scrolling ll
 alias sll='sudo ls -l --color=auto'
-alias open=xdg-open
 alias asa='. auto-ssh-agent'
 
+function open() {
+	for i in "$@"; do
+		xdg-open "$i"
+	done
+}
 function bak() {
 	mv -v "$1"{,~}
 }
