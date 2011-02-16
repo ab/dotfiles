@@ -10,6 +10,7 @@ alias lt='ll -tr'
 alias lless='ll --color=always | less -R -FX'	# colored scrolling ll
 alias sll='sudo ls -l --color=auto'
 alias asa='. auto-ssh-agent'
+alias stopwatch='date; time read -s -n 1; date'
 
 function open() {
 	for i in "$@"; do
