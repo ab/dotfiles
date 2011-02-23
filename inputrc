@@ -3,3 +3,18 @@ $include /etc/inputrc
 set completion-ignore-case on
 set show-all-if-ambiguous on
 
+# use smarter history searching with up and down
+$if Bash
+"\e[A": history-search-backward
+"\e[B": history-search-forward
+$endif
+
+# Have Meta + o load the previous command and move cursor to first option
+# Using \M- doesn't work in Ubuntu:
+# http://ubuntuforums.org/showthread.php?t=491843
+# https://bugs.launchpad.net/ubuntu/+source/readline5/+bug/56734
+#"\M-o": "\C-p\C-a\M-f "
+"\eo": "\C-p\C-a\ef "
+
+# Have M-s cycle through tab completions
+"\es": menu-complete
