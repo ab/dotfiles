@@ -1,5 +1,5 @@
 " ~/.vimrc
-" agb rev 9
+" agb rev 10
 
 " === General ===
 
@@ -101,6 +101,9 @@ map <C-x> <esc>:confirm w<cr>
 " make F1 not open a help browser
 noremap <F1> <esc>
 " TODO check that this actually works
+
+" make q quit when viewing a man page
+autocmd FileType man nnoremap <buffer> q :quit<cr>
 
 " don't require shift when you want :
 nnoremap ; :
