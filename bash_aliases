@@ -10,7 +10,9 @@ alias lt='ll -tr'
 alias lless='ll --color=always | less -R -FX'	# colored scrolling ll
 alias sll='sudo ls -l --color=auto'
 alias asa='. auto-ssh-agent'
-alias stopwatch='date; time read -s -n 1; date'
+alias stopwatch='date; time read -s -n 1; date' # simple stopwatch
+function wp() { dig +short txt "$*.wp.dg.cx"; } # wikipedia commandline
+function calc() { echo "$*" | bc -l; } # simple calculator
 
 function open() {
 	for i in "$@"; do
