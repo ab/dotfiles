@@ -205,6 +205,10 @@ host cs161
 hostname cs161.seas.harvard.edu
 user abrody
 
+host cs179
+hostname cs179.org
+user cs_179_abrody
+
 host hackharvard
 hostname hackharvard.org
 user hack
