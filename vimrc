@@ -70,6 +70,9 @@ autocmd FileType ruby let g:detectindent_preferred_expandtab = 1
 " also add a shebang automatically in new files
 autocmd BufNewFile *.rb 0put =\"#!/usr/bin/env ruby\<nl>\"|$
 
+" processing docs location
+let processing_doc_path = "/opt/processing/reference"
+
 " === stuff ===
 "" Hilight trailing whitespace and lines longer than 80 characters
 "hi OverLength ctermbg=black guibg=black ctermfg=white cterm=none
