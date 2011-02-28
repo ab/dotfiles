@@ -4,10 +4,10 @@ set completion-ignore-case on
 set show-all-if-ambiguous on
 
 # use smarter history searching with up and down
-$if Bash
-"\e[A": history-search-backward
-"\e[B": history-search-forward
-$endif
+#$if Bash
+#"\e[A": history-search-backward
+#"\e[B": history-search-forward
+#$endif
 
 # Have Meta + o load the previous command and move cursor to first option
 # Using \M- doesn't work in Ubuntu:
