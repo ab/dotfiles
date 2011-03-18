@@ -1,13 +1,13 @@
-# v 2.15
+# v 2.16
 
 # (globals are at bottom)
 
 # ====== Home ======
-host dellblue
+host dellblue-l
 hostname dellblue.l.abrody.com
 user andy
 
-host dellaptop
+host dellaptop-l
 hostname dellaptop.l.abrody.com
 user andy
 
@@ -32,7 +32,7 @@ hostname wisp-wifi.l.abrody.com
 user andy
 
 # ====== Home - Remote ======
-host dellaptop-remote
+host dellaptop
 hostname alberge.is-a-geek.com
 # hostname dellaptop.abrody.com
 user andy
@@ -60,7 +60,7 @@ ExitOnForwardFailure yes
 #port 2222
 #user andy
 
-host dellblue-remote
+host dellblue
 hostname dellblue.abrody.com
 # hostname abrody.com
 user andy
@@ -288,7 +288,7 @@ user hcs
 
 host nero
 hostname nero.hcs.harvard.edu
-user abrody
+user bootstrap
 
 host needa
 hostname needa.hcs.harvard.edu
