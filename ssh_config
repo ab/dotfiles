@@ -312,6 +312,13 @@ host code2
 hostname code2.hcs.harvard.edu
 user hcs
 
+host config1
+hostname config1.hcs.harvard.edu
+user hcs
+host config2
+hostname config2.hcs.harvard.edu
+user hcs
+
 host ldap1
 hostname ldap1.hcs.harvard.edu
 user hcs
