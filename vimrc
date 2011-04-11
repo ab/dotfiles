@@ -1,5 +1,5 @@
 " ~/.vimrc
-" agb rev 10
+" agb rev 11
 
 " === General ===
 
@@ -118,7 +118,12 @@ vmap <C-c> "+y
 nmap <C-p> :set paste<cr>"+p:set nopaste<cr>:<esc><esc>
 
 " make ctrl+h fill out the form of a global find and replace
-map <C-h> <esc>:%s///g<left><left><left>
+if &gdefault
+	map <C-h> <esc>:%s///<left><left><left>
+else
+	map <C-h> <esc>:%s///g<left><left><left>
+endif
+
 
 " steal ctrl+k from emacs
 nmap <C-k> D
