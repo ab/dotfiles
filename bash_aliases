@@ -94,6 +94,14 @@ alias bpush='bzr push'
 alias bs='bzr status'
 alias bup='bzr update'
 
+# hg aliases
+# --color works with Mercurial 1.7.3, not with 1.4.3
+#alias hl='hg glog --color=always | less -R'
+alias hl='hg glog | less'
+
+# cs161 aliases
+alias runddd='ssh -MCX cs161 "(cd ~/cs161/root; ddd --debugger os161-gdb --gdb kernel)"'
+
 # php syntax check
 alias phpcheck='for file in *.php; do php -l $file; done'
 
