@@ -119,7 +119,7 @@ nmap <C-p> :set paste<cr>"+p:set nopaste<cr>:<esc><esc>
 
 " make ctrl+h fill out the form of a global find and replace
 if &gdefault
-	map <C-h> <esc>:%s///<left><left><left>
+	map <C-h> <esc>:%s///<left><left>
 else
 	map <C-h> <esc>:%s///g<left><left><left>
 endif
