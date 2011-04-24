@@ -1,5 +1,5 @@
 " ~/.vimrc
-" agb rev 11
+" agb rev 12
 
 " === General ===
 
@@ -72,6 +72,9 @@ autocmd BufNewFile *.rb 0put =\"#!/usr/bin/env ruby\<nl>\"|$
 
 " processing docs location
 let processing_doc_path = "/opt/processing/reference"
+
+" smarter ctags handling -- recurse up looking for tags file
+set tags=./tags;$HOME
 
 " === stuff ===
 "" Hilight trailing whitespace and lines longer than 80 characters
