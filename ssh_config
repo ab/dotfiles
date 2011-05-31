@@ -38,11 +38,27 @@ hostname alberge.is-a-geek.com
 user andy
 port 2243
 
+host oz
+hostkeyalias oz
+hostname abrody.com
+port 2222
+user andy
+
 host oz-remote
 hostkeyalias oz
 hostname abrody.com
 port 2222
 user andy
+
+host oz-vnc
+hostkeyalias oz
+hostname abrody.com
+port 2222
+LocalForward 5900 localhost:5900
+LocalForward 5901 localhost:5901
+ForwardX11 yes
+ControlMaster no
+ExitOnForwardFailure yes
 
 host oz-remote-vnc
 hostkeyalias oz
@@ -53,12 +69,6 @@ LocalForward 5901 localhost:5901
 ForwardX11 yes
 ControlMaster no
 ExitOnForwardFailure yes
-
-#host oz
-#hostkeyalias oz
-#hostname abrody.com
-#port 2222
-#user andy
 
 host dellblue
 hostname dellblue.abrody.com
@@ -107,75 +117,6 @@ ExitOnForwardFailure yes
 LocalForward 2222 192.168.1.22:22
 LocalForward 2221 192.168.1.21:22
 LocalForward 2220 192.168.1.20:22
-
-# ====== Harvard DHCP =====
-host wisp
-#hostname wisp.client.student.harvard.edu
-#hostname dhcp-0036235599-a8-27.client.student.harvard.edu
-#hostname wisp-wifi.h.abrody.com
-hostname dhcp-0059595205-7e-81.client.student.harvard.edu
-user andy
-
-host wisp-wired
-hostname wisp-wired.h.abrody.com
-user andy
-
-host zara
-#hostname zara.client.student.harvard.edu
-hostname dhcp-0000058497-64-e5.client.student.harvard.edu
-user andy
-
-host zara-wired
-hostkeyalias zara
-#hostname 140.247.180.51
-hostname zara-wired.h.abrody.com
-user andy
-
-host eggplant
-hostname eggplant.abrody.com
-# hostname 140.247.180.54
-user root
-
-host oz-forward
-hostkeyalias oz
-hostname eggplant.abrody.com
-port 2222
-user andy
-
-host oz-dynamic
-hostkeyalias oz
-hostname alberge.is-a-geek.com
-port 22
-user andy
-
-host oz
-hostname oz.abrody.com
-user andy
-
-host oz-h
-hostname oz0.abrody.com
-user andy
-
-host oz0
-hostkeyalias oz
-hostname oz0.abrody.com
-# hostname 140.247.180.56
-user andy
-
-host oz1
-hostkeyalias oz
-hostname oz1.abrody.com
-# hostname 140.247.180.55
-user andy
-
-host oz-vnc
-hostkeyalias oz
-hostname oz0.abrody.com
-LocalForward 5900 localhost:5900
-LocalForward 5901 localhost:5901
-ForwardX11 yes
-ControlMaster no
-ExitOnForwardFailure yes
 
 # ====== Personal VMs ======
 host lion
@@ -531,46 +472,6 @@ user abrody
 host sid
 hostname silenceisdefeat.com
 user ab
-
-# ====== scvngr ======
-
-host yoda-lan
-hostkeyalias yoda
-#hostname 10.0.0.15
-hostname scvngr-yoda.ath.cx
-user andy
-
-host yoda
-hostkeyalias yoda
-hostname southend.ath.cx
-port 222
-user andy
-
-host qa
-hostname qa.scvngr.com
-port 7822
-user daedalus
-
-#host production
-host prod
-hostname scvngr.com
-port 7822
-user daedalus
-
-host promo
-hostname promo.scvngr.com
-port 7822
-user andy
-
-host zoom
-hostname southend.ath.cx
-user seth
-
-host slowmac
-hostname 10.0.0.21
-hostkeyalias slowmac
-#user sethpriebatsch
-user andy
 
 # ====== Globals ======
 
