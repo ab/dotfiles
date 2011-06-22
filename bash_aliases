@@ -1,4 +1,5 @@
 # Various aliases
+alias v='vim'
 alias gcc='gcc -std=c99 -Wall'
 alias dir='ls --color=auto --format=vertical'
 alias vdir='ls --color=auto --format=long'
