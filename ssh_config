@@ -172,6 +172,20 @@ host pops
 hostname hcs.harvard.edu
 user pops
 
+host hcs-ldap
+hostname hcs.harvard.edu
+user abrody
+LocalForward 19389 ldap.internal.hcs.harvard.edu:389
+ControlMaster yes
+ExitOnForwardFailure yes
+
+host hcs-ldap-dev
+hostname hcs.harvard.edu
+user abrody
+LocalForward 19636 ldap-dev.internal.hcs.harvard.edu:636
+ControlMaster yes
+ExitOnForwardFailure yes
+
 host caesar
 hostname caesar.hcs.harvard.edu
 user abrody
