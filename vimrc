@@ -86,7 +86,7 @@ hi ExtraWhitespace ctermbg=red guibg=red
 " '\S\+\s\+'      whitespace following non-whitespace (highlight whole line)
 " '\S\+\zs\s\+'   whitespace following non-whitespace
 " '\S\+\zs\s\+\%#\@<!$'  as above, but don't highlight current line
-call matchadd("ExtraWhitespace", '\S\+\zs\s\+\%#\@<!$')
+call matchadd("ExtraWhitespace", '\s\+\%#\@<!$')
 "call matchadd("ExtraWhitespace", '\S\+\zs\s\+$')
 autocmd InsertLeave * redraw!
 
