@@ -145,6 +145,27 @@ function hcs () {
 	ssh $host
 }
 
+# unzip arbitrary archives
+function unz() {
+	if [ -z "$1" ]; then
+		echo $(basename $0) FILE
+		return 2
+	fi
+	if [[ $1 == *.tar.gz || $1 == *.tgz ]]; then
+		cmd="tar -xzvf"
+	elif [[ $1 == *.tar.bz2 || $1 == *.tar.bz || $1 == *.tbz ]]; then
+		cmd="tar -xjvf"
+	elif [[ $1 == *.zip ]]; then
+		cmd=unzip
+	else
+		echo "I don't know what to do with \`$1'."
+		file "$1"
+		return 7
+	fi
+	echo "+ $cmd \"$1\""
+	$cmd "$1"
+}
+
 # programming
 alias sml='rlwrap sml -Cprint.depth=3000 -Cprint.length=3000'
 alias tcl='rlwrap tclsh'
