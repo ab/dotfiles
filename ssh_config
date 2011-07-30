@@ -74,6 +74,11 @@ ForwardX11 yes
 ControlMaster no
 ExitOnForwardFailure yes
 
+host oz-firewalled
+hostkeyalias oz
+hostname abrody.com
+port 110
+
 host dellblue
 hostname dellblue.abrody.com
 # hostname abrody.com
@@ -294,6 +299,9 @@ hostname apt1.hcs.harvard.edu
 user hcs
 host apt2
 hostname apt2.hcs.harvard.edu
+user hcs
+host apt3
+hostname apt3.hcs.harvard.edu
 user hcs
 
 host apps1
