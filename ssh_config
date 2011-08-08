@@ -92,6 +92,10 @@ ForwardX11 yes
 ControlMaster no
 ExitOnForwardFailure yes
 
+host eggplant
+hostname eggplant.abrody.com
+port 993
+user root
 
 # ====== Harvard Tunnels ======
 host oz-tunnel
