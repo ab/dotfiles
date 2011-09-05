@@ -142,6 +142,11 @@ hostkeyalias crimdev
 hostname 192.168.122.168
 user abrody
 
+host penny
+hostkeyalias penny.abrody.com
+hostname 192.168.1.7
+user root
+
 # ====== Harvard Servers ======
 host fas
 hostname fas.harvard.edu
@@ -502,6 +507,11 @@ user abrody
 host sid
 hostname silenceisdefeat.com
 user ab
+
+host uua
+hostname dev.uua.org
+port 922
+user abrody
 
 # ====== Globals ======
 
