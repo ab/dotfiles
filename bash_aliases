@@ -109,7 +109,8 @@ alias hl='hg glog | less'
 alias runddd='ssh -MCX cs161 "(cd ~/cs161/root; ddd --debugger os161-gdb --gdb kernel)"'
 
 # php syntax check
-alias phpcheck='for file in *.php; do php -l $file; done'
+alias phpcheckhere='for file in *.php; do php -l $file; done'
+alias phpcheck='find . -name "*.php" -exec php -l {} \;'
 
 ssh-aupdate() {
 	if [ -z $1 ]; then
