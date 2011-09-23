@@ -8,14 +8,26 @@ alias vdir='ls --color=auto --format=long'
 alias ll='ls -l'
 alias la='ls -A'
 alias lla='ll -a'
+alias lls='ll -Shr'
+alias llm='ll -tr'
 alias l='ls -CF'
-alias lt='ll -tr'
 alias lless='ll --color=always | less -R -FX'	# colored scrolling ll
 alias sll='sudo ls -l --color=auto'
 alias asa='. auto-ssh-agent'
 alias private='HISTFILE=/dev/null'
 function wp() { dig +short txt "$*.wp.dg.cx"; } # wikipedia commandline
 function calc() { echo "$*" | bc -l; } # simple calculator
+
+function swap() {
+	if [ $# -lt 2 ]; then
+		echo>&2 "swap file1 file2"
+		return 1
+	fi
+	set -e
+	mv -i "$2" "$1.$$"
+	mv -i "$1" "$2"
+	mv -i "$1.$$" "$1"
+}
 
 # simple stopwatch
 function stopwatch() {
