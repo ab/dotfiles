@@ -1,5 +1,5 @@
 " ~/.vimrc
-" agb rev 12
+" agb rev 13
 
 " === General ===
 
@@ -75,6 +75,12 @@ let processing_doc_path = "/opt/processing/reference"
 
 " smarter ctags handling -- recurse up looking for tags file
 set tags=./tags;$HOME
+
+" === plugin handling ===
+
+runtime bundle/vim-pathogen/autoload/pathogen.vim
+call pathogen#infect()
+
 
 " === stuff ===
 "" Hilight trailing whitespace and lines longer than 80 characters
