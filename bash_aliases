@@ -44,10 +44,14 @@ function open() {
 		xdg-open "$i"
 	done
 }
-function bak() {
-	mv -v "$1"{,~}
-}
+
 # NB: vim's syntax highlighting doesn't like nested quotes, but it does work
+function sbak() {
+	sudo cp -avi "$(dirname "$1")/$(basename "$1")"{,~}
+}
+function bak() {
+	mv -v "$(dirname "$1")/$(basename "$1")"{,~}
+}
 function unbak() {
 	mv -v "$1" "$(dirname "$1")/$(basename "$1" '~')"
 }
