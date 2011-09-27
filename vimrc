@@ -1,5 +1,5 @@
 " ~/.vimrc
-" agb rev 13
+" agb rev 14
 
 " === General ===
 
@@ -40,6 +40,9 @@ set smartcase
 " replace globally by default
 set gdefault
 
+" show graphical menu on tab completion
+set wildmenu
+
 " title customizations
 set title
 set titlestring=(%t)\ %{$USER}@%{hostname()}:\ vim\ %(%h\ %)%F\ %M titlelen=150
@@ -79,7 +82,9 @@ set tags=./tags;$HOME
 " === plugin handling ===
 
 runtime bundle/vim-pathogen/autoload/pathogen.vim
-call pathogen#infect()
+if exists("*pathogen#infect")
+	call pathogen#infect()
+endif
 
 
 " === stuff ===
@@ -138,9 +143,25 @@ endif
 nmap <C-k> D
 imap <C-k> <C-o>D
 
+" toggle paste mode
+map <F3> :set paste!<CR> set paste?<CR>
+imap <F3> <C-o>:set paste!
+
+" toggle taglist plugin
+map <F4> :TlistToggle<CR>
+imap <F4> <C-o>:TlistToggle<CR>
+
 " rewrap current paragraph
 map <F5> {gq}
 imap <F5> <esc>{gq}kA
+
+" build ctags file in cwd
+map <F6> :!ctags -R
+imap <F6> <C-o>:!ctags -R
+
+" build ctags file in directory of current file
+" map <F6> :!cd `dirname %`; ctags -R
+" imap <F6> <C-o>:!cd `dirname %`; ctags -R
 
 " spell checking
 function! SpellOn()
