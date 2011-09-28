@@ -1,0 +1,12 @@
+# compiled files
+*.class
+*.dll
+*.exe
+*.o
+*.so
+*.pyo
+*.pyc
+
+# vim temporary files
+*.swp
+*.swx
