@@ -144,8 +144,8 @@ nmap <C-k> D
 imap <C-k> <C-o>D
 
 " toggle paste mode
-map <F3> :set paste!<CR> set paste?<CR>
-imap <F3> <C-o>:set paste!
+map <F3> :set paste!<CR>
+set pastetoggle=<F3>
 
 " toggle taglist plugin
 map <F4> :TlistToggle<CR>
