@@ -194,6 +194,9 @@ alias math='rlwrap math'
 alias py='ipython'
 alias pysh='ipython -p sh'
 
+# virtualenv activate
+alias activate="source env/bin/activate"
+
 # time long-running jobs
 TIMER_LONG_JOBS=30
 TIMER_IGNORE_COMMANDS=( ssh vim bash )
