@@ -1,0 +1,12 @@
+[user]
+	name = Andy Brody
+	email = andy@abrody.com
+[alias]
+	stat = status
+	co = checkout
+[color]
+	diff = auto
+	status = auto
+	branch = auto
+[core]
+	excludesfile = /home/andy/.gitignore_global
