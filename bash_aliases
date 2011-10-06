@@ -15,6 +15,7 @@ alias lless='ll --color=always | less -R -FX'	# colored scrolling ll
 alias sll='sudo ls -l --color=auto'
 alias asa='. auto-ssh-agent'
 alias private='HISTFILE=/dev/null'
+alias mtime='stat --format=%y'
 function wp() { dig +short txt "$*.wp.dg.cx"; } # wikipedia commandline
 function calc() { echo "$*" | bc -l; } # simple calculator
 
