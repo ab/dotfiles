@@ -9,4 +9,5 @@ inputrc	$HOME	.inputrc
 bash_aliases	$HOME	.bash_aliases
 gitignore_global	$HOME	.gitignore_global
 gitconfig	$HOME	.gitconfig
+irbrc	$HOME	.irbrc
 
