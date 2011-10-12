@@ -131,6 +131,20 @@ LocalForward 2222 192.168.1.22:22
 LocalForward 2221 192.168.1.21:22
 LocalForward 2220 192.168.1.20:22
 
+# ====== Personal Servers ======
+host agb
+hostname agb.me
+user andy
+
+host agb-iodine
+hostkeyalias agb.me
+hostname 10.0.2.1
+user andy
+
+host alberge
+hostname alberge.org
+user andy
+
 # ====== Personal VMs ======
 host lion
 hostkeyalias lion
