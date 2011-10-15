@@ -19,6 +19,8 @@ alias mtime='stat --format=%y'
 alias ips='ip -o -f inet addr show scope global | cut -d" " -f 2,7 | cut -d/ -f1'
 function wp() { dig +short txt "$*.wp.dg.cx"; } # wikipedia commandline
 function calc() { echo "$*" | bc -l; } # simple calculator
+alias findf='find . -name '
+function search() { grep -rIn --color "$@" * ; }
 
 function swap() {
 	if [ $# -lt 2 ]; then
