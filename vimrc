@@ -138,6 +138,8 @@ else
 	map <C-h> <esc>:%s///g<left><left><left>
 endif
 
+" make Y consistent with C and D
+map Y y$
 
 " steal ctrl+k from emacs
 nmap <C-k> D
