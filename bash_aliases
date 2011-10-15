@@ -48,6 +48,9 @@ function open() {
 }
 
 # NB: vim's syntax highlighting doesn't like nested quotes, but it does work
+function cbak() {
+	cp -avi "$(dirname "$1")/$(basename "$1")"{,~}
+}
 function sbak() {
 	sudo cp -avi "$(dirname "$1")/$(basename "$1")"{,~}
 }
