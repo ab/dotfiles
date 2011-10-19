@@ -44,19 +44,19 @@ port 2243
 
 host oz
 hostkeyalias oz
-hostname abrody.com
+hostname oz.abrody.com
 port 2222
 user andy
 
 host oz-remote
 hostkeyalias oz
-hostname abrody.com
+hostname oz.abrody.com
 port 2222
 user andy
 
 host oz-vnc
 hostkeyalias oz
-hostname abrody.com
+hostname oz.abrody.com
 port 2222
 LocalForward 5900 localhost:5900
 LocalForward 5901 localhost:5901
@@ -66,7 +66,7 @@ ExitOnForwardFailure yes
 
 host oz-remote-vnc
 hostkeyalias oz
-hostname abrody.com
+hostname oz.abrody.com
 port 2222
 LocalForward 5900 localhost:5900
 LocalForward 5901 localhost:5901
@@ -76,12 +76,11 @@ ExitOnForwardFailure yes
 
 host oz-firewalled
 hostkeyalias oz
-hostname abrody.com
+hostname oz.abrody.com
 port 110
 
 host dellblue
 hostname dellblue.abrody.com
-# hostname abrody.com
 user andy
 
 host dellblue-vnc
