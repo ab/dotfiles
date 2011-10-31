@@ -187,6 +187,8 @@ function unz() {
 		cmd="tar -xjvf"
 	elif [[ $1 == *.zip ]]; then
 		cmd=unzip
+	elif [[ $1 == *.tar ]]; then
+		cmd="tar -xvf"
 	else
 		echo "I don't know what to do with \`$1'."
 		file "$1"
