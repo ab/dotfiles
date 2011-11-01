@@ -101,7 +101,9 @@ alias gcam='git commit -a --amend'
 alias gst='git stash'
 alias gsd='git svn dcommit'
 alias gsr='git svn rebase'
+alias gsa='git submodule add'
 alias gsi='git submodule init'
+alias gsf='git submodule foreach'
 alias gsu='git submodule update'
 alias gbl='git blame'
 alias gl='git log'
@@ -112,9 +114,11 @@ alias grs='git reset'
 alias gpr='git pull --rebase'
 alias gpush='git push'
 alias gpull='git pull'
-alias gf='git fetch'
+alias gfetch='git fetch'
 alias grb='git rebase'
 alias gr='git push origin HEAD:refs/for/master'
+gf() { git show --pretty='format:' --name-only $* | grep -v '^$' | uniq | sed -e "s#^#$(git rev-parse --show-toplevel)/#" ; }
+ge() { $EDITOR $(gf "$*") ; }
 
 # bzr aliases
 alias b='bzr'
