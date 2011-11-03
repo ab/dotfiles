@@ -178,8 +178,8 @@ map <silent> <F7> :call SpellOn()<cr>]s
 cmap w!! w !sudo tee > /dev/null %
 
 " I accidentally hold down shift all the time
-command W w
-command Wq wq
+command -bang W w<bang>
+command -bang Wq wq<bang>
 
 " Comment a block
 function! CommentBlock(...) range
