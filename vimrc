@@ -151,15 +151,15 @@ set pastetoggle=<F3>
 
 " toggle taglist plugin
 map <F4> :TlistToggle<CR>
-imap <F4> <C-o>:TlistToggle<CR>
+imap <F4> <C-o><F4>
 
 " rewrap current paragraph
 map <F5> {gq}
 imap <F5> <esc>{gq}kA
 
 " build ctags file in cwd
-map <F6> :!ctags -R
-imap <F6> <C-o>:!ctags -R
+map <F6> :silent execute "!ctags -R" \| redraw!<cr>
+imap <F6> <C-o><F6>
 
 " build ctags file in directory of current file
 " map <F6> :!cd `dirname %`; ctags -R
