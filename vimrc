@@ -43,6 +43,9 @@ set gdefault
 " show graphical menu on tab completion
 set wildmenu
 
+" don't insert two spaces when joining after a period
+set nojoinspaces
+
 " title customizations
 set title
 set titlestring=(%t)\ %{$USER}@%{hostname()}:\ vim\ %(%h\ %)%F\ %M titlelen=150
