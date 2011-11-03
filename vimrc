@@ -89,6 +89,8 @@ if exists("*pathogen#infect")
 	call pathogen#infect()
 endif
 
+" Use <C-/>. for closetag so it plays nicer with TComment.
+let b:closetag_mapleader = '<C-_>.'
 
 " === stuff ===
 "" Hilight trailing whitespace and lines longer than 80 characters
