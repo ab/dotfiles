@@ -115,9 +115,11 @@ map <F12> ggVGg?
 " make ctrl+x save
 map <C-x> <esc>:confirm w<cr>
 
-" make F1 not open a help browser
+" make <Leader>w save
+map <Leader>w <esc>:confirm w<cr>
+
+" try to make F1 not open a help browser
 noremap <F1> <esc>
-" TODO check that this actually works
 
 " make q quit when viewing a man page
 autocmd FileType man nnoremap <buffer> q :quit<cr>
