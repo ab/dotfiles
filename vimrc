@@ -120,8 +120,8 @@ map <F12> ggVGg?
 " make ctrl+x save
 map <C-x> <esc>:confirm w<cr>
 
-" make <Leader>w save
-map <Leader>w <esc>:confirm w<cr>
+" make <Leader><Leader> save
+map <Leader><Leader> <esc>:confirm w<cr>
 
 " try to make F1 not open a help browser
 noremap <F1> <esc>
