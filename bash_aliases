@@ -1,3 +1,6 @@
+# Make sudo play nice with aliases (TODO: why does this work?)
+alias sudo='sudo '
+
 # Various aliases
 alias v='vim'
 alias ..='cd ..'
