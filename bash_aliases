@@ -20,6 +20,7 @@ alias asa='. auto-ssh-agent'
 alias private='HISTFILE=/dev/null'
 alias mtime='stat --format=%y'
 alias ips='ip -o -f inet addr show scope global | cut -d" " -f 2,7 | cut -d/ -f1'
+alias ds='dig +short'
 function wp() { dig +short txt "$*.wp.dg.cx"; } # wikipedia commandline
 function calc() { echo "$*" | bc -l; } # simple calculator
 alias findf='find . -name '
