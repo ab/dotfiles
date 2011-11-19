@@ -77,7 +77,7 @@ function say() {
 alias abfasmail='ssh -Nf -L 2525:smtp.fas.harvard.edu:25 abrody@fas.harvard.edu'
 
 # frequent cd paths
-export CDPATH="$CDPATH:/home/andy/documents/Harvard/Senior 2/"
+export CDPATH="$CDPATH:/home/andy/stripe/"
 alias cdh='cd "/home/andy/documents/Harvard/Senior 2/"'
 alias config="cd '$HOME/documents/Harvard/hcs/config/'"
 alias trunk="cd '$HOME/documents/Harvard/hcs/trunk/'"
