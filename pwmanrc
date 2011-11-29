@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<pwm_config>
+  <gpg_id>andy@abrody.com</gpg_id>
+  <gpg_path>/usr/bin/gpg</gpg_path>
+  <password_file>/home/andy/Private/pwman/pwman.db</password_file>
+  <passphrase_timeout>60</passphrase_timeout>
+  <filter field="-1"></filter>
+</pwm_config>
