@@ -11,4 +11,5 @@ gitignore_global	$HOME	.gitignore_global
 gitconfig	$HOME	.gitconfig
 irbrc	$HOME	.irbrc
 tmux.conf	$HOME	.tmux.conf
+pwmanrc	$HOME	.pwmanrc
 
