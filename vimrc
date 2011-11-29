@@ -123,6 +123,9 @@ map <C-x> <esc>:confirm w<cr>
 " make <Leader><Leader> save
 map <Leader><Leader> <esc>:confirm w<cr>
 
+" make <Leader>q quit
+map <Leader>q <esc>:confirm q<cr>
+
 " try to make F1 not open a help browser
 noremap <F1> <esc>
 
