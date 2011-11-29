@@ -1186,7 +1186,7 @@ Port 30000
 LocalForward 41080 127.0.0.1:80
 
 Host dev1
-Hostname dev1.backend
+Hostname qa-dev1.backend
 User root
 Port 30000
 
