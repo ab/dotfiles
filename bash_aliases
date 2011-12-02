@@ -1,4 +1,10 @@
-# Make sudo play nice with aliases (TODO: why does this work?)
+# stripe stuff
+PATH="$PATH:$HOME/stripe/pay-server/scripts/bin"
+PATH="$PATH:$HOME/stripe/password-vault/bin"
+PATH="$PATH:$HOME/stripe/remote-control/bin"
+alias ssh-aws='ssh-add ~/.stripe/aws/stripe-*.pem'
+
+# Make sudo play nice with aliases
 alias sudo='sudo '
 
 # Various aliases
@@ -97,6 +103,7 @@ alias ga='git add'
 alias gb='git branch'
 alias gs='git status'
 alias gss='git status --short'
+alias gsh='git show'
 alias gd='git diff'
 alias gdc='git diff --cached'
 alias gdw='git diff --word-diff' # git 1.7.2+
