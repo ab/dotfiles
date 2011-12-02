@@ -1189,22 +1189,46 @@ Host dev1
 Hostname qa-dev1.backend
 User root
 Port 30000
+Host qa-dev1
+Hostname qa-dev1.backend
+User root
+Port 30000
 
 Host dev2
-Hostname dev2.backend
+Hostname qa-dev2.backend
+User root
+Port 30000
+Host qa-dev2
+Hostname qa-dev2.backend
 User root
 Port 30000
 
 Host dev3
-Hostname dev3.backend
+Hostname qa-dev3.backend
+User root
+Port 30000
+Host qa-dev3
+Hostname qa-dev3.backend
 User root
 Port 30000
 
 Host dev4
-Hostname dev4.backend
+Hostname qa-dev4.backend
+User root
+Port 30000
+Host qa-dev4
+Hostname qa-dev4.backend
 User root
 Port 30000
 
+Host dev5
+Hostname qa-dev5.backend
+User root
+Port 30000
+Host qa-dev5
+Hostname qa-dev5.backend
+User root
+Port 30000
 
 Host secondary--scanner
 Hostname 50.18.68.59
