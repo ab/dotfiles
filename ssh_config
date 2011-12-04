@@ -532,6 +532,9 @@ user abrody
 
 # ====== Stripe ======
 
+Host hoth
+Hostname hoth.z.agb.me
+User andy
 
 Host *.backend
 User root
