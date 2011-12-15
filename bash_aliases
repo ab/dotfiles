@@ -2,7 +2,9 @@
 PATH="$PATH:$HOME/stripe/pay-server/scripts/bin"
 PATH="$PATH:$HOME/stripe/password-vault/bin"
 PATH="$PATH:$HOME/stripe/remote-control/bin"
-alias ssh-aws='ssh-add ~/.stripe/aws/stripe-*.pem'
+alias aws-stripe-ssh='ssh-add ~/.stripe/aws/stripe-*.pem'
+alias aws-apiori-ssh='ssh-add ~/.stripe/aws/apiori/stripe-*.pem'
+alias aws-apiori-env='export EC2_PRIVATE_KEY=~/.stripe/aws/apiori/pk-6U6DO743LGPZIGSMNHFK4BM2NZIGBTGU.pem; export EC2_CERT=~/.stripe/aws/apiori/cert-6U6DO743LGPZIGSMNHFK4BM2NZIGBTGU.pem; export EC2_URL=http://ec2.us-west-1.amazonaws.com'
 
 # Make sudo play nice with aliases
 alias sudo='sudo '
