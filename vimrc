@@ -58,8 +58,8 @@ set tabstop=4
 set shiftwidth=4
 set smarttab
 
-" tabs, not spaces
-set noexpandtab
+" spaces, not tabs
+set expandtab
 
 " python files: indent with spaces
 autocmd FileType python set expandtab
