@@ -536,6 +536,10 @@ Host hoth
 Hostname hoth.z.agb.me
 User andy
 
+host zara-stripe
+hostname 10.0.1.16
+user andy
+
 Host *.backend
 User root
 Port 30000
@@ -907,6 +911,15 @@ Host qa-apiori-c1
 Hostname localhost
 User andy
 Port 30214
+
+##############################
+# ec2-apiori
+
+# TODO: DNS
+host gw1
+hostname 50.18.195.3
+port 30000
+user andy
 
 ##############################
 
