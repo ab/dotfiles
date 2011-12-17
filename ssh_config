@@ -540,6 +540,16 @@ host zara-stripe
 hostname 10.0.1.16
 user andy
 
+host router1
+hostname 10.0.1.42
+hostkeyalias router1.stripe.com
+user stripe
+
+host dashboard
+hostname 10.0.1.8
+hostkeyalias dashboard.stripe.com
+user dashboard
+
 Host *.backend
 User root
 Port 30000
