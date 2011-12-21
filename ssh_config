@@ -320,7 +320,7 @@ host ldap2
 hostname ldap2.hcs.harvard.edu
 user hcs
 
-host apt1
+host apt1-hcs
 hostname apt1.hcs.harvard.edu
 user hcs
 host apt2
@@ -544,6 +544,7 @@ host router1
 hostname 10.0.1.42
 hostkeyalias router1.stripe.com
 user stripe
+controlmaster yes
 
 host dashboard
 hostname 10.0.1.8
@@ -926,10 +927,27 @@ Port 30214
 # ec2-apiori
 
 # TODO: DNS
-host gw1
+host aws-gw1
 hostname 50.18.195.3
 port 30000
-user andy
+user ubuntu
+userknownhostsfile ~/.ssh/known_hosts_stripe
+localforward 30501 apt1.backend:30000
+localforward 30502 util1.backend:30000
+
+host aws-apt1
+hostname localhost
+hostkeyalias [apt1.backend]:30000
+port 30501
+user ubuntu
+userknownhostsfile ~/.ssh/known_hosts_stripe
+
+host aws-util1
+hostname localhost
+hostkeyalias [util1.backend]:30000
+port 30502
+user ubuntu
+userknownhostsfile ~/.ssh/known_hosts_stripe
 
 ##############################
 
