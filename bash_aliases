@@ -241,23 +241,28 @@ alias activate="source env/bin/activate"
 # time long-running jobs
 TIMER_LONG_JOBS=30
 TIMER_IGNORE_COMMANDS=( ssh vim bash )
-function timer_parse_cmd {
-  echo $(basename "$1")
+function _timer_parse_cmd {
+    echo $(basename "$1")
 }
-function timer_start {
-  #timer_parse_cmd $BASH_COMMAND
-  timer=${timer:-$SECONDS}
+function _timer_start {
+    #_timer_parse_cmd $BASH_COMMAND
+    timer=${timer:-$SECONDS}
 }
-function timer_stop {
-  timer_show=$(($SECONDS - $timer))
-  if (( $timer_show > $TIMER_LONG_JOBS )); then
-    echo [time: ${timer_show}s]
-  fi
-  unset timer
+function _timer_stop {
+    timer_show=$(($SECONDS - $timer))
+    if (( $timer_show > $TIMER_LONG_JOBS )); then
+        echo "[time: ${timer_show}s] "
+    fi
+    unset timer
 }
-trap 'timer_start' DEBUG
+trap '_timer_start' DEBUG
 # add semicolon if $PROMPT_COMMAND already exists
-PROMPT_COMMAND="$PROMPT_COMMAND${PROMPT_COMMAND:+;}timer_stop"
+export PROMPT_COMMAND="_timer_stop${PROMPT_COMMAND:+;}$PROMPT_COMMAND"
+
+# print exit status if nonzero (unless running in a script)
+#trap '_EXIT_CODE=$?; [ -z "$BASH_SOURCE" ] && echo -e "\033[01;31m[$_EXIT_CODE]\033[m"; unset _EXIT_CODE' ERR
+#trap '_EXIT_CODE=$?; [ -z "$BASH_SOURCE" ] && echo -e "[exit: $_EXIT_CODE]"; unset _EXIT_CODE' ERR
+trap '_EXIT_CODE=$?; [ -z "$BASH_SOURCE" ] && echo -e "\033[1;31m$_EXIT_CODE\033[m"; unset _EXIT_CODE' ERR
 
 # Shell Sink (save bash history to the cloud)
 # http://shell-sink.blogspot.com/
