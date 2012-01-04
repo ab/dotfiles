@@ -1347,3 +1347,6 @@ Host *
   # this might be overriden in /etc/ssh/config... not sure how it works
   GSSAPIAuthentication no
 
+  # tunnel connections through an HTTP proxy (e.g. proxoid)
+  # ProxyCommand /usr/bin/corkscrew localhost 8080 %h %p  # proxoid
+
