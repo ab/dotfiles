@@ -1311,6 +1311,15 @@ Hostname qa-dev9.backend
 User root
 Port 30000
 
+Host dev10
+Hostname qa-dev10.backend
+User root
+Port 30000
+Host qa-dev10
+Hostname qa-dev10.backend
+User root
+Port 30000
+
 Host secondary--scanner
 Hostname 50.18.68.59
 User root
