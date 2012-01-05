@@ -54,7 +54,7 @@ function decrypt() {
         echo>&2 "decrypt: $1 does not appear to end with .gpg"
         return 1
     fi
-    echo>&2 "+ gpg -o \"$stripped\" -d \"$1\""
+    echo>&2 "+ gpg -o '$stripped' -d '$1'"
     gpg -o "$stripped" -d "$1"
 }
 
