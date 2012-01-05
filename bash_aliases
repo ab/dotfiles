@@ -48,6 +48,16 @@ function swap() {
 	mv -i "$1.$$" "$1"
 }
 
+function decrypt() {
+    stripped="${1%.gpg}"
+    if [ "$1" = "$stripped" ]; then
+        echo>&2 "decrypt: $1 does not appear to end with .gpg"
+        return 1
+    fi
+    echo>&2 "+ gpg -o \"$stripped\" -d \"$1\""
+    gpg -o "$stripped" -d "$1"
+}
+
 # simple stopwatch
 function stopwatch() {
 	log=$(mktemp)
