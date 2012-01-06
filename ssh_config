@@ -928,24 +928,24 @@ Port 30214
 # ec2-apiori
 
 # TODO: DNS
-host aws-gw1
+host aws-util1
 hostname 50.18.195.3
 port 30000
 user ubuntu
 userknownhostsfile ~/.ssh/known_hosts_stripe
-localforward 30501 apt1.backend:30000
-localforward 30502 util1.backend:30000
+localforward 30501 tower.my-apiori:30000
+localforward 30502 foo.my-apiori:30000
 
-host aws-apt1
+host aws-tower1
 hostname localhost
-hostkeyalias [apt1.backend]:30000
+hostkeyalias [tower1.apiori]:30000
 port 30501
 user ubuntu
 userknownhostsfile ~/.ssh/known_hosts_stripe
 
-host aws-util1
+host aws-foo1
 hostname localhost
-hostkeyalias [util1.backend]:30000
+hostkeyalias [foo1.apiori]:30000
 port 30502
 user ubuntu
 userknownhostsfile ~/.ssh/known_hosts_stripe
