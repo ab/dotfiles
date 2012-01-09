@@ -925,31 +925,32 @@ User andy
 Port 30214
 
 ##############################
-# ec2-apiori
+# BEGIN ec2-apiori
+
+host aws-*
+userknownhostsfile ~/.ssh/known_hosts_stripe
 
 # TODO: DNS
 host aws-util1
 hostname 50.18.195.3
 port 30000
 user ubuntu
-userknownhostsfile ~/.ssh/known_hosts_stripe
-localforward 30501 tower.my-apiori:30000
-localforward 30502 foo.my-apiori:30000
+localforward 30101 tower.my-apiori:30000
+localforward 30102 foo.my-apiori:30000
 
 host aws-tower1
 hostname localhost
 hostkeyalias [tower1.apiori]:30000
-port 30501
+port 30101
 user ubuntu
-userknownhostsfile ~/.ssh/known_hosts_stripe
 
 host aws-foo1
 hostname localhost
 hostkeyalias [foo1.apiori]:30000
-port 30502
+port 30102
 user ubuntu
-userknownhostsfile ~/.ssh/known_hosts_stripe
 
+# END ec2-apiori
 ##############################
 
 Host devpay-vpn
