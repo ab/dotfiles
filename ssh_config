@@ -930,24 +930,65 @@ Port 30214
 host aws-*
 userknownhostsfile ~/.ssh/known_hosts_stripe
 
-# TODO: DNS
+## apiori 1
 host aws-util1
 hostname 50.18.195.3
 port 30000
 user ubuntu
-localforward 30101 tower.my-apiori:30000
-localforward 30102 foo.my-apiori:30000
+localforward 30100 10.10.5.240:30000
+localforward 30101 10.10.5.96:30000
+localforward 30102 10.10.5.57:30000
+localforward 30103 10.10.0.253:30000
 
 host aws-tower1
 hostname localhost
 hostkeyalias [tower1.apiori]:30000
+port 30100
+user ubuntu
+
+host aws-data1
+hostname localhost
+hostkeyalias [data1.apiori]:30000
 port 30101
 user ubuntu
 
-host aws-foo1
+host aws-c1
 hostname localhost
-hostkeyalias [foo1.apiori]:30000
+hostkeyalias [c1.apiori]:30000
 port 30102
+user ubuntu
+
+host aws-v1
+hostname localhost
+hostkeyalias [v1.apiori]:30000
+port 30103
+user ubuntu
+
+## apiori 6
+host aws-util6
+hostname 50.18.195.96
+port 30000
+user ubuntu
+localforward 30600 10.10.13.138:30000
+localforward 30601 10.10.13.35:30000
+localforward 30602 10.10.13.39:30000
+
+host aws-tower6
+hostname localhost
+hostkeyalias [tower6.apiori]:30000
+port 30600
+user ubuntu
+
+host aws-data6
+hostname localhost
+hostkeyalias [data6.apiori]:30000
+port 30601
+user ubuntu
+
+host aws-c6
+hostname localhost
+hostkeyalias [c6.apiori]:30000
+port 30602
 user ubuntu
 
 # END ec2-apiori
