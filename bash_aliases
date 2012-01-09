@@ -75,6 +75,12 @@ function open() {
 	done
 }
 
+# like set -x
+function run() {
+    echo>&2 "+ $*"
+    "$@"
+}
+
 # NB: vim's syntax highlighting doesn't like nested quotes, but it does work
 function cbak() {
 	cp -avi "$(dirname "$1")/$(basename "$1")"{,~}
@@ -91,6 +97,13 @@ function unbak() {
 
 function say() {
 	echo "$*" | festival --tts
+}
+
+# unmount all encfs partitions
+function encfs-umount-all() {
+    grep ^encfs /etc/mtab | cut -d' ' -f 2 | while read mount; do
+        run fusermount -u $mount
+    done
 }
 
 # smtp port forwarding
