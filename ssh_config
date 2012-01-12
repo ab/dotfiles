@@ -932,64 +932,64 @@ userknownhostsfile ~/.ssh/known_hosts_stripe
 
 ## apiori 1
 host aws-util1
-hostname 50.18.195.3
+hostname 50.18.195.57
 port 30000
-user ubuntu
-localforward 30100 10.10.5.240:30000
-localforward 30101 10.10.5.96:30000
-localforward 30102 10.10.5.57:30000
-localforward 30103 10.10.0.253:30000
+user andy
+localforward 30100 10.10.3.233:30000
+localforward 30101 10.10.3.254:30000
+localforward 30102 10.10.2.80:30000
+localforward 30103 10.10.3.152:30000
 
-host aws-tower1
+host aws-c1
 hostname localhost
-hostkeyalias [tower1.apiori]:30000
+hostkeyalias [c1.apiori]:30000
 port 30100
-user ubuntu
+user andy
 
 host aws-data1
 hostname localhost
 hostkeyalias [data1.apiori]:30000
 port 30101
-user ubuntu
+user andy
 
-host aws-c1
+host aws-m1
 hostname localhost
-hostkeyalias [c1.apiori]:30000
+hostkeyalias [m1.apiori]:30000
 port 30102
-user ubuntu
+user andy
 
-host aws-v1
+host aws-tower1
 hostname localhost
-hostkeyalias [v1.apiori]:30000
+hostkeyalias [tower1.apiori]:30000
 port 30103
-user ubuntu
+user andy
 
-## apiori 6
-host aws-util6
-hostname 50.18.195.96
+## apiori 2
+host aws-util2
+hostname 50.18.195.3
 port 30000
-user ubuntu
-localforward 30600 10.10.13.138:30000
-localforward 30601 10.10.13.35:30000
-localforward 30602 10.10.13.39:30000
+user andy
+localforward 30200 10.10.5.244:30000
+localforward 30201 10.10.4.110:30000
+localforward 30202 10.10.5.248:30000
 
-host aws-tower6
+host aws-data2
 hostname localhost
-hostkeyalias [tower6.apiori]:30000
-port 30600
-user ubuntu
+hostkeyalias [data2.apiori]:30000
+port 30200
+user andy
 
-host aws-data6
+host aws-m2
 hostname localhost
-hostkeyalias [data6.apiori]:30000
-port 30601
-user ubuntu
+hostkeyalias [m2.apiori]:30000
+port 30201
+user andy
 
-host aws-c6
+host aws-tower2
 hostname localhost
-hostkeyalias [c6.apiori]:30000
-port 30602
-user ubuntu
+hostkeyalias [tower2.apiori]:30000
+port 30202
+user andy
 
 # END ec2-apiori
 ##############################
@@ -1359,6 +1359,15 @@ User root
 Port 30000
 Host qa-dev10
 Hostname qa-dev10.backend
+User root
+Port 30000
+
+Host dev11
+Hostname qa-dev11.backend
+User root
+Port 30000
+Host qa-dev11
+Hostname qa-dev11.backend
 User root
 Port 30000
 
