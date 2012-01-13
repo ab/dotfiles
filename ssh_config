@@ -964,33 +964,6 @@ hostkeyalias [tower1.apiori]:30000
 port 30103
 user andy
 
-## apiori 2
-host aws-util2
-hostname 50.18.195.3
-port 30000
-user andy
-localforward 30200 10.10.5.244:30000
-localforward 30201 10.10.4.110:30000
-localforward 30202 10.10.5.248:30000
-
-host aws-data2
-hostname localhost
-hostkeyalias [data2.apiori]:30000
-port 30200
-user andy
-
-host aws-m2
-hostname localhost
-hostkeyalias [m2.apiori]:30000
-port 30201
-user andy
-
-host aws-tower2
-hostname localhost
-hostkeyalias [tower2.apiori]:30000
-port 30202
-user andy
-
 # END ec2-apiori
 ##############################
 
@@ -1368,6 +1341,42 @@ User root
 Port 30000
 Host qa-dev11
 Hostname qa-dev11.backend
+User root
+Port 30000
+
+Host dev12
+Hostname qa-dev12.backend
+User root
+Port 30000
+Host qa-dev12
+Hostname qa-dev12.backend
+User root
+Port 30000
+
+Host dev13
+Hostname qa-dev13.backend
+User root
+Port 30000
+Host qa-dev13
+Hostname qa-dev13.backend
+User root
+Port 30000
+
+Host dev14
+Hostname qa-dev14.backend
+User root
+Port 30000
+Host qa-dev14
+Hostname qa-dev14.backend
+User root
+Port 30000
+
+Host dev15
+Hostname qa-dev15.backend
+User root
+Port 30000
+Host qa-dev15
+Hostname qa-dev15.backend
 User root
 Port 30000
 
