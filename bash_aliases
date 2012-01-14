@@ -231,8 +231,8 @@ function hcs () {
 
 # unzip arbitrary archives
 function unz() {
-	if [ -z "$1" ]; then
-		echo $(basename $0) FILE
+	if [ $# -lt 1 ]; then
+		echo unz FILE
 		return 2
 	fi
 	if [[ $1 == *.tar.gz || $1 == *.tgz ]]; then
@@ -250,6 +250,17 @@ function unz() {
 	fi
 	echo "+ $cmd \"$1\""
 	$cmd "$1"
+}
+
+# make a tarball
+function tarball() {
+	if [ $# -lt 1 ]; then
+		echo>&2 tarball DIRECTORY
+		return 2
+	fi
+	parent="$(dirname "$1")"
+	dir="$(basename "$1")"
+	run tar -czvf "$dir.tgz" -C "$parent" "$dir/"
 }
 
 # programming
