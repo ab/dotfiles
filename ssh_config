@@ -964,6 +964,40 @@ hostkeyalias [tower1.apiori]:30000
 port 30103
 user andy
 
+## apiori 2
+host aws-util2
+hostname 50.18.195.51
+port 30000
+user andy
+localforward 30200 10.10.5.14:30000
+localforward 30201 10.10.5.186:30000
+localforward 30202 10.10.4.155:30000
+localforward 30203 10.10.5.219:30000
+
+host aws-c2
+hostname localhost
+hostkeyalias [c2.apiori]:30000
+port 30200
+user andy
+
+host aws-data2
+hostname localhost
+hostkeyalias [data2.apiori]:30000
+port 30201
+user andy
+
+host aws-m2
+hostname localhost
+hostkeyalias [m2.apiori]:30000
+port 30202
+user andy
+
+host aws-tower2
+hostname localhost
+hostkeyalias [tower2.apiori]:30000
+port 30203
+user andy
+
 # END ec2-apiori
 ##############################
 
