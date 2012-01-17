@@ -239,6 +239,8 @@ function unz() {
 		cmd="tar -xzvf"
 	elif [[ $1 == *.tar.bz2 || $1 == *.tar.bz || $1 == *.tbz ]]; then
 		cmd="tar -xjvf"
+	elif [[ $1 == *.tar.xz || $1 == *.txz ]]; then
+		cmd="tar -xJvf"
 	elif [[ $1 == *.zip ]]; then
 		cmd=unzip
 	elif [[ $1 == *.tar ]]; then
