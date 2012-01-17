@@ -273,6 +273,8 @@ function _timer_start {
     timer=${timer:-$SECONDS}
 }
 function _timer_stop {
+    [ -z "$timer" ] && return
+
     timer_show=$(($SECONDS - $timer))
     if (( $timer_show > $TIMER_LONG_JOBS )); then
         echo "[time: ${timer_show}s] "
