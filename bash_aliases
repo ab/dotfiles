@@ -324,3 +324,8 @@ export LESS_TERMCAP_us=$'\E[04;38;5;74m' # begin underline
 export EDITOR=vim
 export DEBFULLNAME='Andy Brody'
 export DEBEMAIL='andy@abrody.com'
+
+ainstall-log() {
+  echo "$*" >> ~/install.log
+  sudo aptitude install "$@"
+}
