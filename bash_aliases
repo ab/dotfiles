@@ -7,6 +7,12 @@ alias aws-stripe-ssh='ssh-add ~/.stripe/aws/stripe-*.pem'
 alias aws-apiori-ssh='ssh-add ~/.stripe/aws/apiori/stripe-*.pem'
 alias aws-apiori-env='export EC2_PRIVATE_KEY=~/.apiori/aws/pk-S5HDM3FKQGM7NZNDVMTDXCUX653UARYY.pem; export EC2_CERT=~/.apiori/aws/cert-S5HDM3FKQGM7NZNDVMTDXCUX653UARYY.pem; export EC2_URL=http://ec2.us-west-1.amazonaws.com'
 alias cdp="cd /etc/puppet"
+pgit() {
+    (
+    run cd /etc/puppet
+    run sudo git "$@"
+    )
+}
 
 # Make sudo play nice with aliases
 alias sudo='sudo '
@@ -325,3 +331,5 @@ export LESS_TERMCAP_us=$'\E[04;38;5;74m' # begin underline
 export EDITOR=vim
 export DEBFULLNAME='Andy Brody'
 export DEBEMAIL='andy@abrody.com'
+
+# vim: ft=sh
