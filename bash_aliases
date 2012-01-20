@@ -6,6 +6,7 @@ PATH="$PATH:$HOME/stripe/apiori/space-commander/bin"
 alias aws-stripe-ssh='ssh-add ~/.stripe/aws/stripe-*.pem'
 alias aws-apiori-ssh='ssh-add ~/.stripe/aws/apiori/stripe-*.pem'
 alias aws-apiori-env='export EC2_PRIVATE_KEY=~/.apiori/aws/pk-S5HDM3FKQGM7NZNDVMTDXCUX653UARYY.pem; export EC2_CERT=~/.apiori/aws/cert-S5HDM3FKQGM7NZNDVMTDXCUX653UARYY.pem; export EC2_URL=http://ec2.us-west-1.amazonaws.com'
+alias puppet-git='git --git-dir=/etc/puppet/.git'
 
 # Make sudo play nice with aliases
 alias sudo='sudo '
