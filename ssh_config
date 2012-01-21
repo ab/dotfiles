@@ -963,6 +963,7 @@ hostname localhost
 hostkeyalias [tower1.apiori]:30000
 port 30103
 user andy
+localforward 35001 localhost:80
 
 ## apiori 2
 host aws-util2
@@ -997,6 +998,7 @@ hostname localhost
 hostkeyalias [tower2.apiori]:30000
 port 30203
 user andy
+localforward 35002 localhost:80
 
 # END ec2-apiori
 ##############################
