@@ -117,13 +117,23 @@ alias config="cd '$HOME/documents/Harvard/hcs/config/'"
 alias trunk="cd '$HOME/documents/Harvard/hcs/trunk/'"
 
 # aptitude aliases for brevity
-alias ainstall='sudo aptitude install'
+#alias ainstall='sudo aptitude install'
 alias aremove='sudo aptitude remove'
 alias asearch='aptitude search'
 alias ashow='aptitude show'
 alias aupdate='sudo aptitude update && sudo aptitude safe-upgrade'
 alias aupgrade='sudo aptitude full-upgrade'
 alias awhy='aptitude why'
+
+ainstall() {
+    local log="$HOME/install.log"
+    for name in "$@"; do
+        if ! awk '{print $NF}' "$log" | grep -x "$name" >/dev/null; then
+            date "+%F %R	$name" >> "$log"
+        fi
+    done
+    sudo aptitude install "$@"
+}
 
 # git aliases
 alias g='git'
@@ -325,8 +335,3 @@ export LESS_TERMCAP_us=$'\E[04;38;5;74m' # begin underline
 export EDITOR=vim
 export DEBFULLNAME='Andy Brody'
 export DEBEMAIL='andy@abrody.com'
-
-ainstall-log() {
-  echo "$*" >> ~/install.log
-  sudo aptitude install "$@"
-}
