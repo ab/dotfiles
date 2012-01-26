@@ -542,7 +542,7 @@ hostname 10.0.1.16
 user andy
 
 host router1
-hostname 10.0.1.42
+hostname 173.247.202.85
 hostkeyalias router1.stripe.com
 user stripe
 controlmaster yes
@@ -925,6 +925,13 @@ User andy
 Port 30214
 
 ##############################
+
+host scanner
+hostkeyalias scanner.stripe.com
+hostname 50.18.197.230
+port 30000
+user ubuntu
+
 # BEGIN ec2-apiori
 
 host aws-*
