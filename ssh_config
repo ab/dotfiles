@@ -542,8 +542,9 @@ hostname 10.0.1.16
 user andy
 
 host router1
-hostname 173.247.202.85
 hostkeyalias router1.stripe.com
+hostname 173.247.202.85
+port 9922
 user stripe
 controlmaster yes
 
