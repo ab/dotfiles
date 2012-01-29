@@ -45,6 +45,7 @@ alias findf='find . -name '
 function search() { grep -rIn --color "$@" * ; }
 function isearch() { grep -rIni --color "$@" * ; }
 alias wgetn='wget -O /dev/null'
+alias wget-='wget -O -'
 function whichedit() { $EDITOR $(which $*) ; }
 
 function swap() {
