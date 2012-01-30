@@ -1424,6 +1424,15 @@ Hostname qa-dev15.backend
 User root
 Port 30000
 
+Host forum1
+Hostname forum1.backend
+User root
+Port 30000
+Host qa-forum1
+Hostname qa-forum1.backend
+User root
+Port 30000
+
 Host secondary--scanner
 Hostname 50.18.68.59
 User root
