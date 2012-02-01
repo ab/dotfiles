@@ -549,7 +549,7 @@ user stripe
 controlmaster yes
 
 host dashboard
-hostname 10.0.1.8
+hostname dashboard.local
 hostkeyalias dashboard.stripe.com
 user dashboard
 
@@ -931,7 +931,7 @@ host scanner
 hostkeyalias scanner.stripe.com
 hostname 50.18.197.230
 port 30000
-user ubuntu
+user andy
 
 # BEGIN ec2-apiori
 
