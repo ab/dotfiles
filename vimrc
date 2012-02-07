@@ -1,5 +1,5 @@
 " ~/.vimrc
-" agb rev 14
+" agb rev 15
 
 " === General ===
 
@@ -128,6 +128,14 @@ map <Leader>q <esc>:confirm q<cr>
 
 " try to make F1 not open a help browser
 noremap <F1> <esc>
+
+" next buffer, prev buffer
+map <Leader><PageDown> :bn!<cr>
+map <Leader><PageUp> :bp!<cr>
+map <C-\><PageDown> <C-o>:bn!<cr>
+map <C-\><PageUp> <C-o>:bp!<cr>
+imap <C-\><PageDown> <C-o>:bn!<cr>
+imap <C-\><PageUp> <C-o>:bp!<cr>
 
 " make q quit when viewing a man page
 autocmd FileType man nnoremap <buffer> q :quit<cr>
