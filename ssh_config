@@ -533,9 +533,8 @@ user abrody
 # ====== Stripe ======
 
 host hoth
-hostname hoth.z.agb.me
+hostname hoth.stripe.com
 user andy
-port 4022
 
 host zara-stripe
 hostname 10.0.1.16
