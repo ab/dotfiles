@@ -1008,6 +1008,12 @@ port 30203
 user andy
 localforward 35002 localhost:80
 
+## apiori 3
+host aws-util3
+hostname 50.18.199.169
+port 30000
+user andy
+
 # END ec2-apiori
 ##############################
 
@@ -1453,6 +1459,12 @@ Host interview3
 Hostname interview3.stripe.com
 User root
 Port 2500
+
+host ctf
+hostname ctf.stri.pe
+user ubuntu
+port 22
+identityfile ~/.ssh/stripe-ctf-key
 
 # ====== Globals ======
 
