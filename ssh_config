@@ -1464,6 +1464,11 @@ hostname ctf.stri.pe
 user ubuntu
 port 22
 identityfile ~/.ssh/stripe-ctf-key
+host ctf3
+hostname 107.21.35.154
+user ubuntu
+port 22
+identityfile ~/.ssh/stripe-ctf-key
 
 # ====== Globals ======
 
