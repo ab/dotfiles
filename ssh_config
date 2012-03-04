@@ -1466,29 +1466,40 @@ port 22
 identityfile ~/.ssh/stripe-ctf-key
 host ctf2
 hostname 107.21.35.222
-user ubuntu
+user root
 port 22
 identityfile ~/.ssh/stripe-ctf-key
 host ctf3
-hostname ctf3.stripe.com
-user ubuntu
+hostname 107.21.26.153
+user root
 port 22
 identityfile ~/.ssh/stripe-ctf-key
 host ctf4
 hostname 107.21.30.166
-user ubuntu
+user root
 port 22
 identityfile ~/.ssh/stripe-ctf-key
 host ctf5
 hostname 107.21.35.154
-user ubuntu
+user root
 port 22
 identityfile ~/.ssh/stripe-ctf-key
 host ctf6
 hostname 107.21.3.128
+user root
+port 22
+identityfile ~/.ssh/stripe-ctf-key
+host ctf7
+hostkeyalias ctf7
+hostname 107.21.20.113
 user ubuntu
 port 22
 identityfile ~/.ssh/stripe-ctf-key
+
+# == stripe random vms ==
+host emerald
+hostkeyalias emerald
+hostname 192.168.1.72
 
 # ====== Globals ======
 
