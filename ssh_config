@@ -1111,6 +1111,39 @@ User root
 Port 30000
 LocalForward 19002 127.0.0.1:19000
 
+Host intfe1
+Hostname intfe1.backend
+User root
+Port 30000
+
+Host intfe1-fwd
+Hostname intfe1.backend
+User root
+Port 30000
+LocalForward 19001 127.0.0.1:19000
+
+Host intfe2
+Hostname intfe2.backend
+User root
+Port 30000
+
+Host intfe2-fwd
+Hostname intfe2.backend
+User root
+Port 30000
+LocalForward 19002 127.0.0.1:19000
+
+Host intfe3
+Hostname intfe3.backend
+User root
+Port 30000
+
+Host intfe3-fwd
+Hostname intfe3.backend
+User root
+Port 30000
+LocalForward 19002 127.0.0.1:19000
+
 Host app1
 Hostname app1.backend
 User root
@@ -1244,6 +1277,28 @@ Port 30000
 
 Host qa-fe2-fwd
 Hostname qa-fe2.backend
+User root
+Port 30000
+LocalForward 19102 127.0.0.1:19000
+
+Host qa-intfe1
+Hostname qa-intfe1.backend
+User root
+Port 30000
+
+Host qa-intfe1-fwd
+Hostname qa-intfe1.backend
+User root
+Port 30000
+LocalForward 19101 127.0.0.1:19000
+
+Host qa-intfe2
+Hostname qa-intfe2.backend
+User root
+Port 30000
+
+Host qa-intfe2-fwd
+Hostname qa-intfe2.backend
 User root
 Port 30000
 LocalForward 19102 127.0.0.1:19000
