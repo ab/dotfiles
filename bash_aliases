@@ -14,6 +14,12 @@ pgit() {
     )
 }
 
+_c() {
+    col=$1
+    shift
+    awk "{print \$$col}" "$@"
+}
+
 # Make sudo play nice with aliases
 alias sudo='sudo '
 
