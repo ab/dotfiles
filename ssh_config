@@ -1144,6 +1144,16 @@ User root
 Port 30000
 LocalForward 19002 127.0.0.1:19000
 
+Host adminbox1
+Hostname adminbox1.backend
+User root
+Port 30000
+
+Host adminbox2
+Hostname adminbox1.backend
+User root
+Port 30000
+
 Host app1
 Hostname app1.backend
 User root
@@ -1302,6 +1312,16 @@ Hostname qa-intfe2.backend
 User root
 Port 30000
 LocalForward 19102 127.0.0.1:19000
+
+Host qa-adminbox1
+Hostname qa-adminbox1.backend
+User root
+Port 30000
+
+Host qa-adminbox2
+Hostname qa-adminbox1.backend
+User root
+Port 30000
 
 Host qa-app1
 Hostname qa-app1.backend
@@ -1547,6 +1567,12 @@ identityfile ~/.ssh/stripe-ctf-key
 host ctf7
 hostkeyalias ctf7
 hostname 107.21.20.113
+user ubuntu
+port 22
+identityfile ~/.ssh/stripe-ctf-key
+host ctf9
+hostkeyalias ctf9
+hostname 107.21.5.66
 user ubuntu
 port 22
 identityfile ~/.ssh/stripe-ctf-key
