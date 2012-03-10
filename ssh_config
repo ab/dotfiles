@@ -1573,7 +1573,13 @@ identityfile ~/.ssh/stripe-ctf-key
 host ctf9
 hostkeyalias ctf9
 hostname 107.21.5.66
-user ubuntu
+user ctf
+port 22
+identityfile ~/.ssh/stripe-ctf-key
+host ctf10
+hostkeyalias ctf10
+hostname 107.21.7.61
+user ctf
 port 22
 identityfile ~/.ssh/stripe-ctf-key
 
