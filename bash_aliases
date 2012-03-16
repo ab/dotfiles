@@ -58,15 +58,39 @@ alias wget-='wget -O -'
 function whichedit() { $EDITOR $(which "$@") ; }
 function vimwhich() { vim $(which "$@") ; }
 
+function ssh-steal-agent() {
+    if [ $# -lt 1 ]; then
+	cat >&2 <<EOM
+usage: ssh-steal-agent PID
+
+Take the SSH_AUTH_SOCK and SSH_AGENT_PID variables from another process.
+EOM
+	return 1
+    fi
+    pid="$1"
+    while IFS= read -r -d '' env; do
+	var="$(echo "$env" | cut -d '=' -f 1)"
+	val="$(echo "$env" | cut -d '=' -f 2-)"
+
+	if [ "$var" = "SSH_AUTH_SOCK" ]; then
+	    echo "+ SSH_AUTH_SOCK=$val"
+	    export SSH_AUTH_SOCK="$val"
+	elif [ "$var" = "SSH_AGENT_PID" ]; then
+	    echo "+ SSH_AGENT_PID=$val"
+	    export SSH_AGENT_PID="$val"
+	fi
+    done < "/proc/$pid/environ"
+}
+
 function swap() {
 	if [ $# -lt 2 ]; then
 		echo>&2 "swap file1 file2"
 		return 1
 	fi
 	set -e
-	mv -i "$2" "$1.$$"
-	mv -i "$1" "$2"
-	mv -i "$1.$$" "$1"
+	mv -iv "$2" "$1.$$"
+	mv -iv "$1" "$2"
+	mv -iv "$1.$$" "$1"
 }
 
 function decrypt() {
