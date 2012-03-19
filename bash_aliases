@@ -57,6 +57,7 @@ alias wgetn='wget -O /dev/null'
 alias wget-='wget -O -'
 function whichedit() { $EDITOR $(which "$@") ; }
 function vimwhich() { vim $(which "$@") ; }
+alias du-stuff='du -xh --max-depth 1'
 
 function ssh-steal-agent() {
     if [ $# -lt 1 ]; then
