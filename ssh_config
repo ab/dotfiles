@@ -1012,6 +1012,21 @@ host aws-util3
 hostname 50.18.199.169
 port 30000
 user andy
+localforward 30300 10.10.6.103:30000
+localforward 30301 10.10.7.125:30000
+
+host aws-m3
+hostname localhost
+hostkeyalias [m3.apiori]:30000
+port 30300
+user andy
+
+host aws-tower3
+hostname localhost
+hostkeyalias [tower3.apiori]:30000
+port 30301
+user andy
+localforward 35003 localhost:80
 
 # END ec2-apiori
 ##############################
@@ -1144,35 +1159,49 @@ User root
 Port 30000
 LocalForward 19002 127.0.0.1:19000
 
-Host adminbox1
-Hostname adminbox1.backend
-User root
-Port 30000
+host adminbox1
+hostname adminbox1.backend
+user root
+port 30000
+host adminbox2
+hostname adminbox1.backend
+user root
+port 30000
 
-Host adminbox2
-Hostname adminbox1.backend
-User root
-Port 30000
+host apibox1
+hostname apibox1.backend
+user root
+port 30000
+host apibox2
+hostname apibox2.backend
+user root
+port 30000
+host apibox3
+hostname apibox3.backend
+user root
+port 30000
+host apibox4
+hostname apibox4.backend
+user root
+port 30000
 
-Host app1
-Hostname app1.backend
-User root
-Port 30000
+host managebox1
+hostname managebox1.backend
+user root
+port 30000
+host managebox2
+hostname managebox2.backend
+user root
+port 30000
 
-Host app2
-Hostname app2.backend
-User root
-Port 30000
-
-Host app3
-Hostname app3.backend
-User root
-Port 30000
-
-Host app4
-Hostname app4.backend
-User root
-Port 30000
+host sitebox1
+hostname sitebox1.backend
+user root
+port 30000
+host sitebox2
+hostname sitebox2.backend
+user root
+port 30000
 
 Host hodge
 Hostname hodge.backend
@@ -1313,25 +1342,49 @@ User root
 Port 30000
 LocalForward 19102 127.0.0.1:19000
 
-Host qa-adminbox1
-Hostname qa-adminbox1.backend
-User root
-Port 30000
+host qa-adminbox1
+hostname qa-adminbox1.backend
+user root
+port 30000
+host qa-adminbox2
+hostname qa-adminbox1.backend
+user root
+port 30000
 
-Host qa-adminbox2
-Hostname qa-adminbox1.backend
-User root
-Port 30000
+host qa-apibox1
+hostname qa-apibox1.backend
+user root
+port 30000
+host qa-apibox2
+hostname qa-apibox2.backend
+user root
+port 30000
+host qa-apibox3
+hostname qa-apibox3.backend
+user root
+port 30000
+host qa-apibox4
+hostname qa-apibox4.backend
+user root
+port 30000
 
-Host qa-app1
-Hostname qa-app1.backend
-User root
-Port 30000
+host qa-managebox1
+hostname qa-managebox1.backend
+user root
+port 30000
+host qa-managebox2
+hostname qa-managebox2.backend
+user root
+port 30000
 
-Host qa-app2
-Hostname qa-app2.backend
-User root
-Port 30000
+host qa-sitebox1
+hostname qa-sitebox1.backend
+user root
+port 30000
+host qa-sitebox2
+hostname qa-sitebox2.backend
+user root
+port 30000
 
 Host qa-hodge
 Hostname qa-hodge.backend
