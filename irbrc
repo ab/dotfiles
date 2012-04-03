@@ -1,6 +1,9 @@
 # enable tab-completion
 require 'irb/completion'
 
+# pp is nice
+require 'pp'
+
 # readline + history
 require 'irb/ext/save-history'
 IRB.conf[:USE_READLINE] = true
@@ -17,10 +20,10 @@ class Object
   end
 end
 
-# colorize output
+# colorize output, but don't mess with normal irb history
 begin
   require 'wirble'
-  Wirble.init
+  Wirble.init(:skip_history => true)
   Wirble.colorize
 rescue LoadError => err
   puts "Error loading Wirble: #{err}"
@@ -49,4 +52,8 @@ begin
 rescue LoadError => err
   puts "Error loading ORI: #{err}"
 end
+
+# quick sample data
+Myhash = {:foo=>'red', :bar=>'green', :baz=>'blue'} if not defined? Myhash
+Myarray = ['foo', 'bar', 'baz'] if not defined? Myarray
 
