@@ -3,6 +3,7 @@ PATH="$PATH:$HOME/stripe/pay-server/scripts/bin"
 PATH="$PATH:$HOME/stripe/password-vault/bin"
 PATH="$PATH:$HOME/stripe/remote-control/bin"
 PATH="$PATH:$HOME/stripe/apiori/space-commander/bin"
+PATH="$PATH:$HOME/.gem/ruby/1.8/bin"
 alias aws-stripe-ssh='ssh-add ~/.stripe/aws/stripe-*.pem'
 alias aws-stripe-env='export EC2_PRIVATE_KEY=~/.stripe/aws/pk-BOINZURLRNL7FT377OK4NBV2ZCVW6MTW.pem; export EC2_CERT=~/.stripe/aws/cert-BOINZURLRNL7FT377OK4NBV2ZCVW6MTW.pem; export EC2_URL=http://ec2.us-west-1.amazonaws.com'
 alias aws-apiori-ssh='ssh-add ~/.stripe/aws/apiori/stripe-*.pem'
@@ -60,6 +61,9 @@ alias wget-='wget -O -'
 function whichedit() { $EDITOR $(which "$@") ; }
 function vimwhich() { vim $(which "$@") ; }
 alias du-stuff='du -xh --max-depth 1'
+
+# ruby aliases
+alias gemi='gem install --user-install'
 
 function ssh-steal-agent() {
     if [ $# -lt 1 ]; then
