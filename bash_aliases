@@ -23,6 +23,8 @@ _c() {
     awk "{print \$$col}" "$@"
 }
 
+alias gpgk="gpg --no-default-keyring --keyring"
+
 # Make sudo play nice with aliases
 alias sudo='sudo '
 
