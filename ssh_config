@@ -23,6 +23,11 @@ host zara-wifi
 hostname zara-wifi.l.abrody.com
 user andy
 
+host zara-tmp
+hostname zara-tmp
+hostkeyalias zara.l.abrody.com
+user andy
+
 host wisp
 hostname wisp.l.abrody.com
 user andy
