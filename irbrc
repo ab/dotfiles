@@ -22,6 +22,7 @@ end
 
 # colorize output, but don't mess with normal irb history
 begin
+  require 'rubygems'
   require 'wirble'
   Wirble.init(:skip_history => true)
   Wirble.colorize
