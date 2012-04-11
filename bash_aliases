@@ -61,6 +61,7 @@ alias wget-='wget -O -'
 function whichedit() { $EDITOR $(which "$@") ; }
 function vimwhich() { vim $(which "$@") ; }
 alias du-stuff='du -xh --max-depth 1'
+alias syslog='less +F /var/log/syslog'
 
 # ruby aliases
 alias gemi='gem install --user-install'
