@@ -1218,6 +1218,15 @@ Hostname cave.backend
 User root
 Port 30000
 
+host den1
+hostname den1.backend
+user root
+port 30000
+host den2
+hostname den2.backend
+user root
+port 30000
+
 Host db1
 Hostname db1.backend
 User root
@@ -1400,6 +1409,15 @@ Host qa-cave
 Hostname qa-cave.backend
 User root
 Port 30000
+
+host qa-den1
+hostname qa-den1.backend
+user root
+port 30000
+host qa-den2
+hostname qa-den2.backend
+user root
+port 30000
 
 Host qa-db1
 Hostname qa-db1.backend
