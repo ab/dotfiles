@@ -120,13 +120,13 @@ autocmd InsertLeave * redraw!
 map <F12> ggVGg?
 
 " make ctrl+x save
-map <C-x> <esc>:confirm w<cr>
+map <C-x> :confirm w<cr>
 
 " make <Leader><Leader> save
-map <Leader><Leader> <esc>:confirm w<cr>
+map <Leader><Leader> :confirm w<cr>
 
 " make <Leader>q quit
-map <Leader>q <esc>:confirm q<cr>
+map <Leader>q :confirm q<cr>
 
 " try to make F1 not open a help browser
 noremap <F1> <esc>
@@ -153,9 +153,9 @@ nmap <C-p> :set paste<cr>"+p:set nopaste<cr>:<esc><esc>
 
 " make ctrl+h fill out the form of a global find and replace
 if &gdefault
-	map <C-h> <esc>:%s///<left><left>
+	map <C-h> :%s///<left><left>
 else
-	map <C-h> <esc>:%s///g<left><left><left>
+	map <C-h> :%s///g<left><left><left>
 endif
 
 " make Y consistent with C and D
@@ -177,7 +177,7 @@ function! SetExecutableBit()
   echo "chmod +x " . fname
 endfunction
 command! Chmodx call SetExecutableBit()
-map <Leader>x <esc>:Chmodx<cr>
+map <Leader>x :Chmodx<cr>
 
 " toggle paste mode
 map <F3> :set paste!<CR>
