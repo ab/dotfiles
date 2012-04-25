@@ -77,6 +77,8 @@ autocmd BufNewFile *.rb 0put =\"#!/usr/bin/env ruby\<nl>\"|$
 
 " shell scripts
 autocmd FileType sh set textwidth=79
+" also add a shebang automatically in new files
+autocmd BufNewFile *.sh 0put =\"#!/bin/sh\<nl>\"|$
 
 " processing docs location
 let processing_doc_path = "/opt/processing/reference"
