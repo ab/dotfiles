@@ -63,6 +63,10 @@ function vimwhich() { vim $(which "$@") ; }
 alias du-stuff='du -xh --max-depth 1'
 alias syslog='less +F /var/log/syslog'
 
+# just for fun
+alias donotwant='rm -v'
+alias DONOTWANT='rm -rfv'
+
 # ruby aliases
 alias gemi='gem install --user-install'
 
