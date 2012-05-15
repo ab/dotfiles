@@ -13,3 +13,5 @@
 	branch = auto
 [core]
 	excludesfile = /home/andy/.gitignore_global
+[push]
+	default = tracking
