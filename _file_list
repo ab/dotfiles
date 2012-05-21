@@ -12,4 +12,5 @@ gitconfig	$HOME	.gitconfig
 irbrc	$HOME	.irbrc
 tmux.conf	$HOME	.tmux.conf
 pwmanrc	$HOME	.pwmanrc
+pryrc	$HOME	.pryrc
 
