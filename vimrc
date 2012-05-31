@@ -80,6 +80,10 @@ autocmd FileType sh set textwidth=79
 " also add a shebang automatically in new files
 autocmd BufNewFile *.sh 0put =\"#!/bin/sh\<nl>\"|$
 
+" gitconfig
+" use tabs
+autocmd FileType gitconfig set noexpandtab
+
 " processing docs location
 let processing_doc_path = "/opt/processing/reference"
 
