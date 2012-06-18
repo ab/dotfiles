@@ -394,4 +394,8 @@ export EDITOR=vim
 export DEBFULLNAME='Andy Brody'
 export DEBEMAIL='andy@abrody.com'
 
+# Preserve history indefinitely
+export HISTFILESIZE=
+export HISTSIZE=
+
 # vim: ft=sh
