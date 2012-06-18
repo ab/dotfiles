@@ -46,6 +46,7 @@ alias llt='ll -tr'
 alias l='ls -C'
 alias lless='ll --color=always | less -R -FX'	# colored scrolling ll
 alias sll='sudo ls -l --color=auto'
+alias mvi='mv -iv'
 alias asa='. auto-ssh-agent'
 alias private='HISTFILE=/dev/null'
 alias mtime='stat --format=%y'
