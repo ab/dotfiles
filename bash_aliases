@@ -223,9 +223,9 @@ alias glg='git log --graph --decorate'
 alias gls='git log --stat'
 alias glt='git log --oneline --decorate'
 
+alias gr='git reset'
 alias grH='git reset HEAD'
 alias grh='git reset --hard'
-alias grs='git reset'
 alias grm='git ls-files -z --deleted | xargs -0 git rm'
 alias gpl='git pull'
 alias gpf='git pull --ff-only'
@@ -236,7 +236,7 @@ alias gpull='git pull'
 alias gfetch='git fetch'
 alias gfe='git fetch'
 alias grb='git rebase'
-alias gr='git push origin HEAD:refs/for/master'
+alias grv='git push origin HEAD:refs/for/master'
 gf() { git show --pretty='format:' --name-only $* | grep -v '^$' | uniq | sed -e "s#^#$(git rev-parse --show-toplevel)/#" ; }
 ge() { $EDITOR $(gf "$*") ; }
 
