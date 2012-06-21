@@ -17,6 +17,8 @@ pgit() {
     run sudo git "$@"
     )
 }
+alias cur-apiori='curl -sS https://api.stripe.com/healthcheck | cut -f1 -d.'
+alias cur-fe='curl -sS https://stripe.com/healthcheck | cut -f1 -d.'
 
 _c() {
     col=$1
