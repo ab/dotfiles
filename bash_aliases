@@ -197,6 +197,7 @@ ainstall() {
 alias g='git'
 alias ga='git add'
 alias gb='git branch'
+alias gg='git grep'
 alias gs='git status'
 alias gss='git status --short'
 alias gsh='git show'
