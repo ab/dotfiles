@@ -318,6 +318,8 @@ function unz() {
 		cmd=unzip
 	elif [[ $1 == *.tar ]]; then
 		cmd="tar -xvf"
+    elif [[ $1 == *.7z ]]; then
+        cmd="7zr x"
 	else
 		echo "I don't know what to do with \`$1'."
 		file "$1"
