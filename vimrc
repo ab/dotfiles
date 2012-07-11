@@ -1,5 +1,5 @@
 " ~/.vimrc
-" agb rev 16
+" agb rev 17
 
 " === General ===
 
@@ -140,16 +140,29 @@ noremap <F1> <esc>
 " next buffer, prev buffer
 map <Leader><PageDown> :bn!<cr>
 map <Leader><PageUp> :bp!<cr>
+map <Leader>] :bn!<cr>
+map <Leader>[ :bp!<cr>
 map <C-\><PageDown> <C-o>:bn!<cr>
 map <C-\><PageUp> <C-o>:bp!<cr>
 imap <C-\><PageDown> <C-o>:bn!<cr>
 imap <C-\><PageUp> <C-o>:bp!<cr>
 
+" close buffer
+map <Leader>c :confirm bd<cr>
+imap <C-\>c <esc>:confirm bd<cr>
+
+" reload vimrc
+map <Leader>r :source $MYVIMRC<cr>
+
+" select current method
+map <Leader>m ]MV[m
+
 " make q quit when viewing a man page
 autocmd FileType man nnoremap <buffer> q :quit<cr>
 
 " don't require shift when you want :
-nnoremap ; :
+" undecided about this one -- ; is useful
+"nnoremap ; :
 
 " make ctrl+c copy to system clipboard when in visual mode
 vmap <C-c> "+y
@@ -186,7 +199,7 @@ command! Chmodx call SetExecutableBit()
 map <Leader>x :Chmodx<cr>
 
 " toggle paste mode
-map <F3> :set paste!<CR>
+map <F3> :set paste!<cr>:set paste?<cr>
 set pastetoggle=<F3>
 
 " toggle taglist plugin
@@ -194,8 +207,10 @@ map <F4> :TlistToggle<CR>
 imap <F4> <C-o><F4>
 
 " rewrap current paragraph
-map <F5> {gq}
-imap <F5> <esc>{gq}kA
+map <F5> gwip
+imap <F5> <C-o>gwip
+" who needs Ex mode? make Q wrap things
+map Q gw
 
 " build ctags file in cwd
 map <F6> :silent execute "!ctags -R" \| redraw!<cr>
@@ -221,3 +236,5 @@ cmap w!! w !sudo tee > /dev/null %
 command! -bang W w<bang>
 command! -bang Wq wq<bang>
 
+" set mapping for ctrlp
+let g:ctrlp_map = '<c-o>'
