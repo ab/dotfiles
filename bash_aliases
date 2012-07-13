@@ -46,7 +46,7 @@ alias lla='ll -a'
 alias lls='ll -Shr'
 alias llt='ll -tr'
 alias l='ls -C'
-alias lless='ll --color=always | less -R -FX'	# colored scrolling ll
+alias lless='ll --color=always | less -R -FX'    # colored scrolling ll
 alias sll='sudo ls -l --color=auto'
 alias mvi='mv -iv'
 alias asa='. auto-ssh-agent'
@@ -75,37 +75,37 @@ alias gemi='gem install --user-install'
 
 function ssh-steal-agent() {
     if [ $# -lt 1 ]; then
-	cat >&2 <<EOM
+        cat >&2 <<EOM
 usage: ssh-steal-agent PID
 
 Take the SSH_AUTH_SOCK and SSH_AGENT_PID variables from another process.
 EOM
-	return 1
+        return 1
     fi
     pid="$1"
     while IFS= read -r -d '' env; do
-	var="$(echo "$env" | cut -d '=' -f 1)"
-	val="$(echo "$env" | cut -d '=' -f 2-)"
+        var="$(echo "$env" | cut -d '=' -f 1)"
+        val="$(echo "$env" | cut -d '=' -f 2-)"
 
-	if [ "$var" = "SSH_AUTH_SOCK" ]; then
-	    echo "+ SSH_AUTH_SOCK=$val"
-	    export SSH_AUTH_SOCK="$val"
-	elif [ "$var" = "SSH_AGENT_PID" ]; then
-	    echo "+ SSH_AGENT_PID=$val"
-	    export SSH_AGENT_PID="$val"
-	fi
+        if [ "$var" = "SSH_AUTH_SOCK" ]; then
+            echo "+ SSH_AUTH_SOCK=$val"
+            export SSH_AUTH_SOCK="$val"
+        elif [ "$var" = "SSH_AGENT_PID" ]; then
+            echo "+ SSH_AGENT_PID=$val"
+            export SSH_AGENT_PID="$val"
+        fi
     done < "/proc/$pid/environ"
 }
 
 function swap() {
-	if [ $# -lt 2 ]; then
-		echo>&2 "swap file1 file2"
-		return 1
-	fi
-	set -e
-	mv -iv "$2" "$1.$$"
-	mv -iv "$1" "$2"
-	mv -iv "$1.$$" "$1"
+    if [ $# -lt 2 ]; then
+        echo>&2 "swap file1 file2"
+        return 1
+    fi
+    set -e
+    mv -iv "$2" "$1.$$"
+    mv -iv "$1" "$2"
+    mv -iv "$1.$$" "$1"
 }
 
 function decrypt() {
@@ -120,18 +120,18 @@ function decrypt() {
 
 # simple stopwatch
 function stopwatch() {
-	log=$(mktemp)
-	date
-	(time read -s -n 1) >$log 2>&1
-	date
-	awk '/^real/ { print $2 }' $log
-	rm -f $log
+    log=$(mktemp)
+    date
+    (time read -s -n 1) >$log 2>&1
+    date
+    awk '/^real/ { print $2 }' $log
+    rm -f $log
 }
 
 function open() {
-	for i in "$@"; do
-		xdg-open "$i"
-	done
+    for i in "$@"; do
+        xdg-open "$i"
+    done
 }
 
 # like set -x
@@ -142,20 +142,20 @@ function run() {
 
 # NB: vim's syntax highlighting doesn't like nested quotes, but it does work
 function cbak() {
-	cp -avi "$(dirname "$1")/$(basename "$1")"{,~}
+    cp -avi "$(dirname "$1")/$(basename "$1")"{,~}
 }
 function sbak() {
-	sudo cp -avi "$(dirname "$1")/$(basename "$1")"{,~}
+    sudo cp -avi "$(dirname "$1")/$(basename "$1")"{,~}
 }
 function bak() {
-	mv -v "$(dirname "$1")/$(basename "$1")"{,~}
+    mv -v "$(dirname "$1")/$(basename "$1")"{,~}
 }
 function unbak() {
-	mv -v "$1" "$(dirname "$1")/$(basename "$1" '~')"
+    mv -v "$1" "$(dirname "$1")/$(basename "$1" '~')"
 }
 
 function say() {
-	echo "$*" | festival --tts
+    echo "$*" | festival --tts
 }
 
 # unmount all encfs partitions
@@ -267,78 +267,78 @@ alias phpcheckhere='for file in *.php; do php -l $file; done'
 alias phpcheck='find . -name "*.php" -exec php -l {} \;'
 
 ssh-aupdate() {
-	if [ -z $1 ]; then
-		echo ssh-aupdate HOST
-		return 2
-	fi
-	remotehost=$1
-	shift
-	echo ssh $remotehost aupdate
-	ssh -t $remotehost "sudo aptitude update && sudo aptitude safe-upgrade $*"
+    if [ -z $1 ]; then
+        echo ssh-aupdate HOST
+        return 2
+    fi
+    remotehost=$1
+    shift
+    echo ssh $remotehost aupdate
+    ssh -t $remotehost "sudo aptitude update && sudo aptitude safe-upgrade $*"
 }
 
 # grep ignoring .svn folders
 grep-svn() {
-	find . -path '*/.svn' -prune -o -type f -print0 | xargs -0 -e grep $*
+    find . -path '*/.svn' -prune -o -type f -print0 | xargs -0 -e grep $*
 }
 
 # cd && ll
 function c () {
-	if [ -z "$*" ]; then
-		cd && ll --color
-	else
-		cd "$*" && ll --color
-	fi
+    if [ -z "$*" ]; then
+        cd && ll --color
+    else
+        cd "$*" && ll --color
+    fi
 }
 
 function hcs () {
-	if [ -z "$1" ]; then
-		host=abrody@hcs.harvard.edu
-	elif [[ $1 == *@* ]]; then
-		host=$1.hcs.harvard.edu
-	else
-		host=abrody@$1.hcs.harvard.edu
-	fi
+    if [ -z "$1" ]; then
+        host=abrody@hcs.harvard.edu
+    elif [[ $1 == *@* ]]; then
+        host=$1.hcs.harvard.edu
+    else
+        host=abrody@$1.hcs.harvard.edu
+    fi
 
-	ssh $host
+    ssh $host
 }
 
 # unzip arbitrary archives
 function unz() {
-	if [ $# -lt 1 ]; then
-		echo unz FILE
-		return 2
-	fi
-	if [[ $1 == *.tar.gz || $1 == *.tgz ]]; then
-		cmd="tar -xzvf"
-	elif [[ $1 == *.tar.bz2 || $1 == *.tar.bz || $1 == *.tbz ]]; then
-		cmd="tar -xjvf"
-	elif [[ $1 == *.tar.xz || $1 == *.txz ]]; then
-		cmd="tar -xJvf"
-	elif [[ $1 == *.zip ]]; then
-		cmd=unzip
-	elif [[ $1 == *.tar ]]; then
-		cmd="tar -xvf"
+    if [ $# -lt 1 ]; then
+        echo unz FILE
+        return 2
+    fi
+    if [[ $1 == *.tar.gz || $1 == *.tgz ]]; then
+        cmd="tar -xzvf"
+    elif [[ $1 == *.tar.bz2 || $1 == *.tar.bz || $1 == *.tbz ]]; then
+        cmd="tar -xjvf"
+    elif [[ $1 == *.tar.xz || $1 == *.txz ]]; then
+        cmd="tar -xJvf"
+    elif [[ $1 == *.zip ]]; then
+        cmd=unzip
+    elif [[ $1 == *.tar ]]; then
+        cmd="tar -xvf"
     elif [[ $1 == *.7z ]]; then
         cmd="7zr x"
-	else
-		echo "I don't know what to do with \`$1'."
-		file "$1"
-		return 7
-	fi
-	echo "+ $cmd \"$1\""
-	$cmd "$1"
+    else
+        echo "I don't know what to do with \`$1'."
+        file "$1"
+        return 7
+    fi
+    echo "+ $cmd \"$1\""
+    $cmd "$1"
 }
 
 # make a tarball
 function tarball() {
-	if [ $# -lt 1 ]; then
-		echo>&2 tarball DIRECTORY
-		return 2
-	fi
-	parent="$(dirname "$1")"
-	dir="$(basename "$1")"
-	run tar -czvf "$dir.tgz" -C "$parent" "$dir/"
+    if [ $# -lt 1 ]; then
+        echo>&2 tarball DIRECTORY
+        return 2
+    fi
+    parent="$(dirname "$1")"
+    dir="$(basename "$1")"
+    run tar -czvf "$dir.tgz" -C "$parent" "$dir/"
 }
 
 # programming
