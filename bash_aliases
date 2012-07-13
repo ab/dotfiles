@@ -142,15 +142,19 @@ function run() {
 
 # NB: vim's syntax highlighting doesn't like nested quotes, but it does work
 function cbak() {
+    [ -n "$1" ] || { echo >&2 "cp: missing file operand" ; return 1 ; }
     cp -avi "$(dirname "$1")/$(basename "$1")"{,~}
 }
 function sbak() {
+    [ -n "$1" ] || { echo >&2 "cp: missing file operand" ; return 1 ; }
     sudo cp -avi "$(dirname "$1")/$(basename "$1")"{,~}
 }
 function bak() {
+    [ -n "$1" ] || { echo >&2 "mv: missing file operand" ; return 1 ; }
     mv -v "$(dirname "$1")/$(basename "$1")"{,~}
 }
 function unbak() {
+    [ -n "$1" ] || { echo >&2 "mv: missing file operand" ; return 1 ; }
     mv -v "$1" "$(dirname "$1")/$(basename "$1" '~')"
 }
 
