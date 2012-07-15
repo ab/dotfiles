@@ -352,6 +352,20 @@ alias math='rlwrap math'
 alias py='ipython'
 alias pysh='ipython -p sh'
 
+_pyval() {
+    local python_cmd="print $@"
+    python -c "${python_cmd}"
+
+    case "$shopts" in
+        *noglob*) ;;
+        *) set +f;;
+    esac
+
+    unset shopts
+}
+
+alias p='shopts="$SHELLOPTS"; set -f; _pyval'
+
 # virtualenv activate
 alias activate="source env/bin/activate"
 
