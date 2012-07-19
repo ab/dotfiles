@@ -8,6 +8,7 @@ add_to_path ~/stripe/password-vault/bin
 add_to_path ~/stripe/remote-control/bin
 add_to_path ~/stripe/apiori/space-commander/bin
 add_to_path ~/.gem/ruby/1.8/bin
+export REMOTECONTROL_NO_BUNDLER=1
 
 alias aws-stripe-ssh='ssh-add ~/.stripe/aws/stripe-*.pem'
 alias aws-stripe-env='export EC2_PRIVATE_KEY=~/.stripe/aws/pk-BOINZURLRNL7FT377OK4NBV2ZCVW6MTW.pem; export EC2_CERT=~/.stripe/aws/cert-BOINZURLRNL7FT377OK4NBV2ZCVW6MTW.pem; export EC2_URL=http://ec2.us-west-1.amazonaws.com'
