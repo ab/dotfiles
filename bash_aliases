@@ -420,6 +420,9 @@ export LESS_TERMCAP_ue=$'\E[0m'           # end underline
 #export LESS_TERMCAP_us=$'\E[04;38;5;146m' # begin underline
 export LESS_TERMCAP_us=$'\E[04;38;5;74m' # begin underline
 
+# Turn off line numbers by default
+export LESS=-n
+
 export EDITOR=vim
 export DEBFULLNAME='Andy Brody'
 export DEBEMAIL='andy@abrody.com'
