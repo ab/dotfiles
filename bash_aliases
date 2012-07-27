@@ -53,6 +53,9 @@ alias lls='ll -Shr'
 alias llt='ll -tr'
 alias l='ls -C'
 alias lless='ll --color=always | less -R -FX'    # colored scrolling ll
+alias lesssn='less -Sn'
+alias lessen='less -Sn'
+alias lessn='less -n'
 alias sll='sudo ls -l --color=auto'
 alias mvi='mv -iv'
 alias asa='. auto-ssh-agent'
@@ -419,9 +422,6 @@ trap '_EXIT_CODE=$?; [ -z "$BASH_SOURCE" ] && echo -e "\033[1;31m$_EXIT_CODE\033
 export LESS_TERMCAP_ue=$'\E[0m'           # end underline
 #export LESS_TERMCAP_us=$'\E[04;38;5;146m' # begin underline
 export LESS_TERMCAP_us=$'\E[04;38;5;74m' # begin underline
-
-# Turn off line numbers by default
-export LESS=-n
 
 export EDITOR=vim
 export DEBFULLNAME='Andy Brody'
