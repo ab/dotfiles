@@ -1,8 +1,9 @@
 # enable tab-completion
 require 'irb/completion'
 
-# pp is nice
+# pp is nice, and so is set
 require 'pp'
+require 'set'
 
 # readline + history
 require 'irb/ext/save-history'
