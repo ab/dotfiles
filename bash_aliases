@@ -33,6 +33,7 @@ _c() {
 }
 
 alias gpgk="gpg --no-default-keyring --keyring"
+alias gpgk.="gpg --no-default-keyring --keyring ./pubring.gpg --secret-keyring ./secring.gpg"
 
 # Make sudo play nice with aliases
 alias sudo='sudo '
