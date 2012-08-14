@@ -80,6 +80,11 @@ autocmd FileType sh set textwidth=79
 " also add a shebang automatically in new files
 autocmd BufNewFile *.sh 0put =\"#!/bin/sh\<nl>\"|$
 
+" html files: indent with 2 spaces
+autocmd FileType html set tabstop=2
+autocmd FileType html set shiftwidth=2
+autocmd FileType html let g:detectindent_preferred_expandtab = 1
+
 " gitconfig
 " use tabs
 autocmd FileType gitconfig set noexpandtab
