@@ -241,5 +241,11 @@ cmap w!! w !sudo tee > /dev/null %
 command! -bang W w<bang>
 command! -bang Wq wq<bang>
 
-" set mapping for ctrlp
+" CtrlP options
+" set mapping to Ctrl-O
 let g:ctrlp_map = '<c-o>'
+" ignore .bundle directories
+let g:ctrlp_custom_ignore = '\.bundle$\|\.git$\|\.hg$\|\.svn$|\.bzr$'
+
+" ignore some files
+set wildignore+=*.pyc
