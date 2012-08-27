@@ -3,10 +3,11 @@ add_to_path() {
 }
 
 # stripe stuff
-add_to_path ~/stripe/pay-server/scripts/bin
+add_to_path ~/stripe/apiori/space-commander/bin
 add_to_path ~/stripe/password-vault/bin
 add_to_path ~/stripe/remote-control/bin
-add_to_path ~/stripe/apiori/space-commander/bin
+add_to_path ~/stripe/pay-server/scripts/bin
+add_to_path ~/stripe/henson/bin
 add_to_path ~/.gem/ruby/1.8/bin
 export REMOTECONTROL_NO_BUNDLER=1
 
