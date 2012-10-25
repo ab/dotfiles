@@ -22,11 +22,22 @@ alias aws-ctf-env='export EC2_PRIVATE_KEY=~/.stripe/personal/secondary/pk-QSDHLW
 
 alias cdp="cd /etc/puppet"
 pgit() {
-    (
-    run cd /etc/puppet
-    run sudo git "$@"
-    )
+    sudo bash -c '
+        . /usr/stripe/bin/git-author.sh "$SUDO_USER"
+        set -x
+        cd /etc/puppet
+        git "$@"
+        ' -- "$@"
 }
+pgc() {
+    sudo bash -c '
+        . /usr/stripe/bin/git-author.sh "$SUDO_USER"
+        set -x
+        cd /etc/puppet
+        git commit "$@"
+        ' -- "$@"
+}
+
 alias cur-apiori='curl -sS https://api.stripe.com/healthcheck | cut -f1 -d.'
 alias cur-fe='curl -sS https://stripe.com/healthcheck/fe | cut -f1 -d.'
 
