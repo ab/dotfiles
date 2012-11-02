@@ -12,6 +12,7 @@
 	diff = auto
 	status = auto
 	branch = auto
+	grep = auto
 [core]
 	excludesfile = /home/andy/.gitignore_global
 [push]
