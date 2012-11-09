@@ -55,6 +55,13 @@ rescue LoadError => err
   puts "Error loading ORI: #{err}"
 end
 
+def timeit
+  start = Time.now.utc
+  ret = yield
+  STDERR.puts Time.now.utc - start
+  ret
+end
+
 # quick sample data
 Myhash = {:foo=>'red', :bar=>'green', :baz=>'blue'} if not defined? Myhash
 Myarray = ['foo', 'bar', 'baz'] if not defined? Myarray
