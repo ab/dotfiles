@@ -250,6 +250,7 @@ alias gsu='git submodule update'
 alias gbl='git blame'
 alias gl='git log'
 alias glg='git log --graph --decorate'
+alias glgs='git log "--pretty=format:%C(yellow)%h%C(bold blue)%d%Creset %ar %Cgreen%an%Creset %s" --graph --decorate'
 alias gls='git log --stat'
 alias glt='git log --oneline --decorate'
 
