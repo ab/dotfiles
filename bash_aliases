@@ -49,6 +49,7 @@ _c() {
 
 alias gpgk="gpg --no-default-keyring --keyring"
 alias gpgk.="gpg --no-default-keyring --keyring ./pubring.gpg --secret-keyring ./secring.gpg"
+alias gpg-stripe="gpg --keyserver pgp.stripe.com"
 
 # Make sudo play nice with aliases
 alias sudo='sudo '
