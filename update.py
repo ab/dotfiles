@@ -1,10 +1,11 @@
 #!/usr/bin/env python
+import errno
 import os
 import sys
-from subprocess import call
+from subprocess import check_call
 
 home = os.getenv('HOME')
-cwd = os.getenv('PWD')
+base = os.path.abspath(os.path.dirname(__file__))
 FILE_LIST = '_file_list'
 
 dir_map = {'$HOME':os.getenv('HOME')}
@@ -65,41 +66,81 @@ class Runner(object):
 
         self.post_run()
 
+def prompt_continue(prompt='Continue? [Y/n] '):
+    ans = raw_input(prompt)
+    if ans in ['Y', 'y']:
+        return True
+    else:
+        return False
+
+def prompt_overwrite():
+    return prompt_continue(prompt='Overwrite? [Y/n] ')
+
 class CopyRunner(Runner):
     def __str__(self):
         return "CopyRunner"
     def action(self, conf, dest):
         opts = '-v' if self.verbose else ''
-        call(['cp', '-a', opts, conf, dest])
+        check_call(['cp', '-a', opts, conf, dest])
 
 class LinkRunner(Runner):
     def __str__(self):
         return "LinkRunner"
+
     def action(self, conf, dest):
         opts = '-v' if self.verbose else ''
-        call(['ln', opts, '-sf', os.path.join(cwd, conf), dest])
+        target = os.path.join(base, conf)
+
+        try:
+            cur_target = os.readlink(dest)
+        except OSError, e:
+            if e.errno == errno.ENOENT:
+                # link doesn't exist, which is fine
+                pass
+            elif e.errno == errno.EINVAL:
+                print dest, 'already exists and is not a symlink'
+                if not prompt_overwrite():
+                    return False
+            else:
+                raise
+        else:
+            if cur_target == target:
+                print dest, 'already points to', target
+                return True
+            else:
+                print dest, 'exists but points to', cur_target
+                if not prompt_overwrite():
+                    return False
+
+        if os.path.lexists(dest):
+            os.unlink(dest)
+            sys.stderr.write("removed `%s'\n" % dest)
+
+        sys.stderr.write("`%s' -> `%s'\n" % (dest, target))
+        os.symlink(target, dest)
 
 class DeleteRunner(Runner):
     def __str__(self):
         return "DeleteRunner"
     def action(self, conf, dest):
         opts = '-v' if self.verbose else ''
-        call(['rm', opts, dest])
+        check_call(['rm', opts, dest])
 
 class RsyncRunner(Runner):
     def __str__(self):
         return "RsyncRunner"
     def action(self, conf, dest):
         v = 'v' if self.verbose else ''
-        call(['rsync', '-ac' + v, conf, dest])
+        check_call(['rsync', '-ac' + v, conf, dest])
 
 class RsyncDryRunner(RsyncRunner):
     def __str__(self):
         return "RsyncDryRunner"
     def action(self, conf, dest):
         v = 'v' if self.verbose else ''
-        call(['rsync', '-acn' + v, conf, dest])
-        call(['echo', 'rsync', '-acn' + v, conf, dest])
+        cmd = ['rsync', '-acn' + v, conf, dest]
+        print '+ ' + ' '.join(cmd)
+        check_call(cmd)
 
 if __name__ == '__main__':
     filelist = read_file_list()
