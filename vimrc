@@ -247,8 +247,11 @@ command! -bang Wq wq<bang>
 " CtrlP options
 " set mapping to Ctrl-O
 let g:ctrlp_map = '<c-o>'
-" ignore .bundle directories
-let g:ctrlp_custom_ignore = '\.bundle$\|\.git$\|\.hg$\|\.svn$|\.bzr$'
+" ignore various directories we don't want to search
+let g:ctrlp_custom_ignore = {
+  \ 'dir': '\v[\/]((\.(bundle|git|hg|svn|bzr))|vendor|node_modules)$',
+  \ 'file': '\v\~$'
+  \ }
 
 " ignore some files
 set wildignore+=*.pyc
