@@ -5,10 +5,13 @@ require 'irb/completion'
 require 'pp'
 require 'set'
 
+# usually want yaml as well
+require 'yaml'
+
 # readline + history
 require 'irb/ext/save-history'
 IRB.conf[:USE_READLINE] = true
-IRB.conf[:SAVE_HISTORY] = 1000
+IRB.conf[:SAVE_HISTORY] = 10000
 #IRB.conf[:HISTORY_PATH]
 
 # auto-indentation
