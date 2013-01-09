@@ -9,10 +9,7 @@
 	vim   = ! sh -c 'vim `git fshow $1`' -
 	edit  = ! sh -c '$EDITOR `git fshow $1`' -
 [color]
-	diff = auto
-	status = auto
-	branch = auto
-	grep = auto
+	ui = auto
 [core]
 	excludesfile = /home/andy/.gitignore_global
 [push]
