@@ -454,4 +454,11 @@ export DEBEMAIL='andy@abrody.com'
 export HISTFILESIZE=
 export HISTSIZE=
 
+if [ -d "$HOME/.rbenv/bin" ]; then
+   export PATH="$PATH:$HOME/.rbenv/bin"
+   if [ -x "$HOME/.rbenv/bin/rbenv" ]; then
+       eval "$(rbenv init -)"
+   fi
+fi
+
 # vim: ft=sh
