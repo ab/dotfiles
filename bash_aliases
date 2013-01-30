@@ -42,7 +42,7 @@ alias cur-apiori='curl -sS https://api.stripe.com/healthcheck | cut -f1,2 -d.'
 alias cur-fe='curl -sS https://stripe.com/healthcheck/fe | cut -f1 -d.'
 
 _c() {
-    col=$1
+    local col=$1
     shift
     awk "{print \$$col}" "$@"
 }
@@ -91,7 +91,7 @@ alias wgetn='wget -O /dev/null'
 alias wget-='wget -O -'
 function whichedit() { $EDITOR $(which "$@") ; }
 function vimwhich() { vim $(which "$@") ; }
-alias du-stuff='du -xh --max-depth 1'
+alias du-fs='du -xh --max-depth 1'
 alias syslog='less +F /var/log/syslog'
 
 # just for fun
@@ -110,10 +110,10 @@ Take the SSH_AUTH_SOCK and SSH_AGENT_PID variables from another process.
 EOM
         return 1
     fi
-    pid="$1"
+    local pid="$1"
     while IFS= read -r -d '' env; do
-        var="$(echo "$env" | cut -d '=' -f 1)"
-        val="$(echo "$env" | cut -d '=' -f 2-)"
+        local var="$(echo "$env" | cut -d '=' -f 1)"
+        local val="$(echo "$env" | cut -d '=' -f 2-)"
 
         if [ "$var" = "SSH_AUTH_SOCK" ]; then
             echo "+ SSH_AUTH_SOCK=$val"
@@ -137,7 +137,7 @@ function swap() {
 }
 
 function decrypt() {
-    stripped="${1%.gpg}"
+    local stripped="${1%.gpg}"
     if [ "$1" = "$stripped" ]; then
         echo>&2 "decrypt: $1 does not appear to end with .gpg"
         return 1
@@ -148,7 +148,7 @@ function decrypt() {
 
 # simple stopwatch
 function stopwatch() {
-    log=$(mktemp)
+    local log=$(mktemp)
     date
     (time read -s -n 1) >$log 2>&1
     date
@@ -193,12 +193,9 @@ function say() {
 # unmount all encfs partitions
 function encfs-umount-all() {
     grep ^encfs /etc/mtab | cut -d' ' -f 2 | while read mount; do
-        run fusermount -u $mount
+        run fusermount -u "$mount"
     done
 }
-
-# smtp port forwarding
-alias abfasmail='ssh -Nf -L 2525:smtp.fas.harvard.edu:25 abrody@fas.harvard.edu'
 
 # frequent cd paths
 export CDPATH="$CDPATH:/home/andy/stripe/"
@@ -306,7 +303,7 @@ ssh-aupdate() {
         echo ssh-aupdate HOST
         return 2
     fi
-    remotehost=$1
+    local remotehost=$1
     shift
     echo ssh $remotehost aupdate
     ssh -t $remotehost "sudo aptitude update && sudo aptitude safe-upgrade $*"
@@ -371,8 +368,8 @@ function tarball() {
         echo>&2 tarball DIRECTORY
         return 2
     fi
-    parent="$(dirname "$1")"
-    dir="$(basename "$1")"
+    local parent="$(dirname "$1")"
+    local dir="$(basename "$1")"
     run tar -czvf "$dir.tgz" -C "$parent" "$dir/"
 }
 
