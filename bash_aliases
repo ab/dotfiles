@@ -20,6 +20,86 @@ alias aws-secondary-env='export EC2_PRIVATE_KEY=~/.stripe/personal/secondary/pk-
 alias aws-ctf-ssh='ssh-add ~/.stripe/aws/ssh/ctf.stri.pe'
 alias aws-ctf-env='export EC2_PRIVATE_KEY=~/.stripe/personal/secondary/pk-QSDHLWH4BI75ZRZSHM2LLIKPJ2HXYU6D.pem; export EC2_CERT=~/.stripe/personal/secondary/cert-QSDHLWH4BI75ZRZSHM2LLIKPJ2HXYU6D.pem; export EC2_URL=http://ec2.us-west-1.amazonaws.com'
 
+set_var_verbose() {
+    local var="$1"
+    local val="$2"
+
+    echo >&2 "$var=$val"
+    export "$var=$val"
+}
+
+set_var_gpg() {
+    local var="$1"
+    local file="$2"
+
+    echo >&2 "Setting $var from \`$file'"
+    val="$(gpg --batch -qd "$file")" || return 1
+    export "$var=$val"
+}
+
+aws-env() {
+    local domain="$1"
+    local region="$2"
+
+    local access_key_file secret_key_file
+
+    case "$domain" in
+        apiori|apiori.com)
+            access_key_file=~/.apiori/personal/aws_access_key_id.gpg
+            secret_key_file=~/.apiori/personal/aws_secret_key.gpg
+            ;;
+        stripe|stripe.com)
+            access_key_file=~/.stripe/personal/aws_access_key_id.gpg
+            secret_key_file=~/.stripe/personal/aws_secret_key.gpg
+            ;;
+        *)
+            echo>&2 "Unknown domain: $domain"
+            return 2
+            ;;
+    esac
+
+    if [ -z "$region" ]; then
+        region=us-west-1
+    fi
+
+    # handle region nicknames
+    case "$region" in
+        east)
+            region="us-east-1"
+            ;;
+        west)
+            region="us-west-1"
+            ;;
+        eu|europe)
+            region="eu-west-1"
+            ;;
+        au|australia)
+            region="ap-southeast-2"
+            ;;
+    esac
+
+    case "$region" in
+        eu-west-1      | \
+        sa-east-1      | \
+        us-east-1      | \
+        ap-northeast-1 | \
+        us-west-2      | \
+        us-west-1      | \
+        ap-southeast-1 | \
+        ap-southeast-2 )
+            true
+            ;;
+        *)
+            echo>&2 "Unknown EC2 region: $region"
+            return 3
+            ;;
+    esac
+
+    set_var_gpg AWS_ACCESS_KEY "$access_key_file" || return 1
+    set_var_gpg AWS_SECRET_KEY "$secret_key_file" || return 1
+    set_var_verbose EC2_URL "http://ec2.$region.amazonaws.com"
+}
+
 alias cdp="cd /etc/puppet"
 pgit() {
     sudo bash -c '
