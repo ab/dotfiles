@@ -52,8 +52,13 @@ aws-env() {
             access_key_file=~/.stripe/personal/aws_access_key_id.gpg
             secret_key_file=~/.stripe/personal/aws_secret_key.gpg
             ;;
+        stri.pe|stripe-ctf.com|secondary)
+            access_key_file=~/.stripe/personal/secondary/aws_access_key_id.gpg
+            secret_key_file=~/.stripe/personal/secondary/aws_secret_key.gpg
+            ;;
         *)
-            echo>&2 "Unknown domain: $domain"
+            echo>&2 "Unknown domain: '$domain'"
+            echo>&2 "Try one of apiori, stripe, or secondary"
             return 2
             ;;
     esac
