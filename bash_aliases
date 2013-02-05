@@ -354,6 +354,7 @@ alias gpush='git push'
 alias gpull='git pull'
 alias gfetch='git fetch'
 alias gfe='git fetch'
+alias gfep='git fetch -p'
 alias grb='git rebase'
 alias grv='git push origin HEAD:refs/for/master'
 gf() { git show --pretty='format:' --name-only $* | grep -v '^$' | uniq | sed -e "s#^#$(git rev-parse --show-toplevel)/#" ; }
