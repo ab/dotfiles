@@ -20,6 +20,10 @@ alias aws-secondary-env='export EC2_PRIVATE_KEY=~/.stripe/personal/secondary/pk-
 alias aws-ctf-ssh='ssh-add ~/.stripe/aws/ssh/ctf.stri.pe'
 alias aws-ctf-env='export EC2_PRIVATE_KEY=~/.stripe/personal/secondary/pk-QSDHLWH4BI75ZRZSHM2LLIKPJ2HXYU6D.pem; export EC2_CERT=~/.stripe/personal/secondary/cert-QSDHLWH4BI75ZRZSHM2LLIKPJ2HXYU6D.pem; export EC2_URL=http://ec2.us-west-1.amazonaws.com'
 
+sclone() {
+    run git clone git@github.com:stripe-internal/"$1".git
+}
+
 set_var_verbose() {
     local var="$1"
     local val="$2"
