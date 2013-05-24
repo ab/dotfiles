@@ -351,6 +351,8 @@ alias gr='git reset'
 alias grH='git reset HEAD'
 alias grh='git reset --hard'
 alias grm='git ls-files -z --deleted | xargs -0 git rm'
+alias grv='git remote -v'
+alias gru='git remote update'
 alias gpl='git pull --ff-only'
 alias gplr='git pull --rebase'
 alias gps='git push'
@@ -362,7 +364,7 @@ alias gfetch='git fetch'
 alias gfe='git fetch'
 alias gfep='git fetch -p'
 alias grb='git rebase'
-alias grv='git push origin HEAD:refs/for/master'
+alias grvb='git push origin HEAD:refs/for/master'
 gf() { git show --pretty='format:' --name-only $* | grep -v '^$' | uniq | sed -e "s#^#$(git rev-parse --show-toplevel)/#" ; }
 ge() { $EDITOR $(gf "$*") ; }
 
