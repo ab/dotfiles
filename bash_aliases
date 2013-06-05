@@ -9,6 +9,7 @@ add_to_path ~/stripe/remote-control/bin
 add_to_path ~/stripe/pay-server/scripts/bin
 add_to_path ~/stripe/henson/bin
 add_to_path ~/.gem/ruby/1.8/bin
+add_to_path ~/.gem/ruby/1.9.1/bin
 export REMOTECONTROL_NO_BUNDLER=1
 
 alias aws-stripe-ssh='ssh-add ~/.stripe/aws/stripe-*.pem'
