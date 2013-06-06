@@ -12,6 +12,26 @@ add_to_path ~/.gem/ruby/1.8/bin
 add_to_path ~/.gem/ruby/1.9.1/bin
 export REMOTECONTROL_NO_BUNDLER=1
 
+ruby19-env() {
+    local ORIG_PATH="$PATH"
+    local ORIG_IFS="$IFS"
+    IFS=':'
+    PATH=''
+
+    for item in $ORIG_PATH; do
+        if [[ $item == */ruby/* ]]; then
+            continue
+        fi
+        PATH="$PATH$item:"
+    done
+
+    PATH="$PATH$HOME/.gem/ruby/1.9.1/bin"
+    export PATH
+
+    IFS="$ORIG_IFS"
+    export AB_RUBY=1.9.1
+}
+
 alias aws-stripe-ssh='ssh-add ~/.stripe/aws/stripe-*.pem'
 alias aws-stripe-env='export EC2_PRIVATE_KEY=~/.stripe/aws/pk-BOINZURLRNL7FT377OK4NBV2ZCVW6MTW.pem; export EC2_CERT=~/.stripe/aws/cert-BOINZURLRNL7FT377OK4NBV2ZCVW6MTW.pem; export EC2_URL=http://ec2.us-west-1.amazonaws.com'
 alias aws-apiori-ssh='ssh-add ~/.apiori/aws/apiori-2.pem'
