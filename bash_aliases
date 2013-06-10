@@ -450,6 +450,16 @@ function hcs () {
     ssh $host
 }
 
+# Silly function to echo arguments on stdout
+# It's mostly useful for testing bash arrays and shell expansion and such.
+function args() {
+    echo >&2 "argc: $#"
+    while [ $# -gt 0 ]; do
+        echo "$1"
+        shift
+    done
+}
+
 # unzip arbitrary archives
 function unz() {
     if [ $# -lt 1 ]; then
