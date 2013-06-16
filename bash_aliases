@@ -248,6 +248,30 @@ function swap() {
     mv -iv "$1.$$" "$1"
 }
 
+# sort files in place
+function sort_() {
+    declare -a options=()
+    while [[ $# -gt 0 && $1 == -* ]]; do
+        if [ "$1" = "--" ]; then
+            break
+        fi
+
+        options+=("$1")
+        shift
+    done
+
+    if [ $# -eq 0 ]; then
+        echo >&2 "usage: sort_ [options] FILE..."
+        echo >&2 ""
+        echo >&2 "Sort each FILE in place."
+        return 1
+    fi
+
+    for file in "$@"; do
+        run sort "${options[@]}" -o "$file" -- "$file"
+    done
+}
+
 function decrypt() {
     local stripped="${1%.gpg}"
     if [ "$1" = "$stripped" ]; then
