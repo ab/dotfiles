@@ -8,11 +8,11 @@ add_to_path ~/stripe/password-vault/bin
 add_to_path ~/stripe/remote-control/bin
 add_to_path ~/stripe/pay-server/scripts/bin
 add_to_path ~/stripe/henson/bin
-add_to_path ~/.gem/ruby/1.8/bin
 add_to_path ~/.gem/ruby/1.9.1/bin
+add_to_path ~/.gem/ruby/1.8/bin
 export REMOTECONTROL_NO_BUNDLER=1
 
-ruby19-env() {
+ruby18-env() {
     local ORIG_PATH="$PATH"
     local ORIG_IFS="$IFS"
     IFS=':'
@@ -25,11 +25,11 @@ ruby19-env() {
         PATH="$PATH$item:"
     done
 
-    PATH="$PATH$HOME/.gem/ruby/1.9.1/bin"
+    PATH="$PATH$HOME/.gem/ruby/1.8/bin"
     export PATH
 
     IFS="$ORIG_IFS"
-    export AB_RUBY=1.9.1
+    export AB_RUBY=1.8
 }
 
 alias aws-stripe-ssh='ssh-add ~/.stripe/aws/stripe-*.pem'
