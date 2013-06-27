@@ -30,7 +30,7 @@ ruby18-env() {
     export PATH="$PATH$HOME/.gem/ruby/$AB_RUBY/bin"
 
     export ORIG_PS1="${ORIG_PS1:-$PS1}"
-    export PS1="\e[33m(ruby $AB_RUBY)\e[m $ORIG_PS1"
+    export PS1="\[\e[33m\](ruby $AB_RUBY)\[\e[m\] $ORIG_PS1"
 }
 
 alias aws-stripe-ssh='ssh-add ~/.stripe/aws/stripe-*.pem'
