@@ -190,7 +190,6 @@ alias lessn='less -n'
 alias sll='sudo ls -l --color=auto'
 alias mvi='mv -iv'
 alias asa='. auto-ssh-agent'
-alias private='HISTFILE=/dev/null'
 alias mtime='stat --format=%y'
 alias ips='ip -o addr show scope global | grep inet | cut -d" " -f 2,7 | cut -d/ -f1'
 alias ds='dig +short'
@@ -206,6 +205,12 @@ function whichedit() { $EDITOR $(which "$@") ; }
 function vimwhich() { vim $(which "$@") ; }
 alias du-fs='du -xh --max-depth 1'
 alias syslog='less +F /var/log/syslog'
+
+function private() {
+    export HISTFILE=/dev/null
+    export ORIG_PS1="${ORIG_PS1:-$PS1}"
+    export PS1="\[\e[30m\e[47m\]${ORIG_PS1%% }\[\e[m\] "
+}
 
 # just for fun
 alias donotwant='rm -v'
