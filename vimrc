@@ -142,8 +142,9 @@ map <Leader><Leader> :confirm w<cr>
 " make <Leader>q quit
 map <Leader>q :confirm q<cr>
 
-" try to make F1 not open a help browser
+" make F1 escape rather than opening help
 noremap <F1> <esc>
+inoremap <F1> <esc>
 
 " next buffer, prev buffer
 map <Leader><PageDown> :bn!<cr>
