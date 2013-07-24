@@ -219,6 +219,15 @@ alias DONOTWANT='rm -rfv'
 # ruby aliases
 alias gemi='gem install --user-install'
 
+splice_out() {
+    (set -eu
+    local file="$1"
+    shift
+    new_content="$(run grep -v "$@" "$file")"
+    run sponge "$file" <<< "$new_content"
+    )
+}
+
 function ssh-steal-agent() {
     if [ $# -lt 1 ]; then
         cat >&2 <<EOM
