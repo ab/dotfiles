@@ -6,6 +6,9 @@ rescue LoadError => err
   puts "Error loading ORI: #{err}"
 end
 
+# don't use less
+Pry.config.pager = false
+
 # alias ll => exec ls -l --color
 def ll
   _pry_
