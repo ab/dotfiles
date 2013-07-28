@@ -151,8 +151,8 @@ pgc() {
 }
 
 alias cur-apiori='curl -sS https://api.stripe.com/healthcheck | cut -f1,2 -d.'
-alias cur-fe='curl -sS https://stripe.com/healthcheck/fe | cut -f1 -d.'
-alias cur-hal='curl -sS http://stripe.com/healthcheck/haproxy | cut -f1 -d.'
+alias cur-fe='curl -sS https://stripe.com/healthcheck/fe | cut -f1,2 -d.'
+alias cur-hal='curl -sS http://stripe.com/healthcheck/haproxy | cut -f1,2 -d.'
 
 _c() {
     local col=$1
