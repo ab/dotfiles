@@ -16,3 +16,9 @@
 	default = tracking
 [log]
 	decorate = true
+[diff]
+	prompt = false
+[difftool]
+	prompt = false
+[mergetool]
+	prompt = false
