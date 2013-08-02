@@ -182,8 +182,10 @@ nmap <C-p> :set paste<cr>"+p:set nopaste<cr>:<esc><esc>
 " make ctrl+h fill out the form of a global find and replace
 if &gdefault
 	map <C-h> :%s///<left><left>
+	vmap <C-h> :s///<left><left>
 else
 	map <C-h> :%s///g<left><left><left>
+	vmap <C-h> :s///g<left><left><left>
 endif
 
 " make Y consistent with C and D
