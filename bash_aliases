@@ -1,3 +1,6 @@
+#!/bin/bash
+# ^ clue vim in on the fact that this bash
+
 add_to_path() {
     [ -d "$1" ] && export PATH="$PATH:$1"
 }
@@ -374,6 +377,16 @@ ainstall() {
     sudo aptitude install "$@"
 }
 
+git_commit_s() {
+    local root
+    root="$(git rev-parse --show-toplevel)" || return $?
+    if [ -e "$root/.sign-commits" ]; then
+        git commit -S "$@"
+    else
+        git commit "$@"
+    fi
+}
+
 # git aliases
 alias g='git'
 alias ga='git add'
@@ -391,14 +404,14 @@ alias gmt='git mergetool'
 alias gbr='git branch'
 alias gco='git checkout'
 alias gcoh='git checkout HEAD'
-alias gc='git commit'
-alias gcs='git commit -S'
-alias gca='git commit -a'
-alias gcas='git commit -aS'
-alias gcam='git commit -a --amend'
-alias gcams='git commit -a --amend -S'
-alias gcm='git commit --amend'
-alias gcms='git commit --amend -S'
+alias gc='git_commit_s'
+alias gcs='git_commit_s -S'
+alias gca='git_commit_s -a'
+alias gcas='git_commit_s -aS'
+alias gcam='git_commit_s -a --amend'
+alias gcams='git_commit_s -a --amend -S'
+alias gcm='git_commit_s --amend'
+alias gcms='git_commit_s --amend -S'
 alias gcl='git clone'
 alias gh='git help'
 alias gst='git stash'
