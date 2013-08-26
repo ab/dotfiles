@@ -209,6 +209,7 @@ function vimwhich() { vim "$(which "$@")" ; }
 complete -c which whichedit vimwhich
 alias du-fs='du -xh --max-depth 1'
 alias syslog='less +F /var/log/syslog'
+alias torssh="torsocks ssh -o ControlPath='~/.ssh/sockets/%r@%h-%p.tor'"
 
 function private() {
     export HISTFILE=/dev/null
