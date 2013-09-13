@@ -15,6 +15,10 @@ add_to_path ~/.gem/ruby/1.9.1/bin
 add_to_path ~/.gem/ruby/1.8/bin
 export REMOTECONTROL_NO_BUNDLER=1
 
+# add password-vault bash completion
+[ -e ~/stripe/password-vault/bash_completion ] \
+    && . ~/stripe/password-vault/bash_completion
+
 ruby18-env() {
     local ORIG_PATH="$PATH"
     local ORIG_IFS="$IFS"
