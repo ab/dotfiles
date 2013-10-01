@@ -266,10 +266,9 @@ function swap() {
         echo>&2 "swap file1 file2"
         return 1
     fi
-    set -e
-    mv -iv "$2" "$1.$$"
-    mv -iv "$1" "$2"
-    mv -iv "$1.$$" "$1"
+    mv -iv "$2" "$1.$$" || return $?
+    mv -iv "$1" "$2" || return $?
+    mv -iv "$1.$$" "$1" || return $?
 }
 
 # sort files in place
