@@ -271,6 +271,19 @@ function swap() {
     mv -iv "$1.$$" "$1" || return $?
 }
 
+# set difference between two files
+function setdiff() {
+    if [ $# -lt 2 ]; then
+        echo >&2 "usage: setdiff FILE1 FILE2"
+        return 1
+    fi
+
+    head -c 0 "$1" || return $?
+    head -c 0 "$2" || return $?
+
+    comm -23 <(sort "$1") <(sort "$2")
+}
+
 # sort files in place
 function sort_() {
     declare -a options=()
