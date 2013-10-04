@@ -126,7 +126,7 @@ aws-env() {
         us-west-1      | \
         ap-southeast-1 | \
         ap-southeast-2 )
-            true
+            export AWS_DEFAULT_REGION="$region"
             ;;
         *)
             echo>&2 "Unknown EC2 region: $region"
@@ -135,7 +135,9 @@ aws-env() {
     esac
 
     set_var_gpg AWS_ACCESS_KEY "$access_key_file" || return 1
+    export AWS_ACCESS_KEY_ID="$AWS_ACCESS_KEY"
     set_var_gpg AWS_SECRET_KEY "$secret_key_file" || return 1
+    export AWS_SECRET_ACCESS_KEY="$AWS_SECRET_KEY"
     set_var_verbose EC2_URL "http://ec2.$region.amazonaws.com"
 }
 
