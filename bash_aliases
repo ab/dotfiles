@@ -62,6 +62,15 @@ set_var_verbose() {
     export "$var=$val"
 }
 
+set_var_cat() {
+    local var="$1"
+    local file="$2"
+
+    echo >&2 "Setting $var from \`$file'"
+    val="$(cat "$file")" || return 1
+    export "$var=$val"
+}
+
 set_var_gpg() {
     local var="$1"
     local file="$2"
@@ -79,15 +88,15 @@ aws-env() {
 
     case "$domain" in
         apiori|apiori.com)
-            access_key_file=~/.apiori/personal/aws_access_key_id.gpg
+            access_key_file=~/.apiori/personal/aws_access_key_id.txt
             secret_key_file=~/.apiori/personal/aws_secret_key.gpg
             ;;
         stripe|stripe.com)
-            access_key_file=~/.stripe/personal/aws_access_key_id.gpg
+            access_key_file=~/.stripe/personal/aws_access_key_id.txt
             secret_key_file=~/.stripe/personal/aws_secret_key.gpg
             ;;
         stri.pe|stripe-ctf.com|secondary)
-            access_key_file=~/.stripe/personal/secondary/aws_access_key_id.gpg
+            access_key_file=~/.stripe/personal/secondary/aws_access_key_id.txt
             secret_key_file=~/.stripe/personal/secondary/aws_secret_key.gpg
             ;;
         *)
@@ -134,7 +143,7 @@ aws-env() {
             ;;
     esac
 
-    set_var_gpg AWS_ACCESS_KEY "$access_key_file" || return 1
+    set_var_cat AWS_ACCESS_KEY "$access_key_file" || return 1
     export AWS_ACCESS_KEY_ID="$AWS_ACCESS_KEY"
     set_var_gpg AWS_SECRET_KEY "$secret_key_file" || return 1
     export AWS_SECRET_ACCESS_KEY="$AWS_SECRET_KEY"
