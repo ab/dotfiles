@@ -68,15 +68,15 @@ autocmd FileType python let g:detectindent_preferred_expandtab = 1
 autocmd BufNewFile *.py 0put =\"#!/usr/bin/env python\<nl>\"|$
 
 " ruby files: indent with 2 spaces
-autocmd FileType ruby set textwidth=79
-autocmd FileType ruby set tabstop=2
-autocmd FileType ruby set shiftwidth=2
-autocmd FileType ruby let g:detectindent_preferred_expandtab = 1
+autocmd FileType {ruby,eruby} set textwidth=79
+autocmd FileType {ruby,eruby} set tabstop=2
+autocmd FileType {ruby,eruby} set shiftwidth=2
+autocmd FileType {ruby,eruby} let g:detectindent_preferred_expandtab = 1
 " also add a shebang automatically in new files
 autocmd BufNewFile *.rb 0put =\"#!/usr/bin/env ruby\<nl>\"|$
 
 " automatically treat puppet templates as eruby
-autocmd BufRead,BufNewFile *puppet-config/*/templates/* set ft=eruby ts=2 sw=2
+autocmd BufRead,BufNewFile *puppet-config/*/templates/* set ft=eruby
 
 " shell scripts
 autocmd FileType sh set textwidth=79
