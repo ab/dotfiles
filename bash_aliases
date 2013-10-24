@@ -216,6 +216,7 @@ alias clip='xclip -selection clipboard'
 function wp() { dig +short txt "$*.wp.dg.cx"; } # wikipedia commandline
 function calc() { echo "$*" | bc -l; } # simple calculator
 alias findf='find . -name '
+vimfindf() { vim -- $(find . -name "$@") ; }
 function search() { grep -rIn --color "$@" * ; }
 function isearch() { grep -rIni --color "$@" * ; }
 alias wgetn='wget -O /dev/null'
