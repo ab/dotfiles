@@ -9,6 +9,9 @@ end
 # don't use less
 Pry.config.pager = false
 
+# my terminal may resize, damn it
+Pry.auto_resize!
+
 # alias ll => exec ls -l --color
 def ll
   _pry_
