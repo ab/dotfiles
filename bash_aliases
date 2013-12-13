@@ -227,6 +227,8 @@ complete -c which whichedit vimwhich
 alias du-fs='du -xh --max-depth 1'
 alias syslog='less +F /var/log/syslog'
 alias torssh="torsocks ssh -o ControlPath='~/.ssh/sockets/%r@%h-%p.tor'"
+alias showx509='openssl x509 -noout -text -in'
+alias strip-escapes='sed -r "s/\x1B\[([0-9]{1,2}(;[0-9]{1,2})?)?[m|K]//g"'
 
 function private() {
     export HISTFILE=/dev/null
