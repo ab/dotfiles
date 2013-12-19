@@ -242,6 +242,7 @@ alias DONOTWANT='rm -rfv'
 
 # ruby aliases
 alias gemi='gem install --user-install'
+alias be='bundle exec'
 
 splice_out() {
     (set -eu
