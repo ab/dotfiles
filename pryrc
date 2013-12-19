@@ -1,11 +1,3 @@
-# ORI help module
-begin
-  require 'rubygems'
-  require 'ori'
-rescue LoadError => err
-  puts "Error loading ORI: #{err}"
-end
-
 # don't use less
 Pry.config.pager = false
 
