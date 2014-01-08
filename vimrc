@@ -257,5 +257,9 @@ let g:ctrlp_custom_ignore = {
   \ 'file': '\v\~$'
   \ }
 
+" vim-gnupg options
+" override default pattern of *.{gpg,asc,pgp}
+let g:GPGFilePattern = '*.\(gpg\|pgp\)'
+
 " ignore some files
 set wildignore+=*.pyc
