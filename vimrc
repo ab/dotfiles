@@ -134,7 +134,8 @@ autocmd InsertLeave * redraw!
 map <F12> ggVGg?
 
 " make ctrl+x save
-map <C-x> :confirm w<cr>
+" I've basically stopped using this, but keep it around for historical note
+"map <C-x> :confirm w<cr>
 
 " make <Leader><Leader> save
 map <Leader><Leader> :confirm w<cr>
