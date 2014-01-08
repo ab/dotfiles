@@ -620,6 +620,9 @@ alias p='shopts="$SHELLOPTS"; set -f; _pyval'
 # virtualenv activate
 alias activate="source env/bin/activate"
 
+# Go/golang aliases
+export GOPATH="$home/code/go/get"
+
 # time long-running jobs
 TIMER_LONG_JOBS=30
 TIMER_IGNORE_COMMANDS=( ssh vim bash )
