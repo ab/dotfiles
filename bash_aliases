@@ -621,7 +621,10 @@ alias p='shopts="$SHELLOPTS"; set -f; _pyval'
 alias activate="source env/bin/activate"
 
 # Go/golang aliases
-export GOPATH="$home/code/go/get"
+export GOPATH="$HOME/code/go"
+alias cdgo='cd "$GOPATH"'
+alias cdgoab='cd "$GOPATH/src/ab"'
+alias gobin='add_to_path "$GOPATH/bin"'
 
 # time long-running jobs
 TIMER_LONG_JOBS=30
