@@ -596,6 +596,12 @@ function tarball() {
     run tar -czvf "$dir.tgz" -C "$parent" "$dir/"
 }
 
+addindent() {
+    n="$1"
+    printf -v spaces '%*s' "$n"
+    sed "s/^/$spaces/"
+}
+
 # programming
 alias sml='rlwrap sml -Cprint.depth=3000 -Cprint.length=3000'
 alias tcl='rlwrap tclsh'
