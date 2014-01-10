@@ -387,8 +387,12 @@ function encfs-umount-all() {
 }
 
 # frequent cd paths
-export CDPATH="$CDPATH:/home/andy/stripe/"
-export CDPATH="$CDPATH:/home/andy/stripe/apiori/"
+add_to_cdpath() {
+    [ -d "$1" ] && export CDPATH="$CDPATH:$1"
+}
+add_to_cdpath "$HOME/stripe"
+add_to_cdpath "$HOME/stripe/apiori"
+add_to_cdpath "$HOME/stripe/ctf"
 alias config="cd '$HOME/documents/Harvard/hcs/config/'"
 alias trunk="cd '$HOME/documents/Harvard/hcs/trunk/'"
 
