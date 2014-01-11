@@ -492,6 +492,11 @@ alias gau='git-auto-update'
 gf() { git show --pretty='format:' --name-only $* | grep -v '^$' | uniq | sed -e "s#^#$(git rev-parse --show-toplevel)/#" ; }
 ge() { $EDITOR $(gf "$*") ; }
 
+# git doge
+alias wow='git status'
+alias such='git'
+alias very='git'
+
 # bzr aliases
 alias b='bzr'
 alias ba='bzr add'
