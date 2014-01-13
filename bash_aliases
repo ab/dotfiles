@@ -96,9 +96,14 @@ aws-env() {
             access_key_file=~/.stripe/personal/aws_access_key_id.txt
             secret_key_file=~/.stripe/personal/aws_secret_key.gpg
             ;;
-        stri.pe|stripe-ctf.com|secondary)
+        stri.pe|secondary)
             access_key_file=~/.stripe/personal/secondary/aws_access_key_id.txt
             secret_key_file=~/.stripe/personal/secondary/aws_secret_key.gpg
+            ;;
+        ctf|stripe-ctf.com)
+            access_key_file=~/.stripe/personal/secondary/aws_access_key_id.txt
+            secret_key_file=~/.stripe/personal/secondary/aws_secret_key.gpg
+            region="${region:-us-west-2}"
             ;;
         *)
             echo>&2 "Unknown domain: '$domain'"
@@ -107,9 +112,7 @@ aws-env() {
             ;;
     esac
 
-    if [ -z "$region" ]; then
-        region=us-west-1
-    fi
+    region="${region:-us-west-1}"
 
     # handle region nicknames
     case "$region" in
