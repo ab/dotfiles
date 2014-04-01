@@ -247,6 +247,13 @@ alias DONOTWANT='rm -rfv'
 # ruby aliases
 alias gemi='gem install --user-install'
 alias be='bundle exec'
+rake() {
+    if [ -e "$(git rev-parse --show-toplevel 2>/dev/null)/Gemfile" ]; then
+        run bundle exec rake "$@"
+    else
+        command rake "$@"
+    fi
+}
 
 splice_out() {
     (set -eu
