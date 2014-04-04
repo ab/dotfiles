@@ -10,7 +10,7 @@
 	edit  = ! sh -c '$EDITOR `git fshow $1`' -
 	amend = commit --amend
 	pushup = !git push --set-upstream origin $(git rev-parse --abbrev-ref HEAD)
-	uncommit = git reset --soft HEAD~1
+	uncommit = reset --soft HEAD~1
 [color]
 	ui = auto
 [core]
