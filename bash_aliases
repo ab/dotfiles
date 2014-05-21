@@ -417,7 +417,7 @@ alias awhy='aptitude why'
 ainstall() {
     local log="$HOME/install.log"
     for name in "$@"; do
-        if ! awk '{print $NF}' "$log" | grep -x "$name" >/dev/null; then
+        if ! awk '{print $NF}' "$log" | grep -x -- "$name" >/dev/null; then
             date "+%F %R	$name" >> "$log"
         fi
     done
