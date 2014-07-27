@@ -413,6 +413,7 @@ alias ashow='aptitude show'
 alias aupdate='sudo aptitude update && sudo aptitude safe-upgrade'
 alias aupgrade='sudo aptitude full-upgrade'
 alias awhy='aptitude why'
+alias dpkg-version="dpkg-query -Wf '\${Version}\n'"
 
 ainstall() {
     local log="$HOME/install.log"
