@@ -21,6 +21,9 @@ syntax on
 " dark background
 set background=dark
 
+" don't display the :intro
+set shortmess+=I
+
 " make backspace work normal (indent, eol, start)
 " set backspace=2
 
@@ -264,6 +267,9 @@ let g:ctrlp_custom_ignore = {
 " vim-gnupg options
 " override default pattern of *.{gpg,asc,pgp}
 let g:GPGFilePattern = '*.\(gpg\|pgp\)'
+
+" vim-go options
+let g:go_disable_autoinstall = 1
 
 " ignore some files
 set wildignore+=*.pyc
