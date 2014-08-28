@@ -53,6 +53,12 @@ stripe-clone() {
     run git clone git@github.com:stripe-internal/"$1".git
 }
 alias sclone=stripe-clone
+chalk-clone() {
+    run git clone git@github.com:stripe/"$1".git
+}
+apiori-clone() {
+    run git clone git@github.com:apiori/"$1".git
+}
 
 set_var_verbose() {
     local var="$1"
