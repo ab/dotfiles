@@ -188,8 +188,7 @@ _c() {
 }
 
 alias gpgk="gpg --no-default-keyring --keyring"
-alias gpgk.="gpg --no-default-keyring --keyring ./pubring.gpg --secret-keyring
-./secring.gpg --trustdb-name ./trustdb.gpg"
+alias gpgk.="gpg --no-default-keyring --keyring ./pubring.gpg --secret-keyring ./secring.gpg --trustdb-name ./trustdb.gpg"
 alias gpg-stripe="gpg --keyserver pgp.stripe.com"
 
 # Make sudo play nice with aliases
