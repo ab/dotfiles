@@ -121,16 +121,19 @@ aws-env() {
 
     # handle region nicknames
     case "$region" in
-        east)
+        east|virginia|us-east-1)
             region="us-east-1"
             ;;
-        west)
+        west|california|us-west-1)
             region="us-west-1"
             ;;
-        eu|europe)
+        nw|northwest|oregon|us-west-2)
+            region="us-west-2"
+            ;;
+        eu|europe|eu-west-1)
             region="eu-west-1"
             ;;
-        au|australia)
+        au|australia|ap-southeast-2)
             region="ap-southeast-2"
             ;;
     esac
