@@ -13,6 +13,7 @@ add_to_path ~/stripe/henson/bin
 add_to_path ~/.gem/ruby/1.9.1/bin
 add_to_path ~/.gem/ruby/1.8/bin
 export REMOTECONTROL_NO_BUNDLER=1
+export SPACECOMMANDER_LOG_LEVEL=0
 export SC_USER=andy
 
 # add password-vault bash completion
