@@ -516,6 +516,8 @@ alias gau='git-auto-update'
 gf() { git show --pretty='format:' --name-only $* | grep -v '^$' | uniq | sed -e "s#^#$(git rev-parse --show-toplevel)/#" ; }
 ge() { $EDITOR $(gf "$*") ; }
 
+alias p-r='hub pull-request'
+
 # git doge
 alias wow='git status'
 alias such='git'
