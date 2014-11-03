@@ -1,5 +1,5 @@
 " ~/.vimrc
-" agb rev 17
+" agb rev 18
 
 " === General ===
 
@@ -245,7 +245,7 @@ endfunction
 map <silent> <F7> :call SpellOn()<cr>]s
 
 " git blame
-map <F8> :Gblame<cr>
+map <F8> :Gblame -w<cr>
 imap <F8> <C-o><F8>
 
 " make w!! run sudo to write to a file
