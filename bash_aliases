@@ -60,6 +60,15 @@ chalk-clone() {
 apiori-clone() {
     run git clone git@github.com:apiori/"$1".git
 }
+modelt-clone() {
+    cd "$GOPATH"
+    stripe_internal_path="src/github.com/stripe-internal"
+    mkdir -vp "$stripe_internal_path"
+    cd "$stripe_internal_path"
+    pwd
+    run git clone git@github.com:stripe-internal/"$1".git
+    ln -svT "$GOPATH/$stripe_internal_path/$1" "$HOME/stripe/$1"
+}
 
 set_var_verbose() {
     local var="$1"
@@ -666,7 +675,9 @@ alias activate="source env/bin/activate"
 export GOPATH="$HOME/code/go"
 alias cdgo='cd "$GOPATH"'
 alias cdgoab='cd "$GOPATH/src/ab"'
-alias gobin='add_to_path "$GOPATH/bin"'
+alias cdgostripe='cd "$GOPATH/src/github.com/stripe-internal"'
+alias cdgobin='cd "$GOPATH/bin"'
+add_to_path "$GOPATH/bin"
 
 # time long-running jobs
 TIMER_LONG_JOBS=30
