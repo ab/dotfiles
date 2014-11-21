@@ -263,7 +263,7 @@ alias donotwant='rm -v'
 alias DONOTWANT='rm -rfv'
 
 # ruby aliases
-alias gemi='gem install --user-install'
+alias gemi='gem install'
 alias be='bundle exec'
 rake() {
     if [ -e "$(git rev-parse --show-toplevel 2>/dev/null)/Gemfile" ]; then
