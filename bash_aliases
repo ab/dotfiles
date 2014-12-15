@@ -51,14 +51,17 @@ alias aws-ctf-ssh='ssh-add ~/.stripe/aws/ssh/ctf.stri.pe'
 alias aws-ctf-env='export EC2_PRIVATE_KEY=~/.stripe/personal/secondary/pk-QSDHLWH4BI75ZRZSHM2LLIKPJ2HXYU6D.pem; export EC2_CERT=~/.stripe/personal/secondary/cert-QSDHLWH4BI75ZRZSHM2LLIKPJ2HXYU6D.pem; export EC2_URL=http://ec2.us-west-1.amazonaws.com'
 
 stripe-clone() {
-    run git clone git@github.com:stripe-internal/"$1".git
+    run git clone git@github.com:stripe-internal/"$1".git && \
+        (cd "$1" && stripe-git-config-email)
 }
 alias sclone=stripe-clone
 chalk-clone() {
-    run git clone git@github.com:stripe/"$1".git
+    run git clone git@github.com:stripe/"$1".git && \
+        (cd "$1" && stripe-git-config-email)
 }
 apiori-clone() {
-    run git clone git@github.com:apiori/"$1".git
+    run git clone git@github.com:apiori/"$1".git && \
+        (cd "$1" && stripe-git-config-email)
 }
 modelt-clone() {
     cd "$GOPATH"
@@ -66,8 +69,12 @@ modelt-clone() {
     mkdir -vp "$stripe_internal_path"
     cd "$stripe_internal_path"
     pwd
-    run git clone git@github.com:stripe-internal/"$1".git
+    stripe-clone "$1"
     ln -svT "$GOPATH/$stripe_internal_path/$1" "$HOME/stripe/$1"
+}
+
+stripe-git-config-email() {
+    run git config --local user.email andy@stripe.com
 }
 
 set_var_verbose() {
