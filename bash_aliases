@@ -529,7 +529,7 @@ alias gfetch='git fetch'
 alias gfe='git fetch'
 alias gfep='git fetch -p'
 alias grb='git rebase'
-alias grvb='git push origin HEAD:refs/for/master'
+alias greview='git push origin HEAD:refs/for/master'
 alias gau='git-auto-update'
 gf() { git show --pretty='format:' --name-only $* | grep -v '^$' | uniq | sed -e "s#^#$(git rev-parse --show-toplevel)/#" ; }
 ge() { $EDITOR $(gf "$*") ; }
