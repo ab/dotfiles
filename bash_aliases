@@ -6,7 +6,7 @@ add_to_path() {
 }
 
 # stripe stuff
-add_to_path ~/stripe/apiori/space-commander/bin
+add_to_path ~/stripe/space-commander/bin
 add_to_path ~/stripe/password-vault/bin
 add_to_path ~/stripe/pay-server/scripts/bin
 add_to_path ~/stripe/henson/bin
