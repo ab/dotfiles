@@ -91,6 +91,11 @@ autocmd FileType html set tabstop=2
 autocmd FileType html set shiftwidth=2
 autocmd FileType html let g:detectindent_preferred_expandtab = 1
 
+" yaml files: indent with 2 spaces
+autocmd FileType yaml set textwidth=79
+autocmd FileType yaml set tabstop=2
+autocmd FileType yaml set shiftwidth=2
+
 " gitconfig
 " use tabs
 autocmd FileType gitconfig set noexpandtab
