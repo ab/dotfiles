@@ -1,6 +1,7 @@
 [user]
 	name = Andy Brody
 	email = andy@abrody.com
+    signingkey = 5F57CDC5
 [alias]
 	stat = status
 	co = checkout
