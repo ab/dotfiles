@@ -179,6 +179,16 @@ aws-env() {
     set_var_verbose EC2_URL "http://ec2.$region.amazonaws.com"
 }
 
+modelt-env() {
+    if [ $# -lt 1 ]; then
+        echo >&2 "usage: modelt-env ENV"
+        return 1
+    fi
+
+    echo >&2 + ". $HOME/.stripe/personal/modelt/env/$1"
+    . "$HOME/.stripe/personal/modelt/env/$1"
+}
+
 alias cdp="cd /etc/puppet"
 pgit() {
     sudo bash -c '
