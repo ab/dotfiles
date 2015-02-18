@@ -278,3 +278,7 @@ let g:go_disable_autoinstall = 1
 
 " ignore some files
 set wildignore+=*.pyc
+
+" syntastic options
+" disable syntastic for puppet since it's super slow
+let g:syntastic_puppet_checkers=[]
