@@ -252,6 +252,8 @@ alias asa='. auto-ssh-agent'
 alias mtime='stat --format=%y'
 alias ips='ip -o addr show scope global | grep inet | cut -d" " -f 2,7 | cut -d/ -f1'
 alias ds='dig +short'
+alias dsa='dig-authoritative +short'
+alias diga='dig-authoritative'
 alias clip='xclip -selection clipboard'
 function wp() { dig +short txt "$*.wp.dg.cx"; } # wikipedia commandline
 function calc() { echo "$*" | bc -l; } # simple calculator
