@@ -437,6 +437,7 @@ function encfs-umount-all() {
 add_to_cdpath() {
     [ -d "$1" ] && export CDPATH="$CDPATH:$1"
 }
+add_to_cdpath "$HOME/code"
 add_to_cdpath "$HOME/stripe"
 add_to_cdpath "$HOME/stripe/apiori"
 add_to_cdpath "$HOME/stripe/ctf"
