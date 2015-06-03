@@ -43,11 +43,33 @@ set smartcase
 " replace globally by default
 set gdefault
 
+" keep 1 line of buffer space when scrolling
+set scrolloff=1
+
+" automatically reload unmodified files
+set autoread
+
+" Delete comment character when joining commented lines
+if v:version > 703 || v:version == 703 && has("patch541")
+  set formatoptions+=j
+endif
+
+if &tabpagemax < 50
+  set tabpagemax=50
+endif
+
+" load matchit from vim distribution
+" (not updated since 2008: https://github.com/vim-scripts/matchit.zip)
+runtime! macros/matchit.vim
+
 " show graphical menu on tab completion
 set wildmenu
 
 " don't insert two spaces when joining after a period
 set nojoinspaces
+
+" TODO: decide whether to keep this
+set showcmd
 
 " title customizations
 set title
