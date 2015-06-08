@@ -17,6 +17,12 @@ export SPACECOMMANDER_LOG_LEVEL=0
 export SPACECOMMANDER_NO_SSH_COMMANDLINE=1
 export SC_USER=andy
 
+case $HOSTNAME in
+    endor)
+        export PASSWORD_VAULT_SELECTION=clipboard
+        ;;
+esac
+
 # add password-vault bash completion
 [ -e ~/stripe/password-vault/bash_completion ] \
     && . ~/stripe/password-vault/bash_completion
@@ -50,6 +56,17 @@ alias aws-secondary-ssh='ssh-add ~/.ssh/stripe-ctf-key'
 alias aws-secondary-env='export EC2_PRIVATE_KEY=~/.stripe/personal/secondary/pk-QSDHLWH4BI75ZRZSHM2LLIKPJ2HXYU6D.pem; export EC2_CERT=~/.stripe/personal/secondary/cert-QSDHLWH4BI75ZRZSHM2LLIKPJ2HXYU6D.pem; export EC2_URL=http://ec2.us-east-1.amazonaws.com'
 alias aws-ctf-ssh='ssh-add ~/.stripe/aws/ssh/ctf.stri.pe'
 alias aws-ctf-env='export EC2_PRIVATE_KEY=~/.stripe/personal/secondary/pk-QSDHLWH4BI75ZRZSHM2LLIKPJ2HXYU6D.pem; export EC2_CERT=~/.stripe/personal/secondary/cert-QSDHLWH4BI75ZRZSHM2LLIKPJ2HXYU6D.pem; export EC2_URL=http://ec2.us-west-1.amazonaws.com'
+
+gsutil-md5() {
+    file="$1"
+
+    local output md5
+
+    output="$(run gsutil ls -L "$file")" || return 1
+    md5="$(grep -m 1 -F 'Hash (md5):' <<< "$output" | awk '{ print $NF }' | \
+           base64 -d | xxd -p)"
+    echo "$md5  $file"
+}
 
 stripe-clone() {
     run git clone git@github.com:stripe-internal/"$1".git && \
@@ -760,8 +777,13 @@ export DEBFULLNAME='Andy Brody'
 export DEBEMAIL='andy@abrody.com'
 
 # Preserve history indefinitely
-export HISTFILESIZE=
-export HISTSIZE=
+if [ "${BASH_VERSINFO[0]}" -ge 4 -a "${BASH_VERSINFO[1]}" -ge 3 ]; then
+    export HISTFILESIZE=-1
+    export HISTSIZE=-1
+else
+    export HISTFILESIZE=10000000
+    export HISTSIZE=1000000
+fi
 
 if [ -d "$HOME/.rbenv/bin" ]; then
    export PATH="$PATH:$HOME/.rbenv/bin"
