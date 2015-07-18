@@ -67,6 +67,33 @@ gsutil-md5() {
            base64 -d | xxd -p)"
     echo "$md5  $file"
 }
+gsutil-link() {
+    local url duration p12_file privkeys
+
+    if [ $# -ge 1 ]; then
+        url="$1"
+    else
+        echo 'usage: gsutil-link URL [DURATION [P12_FILE]]'
+        return 1
+    fi
+
+    if [ $# -ge 2 ]; then
+        duration="$2"
+    else
+        echo 'Using 1 day validity by default'
+        duration="1d"
+    fi
+
+    if [ $# -ge 3 ]; then
+        p12_file="$3"
+    else
+        privkeys="$(run ls -1 -- ~/Private/gce/Main-*.p12)"
+        p12_file="$(head -1 <<< "$privkeys")"
+        echo 'Keystore password is probably not a secret'
+    fi
+
+    run gsutil signurl -d "$duration" "$p12_file" "$url"
+}
 
 stripe-clone() {
     run git clone git@github.com:stripe-internal/"$1".git && \
