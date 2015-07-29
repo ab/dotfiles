@@ -316,6 +316,8 @@ alias torssh="torsocks ssh -o ControlPath='~/.ssh/sockets/%r@%h-%p.tor'"
 alias showx509='openssl x509 -noout -text -nameopt multiline -certopt no_sigdump -in'
 alias strip-escapes='sed -r "s/\x1B\[([0-9]{1,2}(;[0-9]{1,2})?)?[m|K]//g"'
 
+function awhois() { run whois "domain $1" ; }
+
 function private() {
     export HISTFILE=/dev/null
     export ORIG_PS1="${ORIG_PS1:-$PS1}"
