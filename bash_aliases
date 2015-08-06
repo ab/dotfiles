@@ -300,6 +300,7 @@ alias ds='dig +short'
 alias dsa='dig-authoritative +short'
 alias diga='dig-authoritative'
 alias clip='xclip -selection clipboard'
+alias clip1='xclip -selection clipboard -loops 1'
 function wp() { dig +short txt "$*.wp.dg.cx"; } # wikipedia commandline
 function calc() { echo "$*" | bc -l; } # simple calculator
 alias findf='find . -name '
