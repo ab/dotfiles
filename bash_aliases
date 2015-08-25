@@ -809,12 +809,10 @@ export DEBFULLNAME='Andy Brody'
 export DEBEMAIL='andy@abrody.com'
 
 # Preserve history indefinitely
-if [ "${BASH_VERSINFO[0]}" -ge 4 -a "${BASH_VERSINFO[1]}" -ge 3 ]; then
-    export HISTFILESIZE=-1
-    export HISTSIZE=-1
-else
-    export HISTFILESIZE=10000000
-    export HISTSIZE=1000000
+# It looks like this must be set in ~/.bashrc, and for some reason it doesn't
+# work when this is set here. So just warn if we have a non-infinite size.
+if [ -n "$HISTSIZE" -o -n "$HISTFILESIZE" ]; then
+    echo >&2 "Warning: HISTSIZE: $HISTSIZE, HISTFILESIZE: $HISTFILESIZE"
 fi
 
 if [ -d "$HOME/.rbenv/bin" ]; then
