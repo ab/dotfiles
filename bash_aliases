@@ -18,8 +18,9 @@ export SPACECOMMANDER_NO_SSH_COMMANDLINE=1
 export SC_USER=andy
 
 case $HOSTNAME in
-    endor)
+    endor|endor.agb.me)
         export PASSWORD_VAULT_SELECTION=clipboard
+        export ABPW_SELECTION=clipboard
         ;;
 esac
 
