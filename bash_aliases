@@ -442,15 +442,21 @@ function stopwatch() {
     rm -f $log
 }
 
-function open() {
+open() {
     for i in "$@"; do
         xdg-open "$i"
     done
 }
 
 # like set -x
-function run() {
-    echo>&2 "+ $*"
+run() {
+    echo >&2 "+ $*"
+    "$@"
+}
+
+daterun() {
+    date >&2 '+@ %F %T %z'
+    echo >&2 "+ $*"
     "$@"
 }
 
