@@ -609,6 +609,9 @@ gs-files() {
 gse() {
     $EDITOR $(gs-files)
 }
+gc-mtime() {
+    git commit --date="$(stat --format=%y "$1")"
+}
 
 alias p-r='hub pull-request'
 
