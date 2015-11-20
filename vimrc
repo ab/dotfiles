@@ -207,6 +207,14 @@ autocmd FileType man nnoremap <buffer> q :quit<cr>
 " make ctrl+c copy to system clipboard when in visual mode
 vmap <C-c> "+y
 
+" copy whole document to system clipboard
+map <Leader>y :%y+<cr>
+map <C-y> :%y+<cr>
+imap <C-y> <C-o>:%y+<cr>
+
+" replace whole document from system clipboard
+map <Leader>p ggVG"+p
+
 " make ctrl+p paste from the system clipboard when in normal mode
 nmap <C-p> :set paste<cr>"+p:set nopaste<cr>:<esc><esc>
 
