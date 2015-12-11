@@ -96,6 +96,22 @@ gsutil-link() {
     run gsutil signurl -d "$duration" "$p12_file" "$url"
 }
 
+github-clone() {
+    case $# in
+        0)
+            echo >&2 "usage: github-clone org/repo"
+            echo >&2 "usage: github-clone org repo"
+            return 1
+            ;;
+        1)
+            run git clone git@github.com:"$1".git
+            ;;
+        *)
+            run git clone git@github.com:"$1/$2".git
+            ;;
+    esac
+}
+
 stripe-clone() {
     run git clone git@github.com:stripe-internal/"$1".git && \
         (cd "$1" && stripe-git-config-email)
