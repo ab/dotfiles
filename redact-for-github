@@ -3,6 +3,13 @@
 git checkout github
 git reset --hard master
 
+git config commit.gpgsign false
+
+git filter-branch --force --msg-filter \
+    'sed "/iQIcBA.*/,/.*END PGP SIGNATURE.*/d"' -- github
+
 git filter-branch --force --index-filter \
     'git rm --cached --ignore-unmatch ssh_config known_hosts' --prune-empty -- github
+
+git config commit.gpgsign true
 
