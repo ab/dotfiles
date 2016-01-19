@@ -21,6 +21,11 @@ syntax on
 " dark background
 set background=dark
 
+" effectively use terminal's own color palette
+" TODO: figure out what to do here
+"set t_Co=256
+set t_Co=16
+
 " don't display the :intro
 set shortmess+=I
 
