@@ -1,0 +1,46 @@
+# v 2.20 (2016-01)
+
+# Globals are at bottom since the first value set wins.
+
+# ====== Home ======
+
+# ====== Home - Remote ======
+
+# ====== Personal Servers ======
+
+# ====== Harvard Servers ======
+
+# ====== HCS ======
+
+# ====== Stripe ======
+
+# ====== Other ======
+
+Host github.com
+ControlMaster auto
+ControlPersist 15m
+
+# ====== Globals ======
+
+Host *
+  # connection sharing
+  ControlMaster auto
+  ControlPath ~/.ssh/sockets/%r@%h-%p
+
+  # keepalive
+  ServerAliveInterval 30
+  ServerAliveCountMax 4
+
+  # no gssapi (overrides /etc/ssh/ssh_config)
+  GSSAPIAuthentication no
+
+  # tunnel connections through an HTTP proxy (e.g. proxoid)
+  # ProxyCommand /usr/bin/corkscrew localhost 8080 %h %p  # proxoid
+
+  HashKnownHosts no
+
+  MACs hmac-sha2-256-etm@openssh.com,hmac-sha2-512-etm@openssh.com,umac-128-etm@openssh.com,hmac-sha2-256,hmac-sha2-512
+  # umac-128@openssh.com removed from end due to ruby net-ssh
+
+  # CVE-2016-0777 CVE-2016-0778
+  UseRoaming no
