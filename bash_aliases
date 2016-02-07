@@ -8,11 +8,6 @@ add_to_path() {
 # stripe stuff
 add_to_path ~/stripe/space-commander/bin
 add_to_path ~/stripe/password-vault/bin
-add_to_path ~/stripe/pay-server/scripts/bin
-add_to_path ~/stripe/henson/bin
-add_to_path ~/.gem/ruby/1.9.1/bin
-add_to_path ~/.gem/ruby/1.8/bin
-export REMOTECONTROL_NO_BUNDLER=1
 export SPACECOMMANDER_LOG_LEVEL=0
 export SPACECOMMANDER_NO_SSH_COMMANDLINE=1
 export SC_USER=andy
@@ -23,40 +18,6 @@ case $HOSTNAME in
         export ABPW_SELECTION=clipboard
         ;;
 esac
-
-# add password-vault bash completion
-[ -e ~/stripe/password-vault/bash_completion ] \
-    && . ~/stripe/password-vault/bash_completion
-
-ruby18-env() {
-    local ORIG_PATH="$PATH"
-    local ORIG_IFS="$IFS"
-    IFS=':'
-    PATH=''
-
-    for item in $ORIG_PATH; do
-        if [[ $item == */ruby/* ]]; then
-            continue
-        fi
-        PATH="$PATH$item:"
-    done
-    IFS="$ORIG_IFS"
-
-    export AB_RUBY=1.8
-    export PATH="$PATH$HOME/.gem/ruby/$AB_RUBY/bin"
-
-    export ORIG_PS1="${ORIG_PS1:-$PS1}"
-    export PS1="\[\e[33m\](ruby $AB_RUBY)\[\e[m\] $ORIG_PS1"
-}
-
-alias aws-stripe-ssh='ssh-add ~/.stripe/aws/stripe-*.pem'
-alias aws-stripe-env='export EC2_PRIVATE_KEY=~/.stripe/aws/pk-BOINZURLRNL7FT377OK4NBV2ZCVW6MTW.pem; export EC2_CERT=~/.stripe/aws/cert-BOINZURLRNL7FT377OK4NBV2ZCVW6MTW.pem; export EC2_URL=http://ec2.us-west-1.amazonaws.com'
-alias aws-apiori-ssh='ssh-add ~/.apiori/aws/apiori-2.pem'
-alias aws-apiori-env='export EC2_PRIVATE_KEY=~/.apiori/aws/pk-S5HDM3FKQGM7NZNDVMTDXCUX653UARYY.pem; export EC2_CERT=~/.apiori/aws/cert-S5HDM3FKQGM7NZNDVMTDXCUX653UARYY.pem; export EC2_URL=http://ec2.us-west-1.amazonaws.com'
-alias aws-secondary-ssh='ssh-add ~/.ssh/stripe-ctf-key'
-alias aws-secondary-env='export EC2_PRIVATE_KEY=~/.stripe/personal/secondary/pk-QSDHLWH4BI75ZRZSHM2LLIKPJ2HXYU6D.pem; export EC2_CERT=~/.stripe/personal/secondary/cert-QSDHLWH4BI75ZRZSHM2LLIKPJ2HXYU6D.pem; export EC2_URL=http://ec2.us-east-1.amazonaws.com'
-alias aws-ctf-ssh='ssh-add ~/.stripe/aws/ssh/ctf.stri.pe'
-alias aws-ctf-env='export EC2_PRIVATE_KEY=~/.stripe/personal/secondary/pk-QSDHLWH4BI75ZRZSHM2LLIKPJ2HXYU6D.pem; export EC2_CERT=~/.stripe/personal/secondary/cert-QSDHLWH4BI75ZRZSHM2LLIKPJ2HXYU6D.pem; export EC2_URL=http://ec2.us-west-1.amazonaws.com'
 
 gsutil-md5() {
     file="$1"
@@ -124,15 +85,6 @@ chalk-clone() {
 apiori-clone() {
     run git clone git@github.com:apiori/"$1".git && \
         (cd "$1" && stripe-git-config-email)
-}
-modelt-clone() {
-    cd "$GOPATH"
-    stripe_internal_path="src/github.com/stripe-internal"
-    mkdir -vp "$stripe_internal_path"
-    cd "$stripe_internal_path"
-    pwd
-    stripe-clone "$1"
-    ln -svT "$GOPATH/$stripe_internal_path/$1" "$HOME/stripe/$1"
 }
 
 stripe-git-config-email() {
@@ -241,34 +193,6 @@ aws-env() {
     set_var_verbose EC2_URL "http://ec2.$region.amazonaws.com"
 }
 
-modelt-env() {
-    if [ $# -lt 1 ]; then
-        echo >&2 "usage: modelt-env ENV"
-        return 1
-    fi
-
-    echo >&2 + ". $HOME/.stripe/personal/modelt/env/$1"
-    . "$HOME/.stripe/personal/modelt/env/$1"
-}
-
-alias cdp="cd /etc/puppet"
-pgit() {
-    sudo bash -c '
-        . /usr/stripe/bin/git-author.sh "$SUDO_USER"
-        set -x
-        cd /etc/puppet
-        git "$@"
-        ' -- "$@"
-}
-pgc() {
-    sudo bash -c '
-        . /usr/stripe/bin/git-author.sh "$SUDO_USER"
-        set -x
-        cd /etc/puppet
-        git commit "$@"
-        ' -- "$@"
-}
-
 alias cur-apiori='curl -sS https://api.stripe.com/healthcheck | cut -f1,2 -d.'
 alias cur-fe='curl -sS https://stripe.com/healthcheck/fe | cut -f1,2 -d.'
 alias cur-hal='curl -sS http://stripe.com/healthcheck/haproxy | cut -f1,2 -d.'
@@ -281,7 +205,6 @@ _c() {
 
 alias gpgk="gpg --no-default-keyring --keyring"
 alias gpgk.="gpg --no-default-keyring --keyring ./pubring.gpg --secret-keyring ./secring.gpg --trustdb-name ./trustdb.gpg"
-alias gpg-stripe="gpg --keyserver pgp.stripe.com"
 
 # Make sudo play nice with aliases
 alias sudo='sudo '
@@ -309,15 +232,25 @@ alias lessn='less -n'
 alias sll='sudo ls -l --color=auto'
 alias mvi='mv -iv'
 alias cdu='colordiff -u'
-alias asa='. auto-ssh-agent'
 alias mtime='stat --format=%y'
 alias timeat='date +%s -d'
 alias ips='ip -o addr show scope global | grep inet | cut -d" " -f 2,7 | cut -d/ -f1'
 alias ds='dig +short'
 alias dsa='dig-authoritative +short'
 alias diga='dig-authoritative'
-alias clip='xclip -selection clipboard'
-alias clip1='xclip -selection clipboard -loops 1'
+
+case "$OSTYPE" in
+    linux-*)
+        alias clip='xclip -selection clipboard'
+        alias clip1='xclip -selection clipboard -loops 1'
+        ;;
+    darwin*)
+        alias clip=pbcopy
+        ;;
+    *)
+        echo >&2 "Unexpected \$OSTYPE: $OSTYPE"
+esac
+
 function wp() { dig +short txt "$*.wp.dg.cx"; } # wikipedia commandline
 function calc() { echo "$*" | bc -l; } # simple calculator
 alias findf='find . -name '
@@ -458,11 +391,13 @@ function stopwatch() {
     rm -f $log
 }
 
-open() {
-    for i in "$@"; do
-        xdg-open "$i"
-    done
-}
+if [[ $OSTYPE != darwin* ]]; then
+    open() {
+        for i in "$@"; do
+            xdg-open "$i"
+        done
+    }
+fi
 
 # like set -x
 run() {
@@ -494,27 +429,21 @@ function unbak() {
     mv -v "$1" "$(dirname "$1")/$(basename "$1" '~')"
 }
 
-function say() {
-    echo "$*" | festival --tts
-}
-
-# unmount all encfs partitions
-function encfs-umount-all() {
-    grep ^encfs /etc/mtab | cut -d' ' -f 2 | while read mount; do
-        run fusermount -u "$mount"
-    done
-}
+if [[ "$OSTYPE" != darwin* ]]; then
+    say() {
+        echo "$*" | festival --tts
+    }
+fi
 
 # frequent cd paths
 add_to_cdpath() {
     [ -d "$1" ] && export CDPATH="$CDPATH:$1"
 }
 add_to_cdpath "$HOME/code"
+add_to_cdpath "$HOME/gov"
 add_to_cdpath "$HOME/stripe"
 add_to_cdpath "$HOME/stripe/apiori"
 add_to_cdpath "$HOME/stripe/ctf"
-alias config="cd '$HOME/documents/Harvard/hcs/config/'"
-alias trunk="cd '$HOME/documents/Harvard/hcs/trunk/'"
 
 # aptitude aliases for brevity
 #alias ainstall='sudo aptitude install'
@@ -614,7 +543,6 @@ alias gfetch='git fetch'
 alias gfe='git fetch'
 alias gfep='git fetch -p'
 alias grb='git rebase'
-alias greview='git push origin HEAD:refs/for/master'
 alias gau='git-auto-update'
 gf() { git show --pretty='format:' --name-only $* | grep -v '^$' | uniq | sed -e "s#^#$(git rev-parse --show-toplevel)/#" ; }
 ge() { $EDITOR $(gf "$*") ; }
@@ -685,18 +613,6 @@ function c () {
     fi
 }
 
-function hcs () {
-    if [ -z "$1" ]; then
-        host=abrody@hcs.harvard.edu
-    elif [[ $1 == *@* ]]; then
-        host=$1.hcs.harvard.edu
-    else
-        host=abrody@$1.hcs.harvard.edu
-    fi
-
-    ssh $host
-}
-
 # Silly function to echo arguments on stdout
 # It's mostly useful for testing bash arrays and shell expansion and such.
 function args() {
@@ -708,6 +624,7 @@ function args() {
 }
 
 # unzip arbitrary archives
+# see also: dtrx
 function unz() {
     if [ $# -lt 1 ]; then
         echo unz FILE
@@ -779,7 +696,6 @@ alias activate="source env/bin/activate"
 export GOPATH="$HOME/code/go"
 alias cdgo='cd "$GOPATH"'
 alias cdgoab='cd "$GOPATH/src/ab"'
-alias cdgostripe='cd "$GOPATH/src/github.com/stripe-internal"'
 alias cdgobin='cd "$GOPATH/bin"'
 add_to_path "$GOPATH/bin"
 
@@ -832,6 +748,10 @@ export LESS_TERMCAP_us=$'\E[04;38;5;74m' # begin underline
 export EDITOR=vim
 export DEBFULLNAME='Andy Brody'
 export DEBEMAIL='andy@abrody.com'
+
+if [[ $OSTYPE == darwin* ]]; then
+    [ -r ~/.conf/bash_aliases.osx ] && source ~/.conf/bash_aliases.osx
+fi
 
 # Preserve history indefinitely
 # It looks like this must be set in ~/.bashrc, and for some reason it doesn't

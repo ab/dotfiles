@@ -1,0 +1,14 @@
+
+binstall() {
+    local log="$HOME/brew-install.log"
+    for name in "$@"; do
+        if ! awk '{print $NF}' "$log" | grep -x -- "$name" >/dev/null; then
+            date "+%F %R	$name" >> "$log"
+        fi
+    done
+    brew install "$@"
+}
+
+# TODO: figure out how best to use GNU utilities by default.
+
+# vim: set ft=sh :
