@@ -1,0 +1,102 @@
+# This file contains aliases that are no longer in use, but which I wanted to
+# keep around to memorialize or for historical reference.
+
+#################
+# Miscellaneous #
+#################
+
+# unmount all encfs partitions
+function encfs-umount-all() {
+    grep ^encfs /etc/mtab | cut -d' ' -f 2 | while read mount; do
+        run fusermount -u "$mount"
+    done
+}
+
+################
+# Stripe stuff #
+################
+
+add_to_path ~/stripe/space-commander/bin
+add_to_path ~/stripe/password-vault/bin
+add_to_path ~/stripe/pay-server/scripts/bin
+add_to_path ~/stripe/henson/bin
+export REMOTECONTROL_NO_BUNDLER=1
+export SPACECOMMANDER_LOG_LEVEL=0
+export SPACECOMMANDER_NO_SSH_COMMANDLINE=1
+export SC_USER=andy
+alias cdgostripe='cd "$GOPATH/src/github.com/stripe-internal"'
+
+# add password-vault bash completion
+[ -e ~/stripe/password-vault/bash_completion ] \
+    && . ~/stripe/password-vault/bash_completion
+
+alias aws-stripe-ssh='ssh-add ~/.stripe/aws/stripe-*.pem'
+alias aws-stripe-env='export EC2_PRIVATE_KEY=~/.stripe/aws/pk-BOINZURLRNL7FT377OK4NBV2ZCVW6MTW.pem; export EC2_CERT=~/.stripe/aws/cert-BOINZURLRNL7FT377OK4NBV2ZCVW6MTW.pem; export EC2_URL=http://ec2.us-west-1.amazonaws.com'
+alias aws-apiori-ssh='ssh-add ~/.apiori/aws/apiori-2.pem'
+alias aws-apiori-env='export EC2_PRIVATE_KEY=~/.apiori/aws/pk-S5HDM3FKQGM7NZNDVMTDXCUX653UARYY.pem; export EC2_CERT=~/.apiori/aws/cert-S5HDM3FKQGM7NZNDVMTDXCUX653UARYY.pem; export EC2_URL=http://ec2.us-west-1.amazonaws.com'
+alias aws-secondary-ssh='ssh-add ~/.ssh/stripe-ctf-key'
+alias aws-secondary-env='export EC2_PRIVATE_KEY=~/.stripe/personal/secondary/pk-QSDHLWH4BI75ZRZSHM2LLIKPJ2HXYU6D.pem; export EC2_CERT=~/.stripe/personal/secondary/cert-QSDHLWH4BI75ZRZSHM2LLIKPJ2HXYU6D.pem; export EC2_URL=http://ec2.us-east-1.amazonaws.com'
+alias aws-ctf-ssh='ssh-add ~/.stripe/aws/ssh/ctf.stri.pe'
+alias aws-ctf-env='export EC2_PRIVATE_KEY=~/.stripe/personal/secondary/pk-QSDHLWH4BI75ZRZSHM2LLIKPJ2HXYU6D.pem; export EC2_CERT=~/.stripe/personal/secondary/cert-QSDHLWH4BI75ZRZSHM2LLIKPJ2HXYU6D.pem; export EC2_URL=http://ec2.us-west-1.amazonaws.com'
+
+modelt-env() {
+    if [ $# -lt 1 ]; then
+        echo >&2 "usage: modelt-env ENV"
+        return 1
+    fi
+
+    echo >&2 + ". $HOME/.stripe/personal/modelt/env/$1"
+    . "$HOME/.stripe/personal/modelt/env/$1"
+}
+
+alias cdp="cd /etc/puppet"
+pgit() {
+    sudo bash -c '
+        . /usr/stripe/bin/git-author.sh "$SUDO_USER"
+        set -x
+        cd /etc/puppet
+        git "$@"
+        ' -- "$@"
+}
+pgc() {
+    sudo bash -c '
+        . /usr/stripe/bin/git-author.sh "$SUDO_USER"
+        set -x
+        cd /etc/puppet
+        git commit "$@"
+        ' -- "$@"
+}
+
+alias gpg-stripe="gpg --keyserver pgp.stripe.com"
+
+modelt-clone() {
+    cd "$GOPATH"
+    stripe_internal_path="src/github.com/stripe-internal"
+    mkdir -vp "$stripe_internal_path"
+    cd "$stripe_internal_path"
+    pwd
+    stripe-clone "$1"
+    ln -svT "$GOPATH/$stripe_internal_path/$1" "$HOME/stripe/$1"
+}
+
+#################
+# Harvard stuff #
+#################
+
+alias config="cd '$HOME/documents/Harvard/hcs/config/'"
+alias trunk="cd '$HOME/documents/Harvard/hcs/trunk/'"
+alias greview='git push origin HEAD:refs/for/master'
+
+function hcs () {
+    if [ -z "$1" ]; then
+        host=abrody@hcs.harvard.edu
+    elif [[ $1 == *@* ]]; then
+        host=$1.hcs.harvard.edu
+    else
+        host=abrody@$1.hcs.harvard.edu
+    fi
+
+    ssh $host
+}
+
+# vim: set ft=sh :
