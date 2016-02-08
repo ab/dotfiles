@@ -1,3 +1,5 @@
+#!/bin/bash
+# ^ clue vim into the fact that this is a bash file
 
 binstall() {
     local log="$HOME/brew-install.log"
@@ -9,6 +11,34 @@ binstall() {
     brew install "$@"
 }
 
-# TODO: figure out how best to use GNU utilities by default.
+if [ -e ~/.conf/bashrc.local ]; then
+    source ~/.conf/bashrc.local
+fi
 
-# vim: set ft=sh :
+# GNU utility overrides
+# TODO: this should maybe be done with PATH stuff instead
+if which gsha1sum >/dev/null 2>&1; then
+    for type in md5 sha1 sha224 sha256 sha384 sha512; do
+        alias "${type}sum"="g${type}sum"
+    done
+fi
+
+for name in readlink stat shred; do
+    alias "$name"="g$name"
+done
+
+if [ -e /usr/local/bin/gls ]; then
+    alias ls='/usr/local/bin/gls --color=auto'
+fi
+
+# homebrew bash completion
+if [ -f $(brew --prefix)/etc/bash_completion ]; then
+    . $(brew --prefix)/etc/bash_completion
+fi
+
+# skip git commit -S if gpg not present
+if ! which gpg >/dev/null 2>&1 ; then
+    git_commit_s() {
+        git commit "$@"
+    }
+fi
