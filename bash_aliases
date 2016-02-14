@@ -469,7 +469,7 @@ ainstall() {
 git_commit_s() {
     local root
     root="$(git rev-parse --show-toplevel)" || return $?
-    if [ -e "$root/.sign-commits" ]; then
+    if [ -e "$root/.sign-commits" -a -z "${SKIP_GIT_SIGN}" ]; then
         git commit -S "$@"
     else
         git commit "$@"
