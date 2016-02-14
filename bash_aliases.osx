@@ -42,3 +42,7 @@ if ! which gpg >/dev/null 2>&1 ; then
         git commit "$@"
     }
 fi
+
+if [ -e /usr/local/opt/groovy/libexec ]; then
+    export GROOVY_HOME="/usr/local/opt/groovy/libexec"
+fi
