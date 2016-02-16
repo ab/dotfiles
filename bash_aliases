@@ -578,9 +578,10 @@ gs-files() {
 gse() {
     $EDITOR $(gs-files)
 }
-gc-mtime() {
+git-commit-mtime() {
     git commit --date="$(stat --format=%y "$1")"
 }
+alias gc-mtime=git-commit-mtime
 
 alias p-r='hub pull-request'
 
