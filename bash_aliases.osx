@@ -48,3 +48,5 @@ export SKIP_GIT_SIGN=1
 if [ -e /usr/local/opt/groovy/libexec ]; then
     export GROOVY_HOME="/usr/local/opt/groovy/libexec"
 fi
+
+auto-enproxy

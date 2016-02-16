@@ -115,6 +115,15 @@ deproxy() {
     echo >&2 "+ unset -v http_proxy noproxy HTTP_USER_AGENT"
     unset -v http_proxy noproxy HTTP_USER_AGENT
 }
+auto-enproxy() {
+    if [ -z "${ENPROXY_HOST-}" ]; then
+        return;
+    fi
+
+    if ping -c 2 -i 0.25 -W 300 "$ENPROXY_HOST" >/dev/null; then
+        enproxy
+    fi
+}
 
 set_var_verbose() {
     local var="$1"
