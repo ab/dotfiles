@@ -100,7 +100,7 @@ enproxy() {
         echo >&2 "enproxy: please set ENPROXY_HOST"
         return 1
     fi
-    set_var_verbose http_proxy "$ENPROXY_HOST:${ENPROXY_PORT-80}"
+    set_var_verbose http_proxy "http://$ENPROXY_HOST:${ENPROXY_PORT-80}"
     if [ -n "${ENPROXY_NO_PROXY-}" ]; then
         set_var_verbose no_proxy "$ENPROXY_NO_PROXY"
     fi
