@@ -125,6 +125,18 @@ auto-enproxy() {
     fi
 }
 
+# docker stuff
+d-activate() {
+    eval $(run docker-machine env "$1")
+    if [ -n "${no_proxy-}" ]; then
+        ip=$(docker-machine ip "$1")
+        if ! [[ $no_proxy == *$ip* ]]; then
+            echo >&2 "no_proxy='$no_proxy,$ip'"
+            export no_proxy="$no_proxy,$ip"
+        fi
+    fi
+}
+
 set_var_verbose() {
     local var="$1"
     local val="$2"
