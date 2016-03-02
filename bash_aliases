@@ -101,6 +101,7 @@ enproxy() {
         return 1
     fi
     set_var_verbose http_proxy "http://$ENPROXY_HOST:${ENPROXY_PORT-80}"
+    set_var_verbose https_proxy "http://$ENPROXY_HOST:${ENPROXY_PORT-80}"
     if [ -n "${ENPROXY_NO_PROXY-}" ]; then
         set_var_verbose no_proxy "$ENPROXY_NO_PROXY"
     fi
@@ -112,8 +113,8 @@ deproxy() {
     if [ -e "$HOME/.curlrc" ]; then
         mv -vn "$HOME/.curlrc" "$HOME/.curlrc~"
     fi
-    echo >&2 "+ unset -v http_proxy noproxy HTTP_USER_AGENT"
-    unset -v http_proxy noproxy HTTP_USER_AGENT
+    echo >&2 "+ unset -v http_proxy https_proxy noproxy HTTP_USER_AGENT"
+    unset -v http_proxy https_proxy noproxy HTTP_USER_AGENT
 }
 auto-enproxy() {
     if [ -z "${ENPROXY_HOST-}" ]; then
