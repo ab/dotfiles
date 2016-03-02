@@ -737,7 +737,7 @@ _pyval() {
 alias p='shopts="$SHELLOPTS"; set -f; _pyval'
 
 # virtualenv activate
-alias activate="source env/bin/activate"
+alias activate="source venv/bin/activate"
 
 # Go/golang aliases
 export GOPATH="$HOME/code/go"
