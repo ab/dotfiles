@@ -49,4 +49,7 @@ if [ -e /usr/local/opt/groovy/libexec ]; then
     export GROOVY_HOME="/usr/local/opt/groovy/libexec"
 fi
 
+# pip should only run if there is a virtualenv currently activated
+export PIP_REQUIRE_VIRTUALENV=true
+
 auto-enproxy
