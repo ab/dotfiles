@@ -594,11 +594,11 @@ alias gau='git-auto-update'
 gf() { git show --pretty='format:' --name-only $* | grep -v '^$' | uniq | sed -e "s#^#$(git rev-parse --show-toplevel)/#" ; }
 ge() { $EDITOR $(gf "$*") ; }
 gs-files() {
-    git status --porcelain | grep -E '(^M|^A|^.M)' | awk '{ print $NF }' \
+    git status --porcelain | grep -E '(^M|^A|^.M)' | cut -c 4- \
         | sed -e "s#^#$(git rev-parse --show-toplevel)/#"
 }
 gse() {
-    $EDITOR $(gs-files)
+    $EDITOR -- $(gs-files)
 }
 git-commit-mtime() {
     git commit --date="$(stat --format=%y "$1")"
