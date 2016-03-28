@@ -36,6 +36,11 @@ if [ -f $(brew --prefix)/etc/bash_completion ]; then
     . $(brew --prefix)/etc/bash_completion
 fi
 
+# homebrew aws bash completion
+if which aws_completer >/dev/null 2>&1; then
+    complete -C aws_completer aws
+fi
+
 # skip git commit -S if gpg not present
 if ! which gpg >/dev/null 2>&1 ; then
     git_commit_s() {
