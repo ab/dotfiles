@@ -76,6 +76,9 @@ set nojoinspaces
 " TODO: decide whether to keep this
 set showcmd
 
+" show current cursor/file position
+set ruler
+
 " title customizations
 set title
 set titlestring=(%t)\ %{$USER}@%{hostname()}:\ vim\ %(%h\ %)%F\ %M titlelen=150
