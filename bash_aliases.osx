@@ -54,6 +54,8 @@ if [ -e /usr/local/opt/groovy/libexec ]; then
     export GROOVY_HOME="/usr/local/opt/groovy/libexec"
 fi
 
+alias sshpiv='ssh -I /usr/local/lib/opensc-pkcs11.so'
+
 # pip should only run if there is a virtualenv currently activated
 export PIP_REQUIRE_VIRTUALENV=true
 
