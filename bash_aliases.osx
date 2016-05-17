@@ -59,4 +59,8 @@ alias sshpiv='ssh -I /usr/local/lib/opensc-pkcs11.so'
 # pip should only run if there is a virtualenv currently activated
 export PIP_REQUIRE_VIRTUALENV=true
 
+NF() {
+    awk '{ print $NF }'
+}
+
 auto-enproxy
