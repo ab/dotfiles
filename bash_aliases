@@ -315,6 +315,32 @@ alias torssh="torsocks ssh -o ControlPath='~/.ssh/sockets/%r@%h-%p.tor'"
 alias showx509='openssl x509 -noout -text -nameopt multiline -certopt no_sigdump -in'
 alias strip-escapes='sed -r "s/\x1B\[([0-9]{1,2}(;[0-9]{1,2})?)?[m|K]//g"'
 
+showx509chain() {
+    if [ $# -ne 1 ]; then
+        cat >&2 <<EOM
+usage: $(basename "$0") CHAINFILE.crt
+
+Print text info about all X.509 certificates in a file.
+EOM
+        return 1
+    fi
+
+    openssl crl2pkcs7 -nocrl -certfile "$1" \
+        | openssl pkcs7 -print_certs -text -noout
+}
+showx509chaincat() {
+    if [ $# -ne 1 ]; then
+        cat >&2 <<EOM
+usage: $(basename "$0") CHAINFILE.crt
+
+Print all X.509 certificates in a file with subj/issuer headers.
+EOM
+        return 1
+    fi
+
+    openssl crl2pkcs7 -nocrl -certfile "$1" | openssl pkcs7 -print_certs
+}
+
 function awhois() { run whois "domain $1" ; }
 
 function private() {
