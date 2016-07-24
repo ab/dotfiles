@@ -518,16 +518,26 @@ add_to_cdpath "$HOME/stripe"
 add_to_cdpath "$HOME/stripe/apiori"
 add_to_cdpath "$HOME/stripe/ctf"
 
+# search for command on $PATH
+has_command() {
+    type "$@" >/dev/null 2>&1
+}
+
 # aptitude aliases for brevity
-#alias ainstall='sudo aptitude install'
 alias aremove='sudo aptitude remove'
 alias asearch='aptitude search'
 alias ashow='aptitude show'
-alias aupdate='sudo aptitude update && sudo aptitude safe-upgrade'
-alias aupgrade='sudo aptitude full-upgrade'
 alias awhy='aptitude why'
 alias dpkg-version="dpkg-query -Wf '\${Version}\n'"
 alias apolicy='apt-cache policy'
+
+if has_command apt; then
+    alias aupdate='sudo apt update && sudo apt upgrade'
+    alias aupgrade='sudo apt full-upgrade'
+else
+    alias aupdate='sudo aptitude update && sudo aptitude safe-upgrade'
+    alias aupgrade='sudo aptitude full-upgrade'
+fi
 
 ainstall() {
     local log="$HOME/install.log"
@@ -536,7 +546,14 @@ ainstall() {
             date "+%F %R	$name" >> "$log"
         fi
     done
-    sudo aptitude install "$@"
+
+    if has_command apt; then
+        sudo apt install "$@"
+    elif has_commant aptitude; then
+        sudo aptitude install "$@"
+    else
+        sudo apt-get install "$@"
+    fi
 }
 
 git_commit_s() {
