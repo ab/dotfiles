@@ -93,15 +93,14 @@ stripe-git-config-email() {
 
 # proxy stuff
 enproxy() {
-    if [ -e "$HOME/.curlrc~" ]; then
-        mv -vn "$HOME/.curlrc~" "$HOME/.curlrc"
-    fi
     if [ -z "${ENPROXY_HOST-}" ]; then
         echo >&2 "enproxy: please set ENPROXY_HOST"
         return 1
     fi
-    set_var_verbose http_proxy "http://$ENPROXY_HOST:${ENPROXY_PORT-80}"
-    set_var_verbose https_proxy "http://$ENPROXY_HOST:${ENPROXY_PORT-80}"
+    local proto
+    proto="${ENPROXY_PROTO-http}"
+    set_var_verbose http_proxy "$proto://$ENPROXY_HOST:${ENPROXY_PORT-80}"
+    set_var_verbose https_proxy "$proto://$ENPROXY_HOST:${ENPROXY_PORT-80}"
     if [ -n "${ENPROXY_NO_PROXY-}" ]; then
         set_var_verbose no_proxy "$ENPROXY_NO_PROXY"
     fi
@@ -110,9 +109,6 @@ enproxy() {
     fi
 }
 deproxy() {
-    if [ -e "$HOME/.curlrc" ]; then
-        mv -vn "$HOME/.curlrc" "$HOME/.curlrc~"
-    fi
     echo >&2 "+ unset -v http_proxy https_proxy noproxy HTTP_USER_AGENT"
     unset -v http_proxy https_proxy noproxy HTTP_USER_AGENT
 }
