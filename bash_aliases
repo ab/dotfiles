@@ -73,22 +73,31 @@ github-clone() {
     esac
 }
 
-stripe-clone() {
-    run git clone git@github.com:stripe-internal/"$1".git && \
-        (cd "$1" && stripe-git-config-email)
-}
-alias sclone=stripe-clone
-chalk-clone() {
+clone-chalk() {
     run git clone git@github.com:stripe/"$1".git && \
-        (cd "$1" && stripe-git-config-email)
+        (cd "$1" && git-config-email stripe)
 }
-apiori-clone() {
-    run git clone git@github.com:apiori/"$1".git && \
-        (cd "$1" && stripe-git-config-email)
+clone-uscis() {
+    (
+    set -eu
+    run git clone "git@$USCIS_GIT_HOST:USCIS/$1.git" && \
+        (cd "$1" && git-config-email uscis)
+    )
 }
 
-stripe-git-config-email() {
-    run git config --local user.email andy@stripe.com
+git-config-email() {
+    local email
+
+    case "$1" in
+        stripe) email=andy@stripe.com ;;
+        uscis)  email="$USCIS_EMAIL" ;;
+        *)
+            echo >&2 "git-config-email: No email for '$1'"
+            return 1
+            ;;
+    esac
+
+    run git config --local user.email "$email"
 }
 
 # proxy stuff
