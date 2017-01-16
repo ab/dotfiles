@@ -544,6 +544,10 @@ else
     alias aupgrade='sudo aptitude full-upgrade'
 fi
 
+# ansible aliass
+alias ansible-run-dry='sudo ansible-playbook -v /etc/ansible/site.yaml -l $HOSTNAME --check'
+alias ansible-run='sudo ansible-playbook -v /etc/ansible/site.yaml -l $HOSTNAME'
+
 ainstall() {
     local log="$HOME/install.log"
     for name in "$@"; do
