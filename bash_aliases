@@ -769,6 +769,7 @@ alias sml='rlwrap sml -Cprint.depth=3000 -Cprint.length=3000'
 alias tcl='rlwrap tclsh'
 alias math='rlwrap math'
 alias py='ipython'
+alias py3='ipython3'
 alias pysh='ipython -p sh'
 
 _pyval() {
