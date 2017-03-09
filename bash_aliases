@@ -653,7 +653,9 @@ gse() {
     $EDITOR -- $(gs-files)
 }
 git-commit-mtime() {
-    git commit --date="$(stat --format=%y "$1")"
+    filename="$1"
+    shift
+    run git commit --date="$(stat --format=%y "$filename")" "$@"
 }
 alias gc-mtime=git-commit-mtime
 
