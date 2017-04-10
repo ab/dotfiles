@@ -133,7 +133,7 @@ auto-enproxy() {
 
 # docker stuff
 d-activate() {
-    eval $(run docker-machine env "$1")
+    eval "$(run docker-machine env "$1")"
     if [ -n "${no_proxy-}" ]; then
         ip=$(docker-machine ip "$1")
         if ! [[ $no_proxy == *$ip* ]]; then
@@ -306,9 +306,14 @@ esac
 function wp() { dig +short txt "$*.wp.dg.cx"; } # wikipedia commandline
 function calc() { echo "$*" | bc -l; } # simple calculator
 alias findf='find . -name '
-vimfindf() { vim -- $(find . -name "$@") ; }
-function search() { grep -rIn --color "$@" * ; }
-function isearch() { grep -rIni --color "$@" * ; }
+vimfindf() {
+    local IFS
+    IFS=$'\n'
+    # shellcheck disable=SC2046
+    vim -- $(find . -name "$@")
+}
+function search() { grep -rIn --color "$@" ./* ; }
+function isearch() { grep -rIni --color "$@" ./* ; }
 alias wgetn='wget -O /dev/null'
 alias wget-='wget -O -'
 function whichedit() { $EDITOR "$(which "$@")" ; }
@@ -389,8 +394,9 @@ EOM
     fi
     local pid="$1"
     while IFS= read -r -d '' env; do
-        local var="$(echo "$env" | cut -d '=' -f 1)"
-        local val="$(echo "$env" | cut -d '=' -f 2-)"
+        local var val
+        var="$(echo "$env" | cut -d '=' -f 1)"
+        val="$(echo "$env" | cut -d '=' -f 2-)"
 
         if [ "$var" = "SSH_AUTH_SOCK" ]; then
             echo "+ SSH_AUTH_SOCK=$val"
@@ -461,12 +467,13 @@ function decrypt() {
 
 # simple stopwatch
 function stopwatch() {
-    local log=$(mktemp)
+    local log
+    log=$(mktemp)
     date
-    (time read -s -n 1) >$log 2>&1
+    (time read -s -n1 _) >"$log" 2>&1
     date
-    awk '/^real/ { print $2 }' $log
-    rm -f $log
+    awk '/^real/ { print $2 }' "$log"
+    rm -f "$log"
 }
 
 if [[ $OSTYPE != darwin* ]]; then
@@ -517,6 +524,9 @@ fi
 add_to_cdpath() {
     [ -d "$1" ] && export CDPATH="$CDPATH:$1"
 }
+if [ -z "${CDPATH-}" ]; then
+    export CDPATH='.'
+fi
 add_to_cdpath "$HOME/code"
 add_to_cdpath "$HOME/gov"
 add_to_cdpath "$HOME/stripe"
@@ -643,14 +653,30 @@ alias gfe='git fetch'
 alias gfep='git fetch -p'
 alias grb='git rebase'
 alias gau='git-auto-update'
-gf() { git show --pretty='format:' --name-only $* | grep -v '^$' | uniq | sed -e "s#^#$(git rev-parse --show-toplevel)/#" ; }
-ge() { $EDITOR $(gf "$*") ; }
+
+# show files changed in most recent commit
+gf() {
+    git show --pretty='format:' --name-only "$@" | grep -v '^$' | uniq \
+        | sed -e "s#^#$(git rev-parse --show-toplevel)/#"
+}
+ge() {
+    local IFS
+    IFS=$'\n'
+    # XXX TODO make sure IFS=$'\n' actually works
+    # shellcheck disable=SC2046
+    "$EDITOR" $(gf "$*")
+}
 gs-files() {
     git status --porcelain | grep -E '(^M|^A|^.M)' | cut -c 4- \
         | sed -e "s#^#$(git rev-parse --show-toplevel)/#"
 }
 gse() {
-    $EDITOR -- $(gs-files)
+    local IFS
+    IFS=$'\n'
+    # TODO: make this handle spaces and special characters correctly
+    # (need to de-quote the strings)
+    # shellcheck disable=SC2046
+    "$EDITOR" -- $(gs-files)
 }
 git-commit-mtime() {
     filename="$1"
@@ -691,19 +717,20 @@ alias phpcheckhere='for file in *.php; do php -l $file; done'
 alias phpcheck='find . -name "*.php" -exec php -l {} \;'
 
 ssh-aupdate() {
-    if [ -z $1 ]; then
+    if [ $# -lt 1 ]; then
         echo ssh-aupdate HOST
         return 2
     fi
     local remotehost=$1
     shift
-    echo ssh $remotehost aupdate
-    ssh -t $remotehost "sudo aptitude update && sudo aptitude safe-upgrade $*"
+    echo "+ ssh $remotehost aupdate"
+    # shellcheck disable=SC2029
+    ssh -t "$remotehost" "sudo aptitude update && sudo aptitude safe-upgrade $*"
 }
 
 # grep ignoring .svn folders
 grep-svn() {
-    find . -path '*/.svn' -prune -o -type f -print0 | xargs -0 -e grep $*
+    find . -path '*/.svn' -prune -o -type f -print0 | xargs -0 -e grep "$@"
 }
 
 # cd && ll
@@ -759,8 +786,9 @@ function tarball() {
         echo>&2 tarball DIRECTORY
         return 2
     fi
-    local parent="$(dirname "$1")"
-    local dir="$(basename "$1")"
+    local parent dir
+    parent="$(dirname "$1")"
+    dir="$(basename "$1")"
     run tar -czvf "$dir.tgz" -C "$parent" "$dir/"
 }
 
@@ -779,10 +807,11 @@ alias py3='ipython3'
 alias pysh='ipython -p sh'
 
 _pyval() {
-    local python_cmd="print $@"
+    local python_cmd
+    python_cmd="print $*"
     python -c "${python_cmd}"
 
-    case "$shopts" in
+    case "${shopts-}" in
         *noglob*) ;;
         *) set +f;;
     esac
@@ -804,10 +833,10 @@ add_to_path "$GOPATH/bin"
 
 # time long-running jobs
 TIMER_LONG_JOBS=30
-TIMER_IGNORE_COMMANDS=( ssh vim bash )
-function _timer_parse_cmd {
-    echo $(basename "$1")
-}
+#TIMER_IGNORE_COMMANDS=( ssh vim bash )
+#function _timer_parse_cmd {
+#    echo $(basename "$1")
+#}
 function _timer_start {
     #_timer_parse_cmd $BASH_COMMAND
     timer=${timer:-$SECONDS}
@@ -815,8 +844,8 @@ function _timer_start {
 function _timer_stop {
     [ -z "$timer" ] && return
 
-    timer_show=$(($SECONDS - $timer))
-    if (( $timer_show > $TIMER_LONG_JOBS )); then
+    timer_show=$((SECONDS - timer))
+    if (( timer_show > TIMER_LONG_JOBS )); then
         echo "[time: ${timer_show}s] "
     fi
     unset timer
