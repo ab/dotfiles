@@ -11,7 +11,7 @@ FILE_LIST = '_file_list'
 dir_map = {'$HOME':os.getenv('HOME')}
 
 def read_file_list():
-    f = open(FILE_LIST, 'r')
+    f = open(os.path.join(base, FILE_LIST), 'r')
     config_map = {}
 
     for i, line in enumerate(f):
