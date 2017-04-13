@@ -128,6 +128,8 @@ auto-enproxy() {
 
     if ping -c 2 -i 0.25 -W 300 "$ENPROXY_HOST" >/dev/null; then
         enproxy
+    elif [ -n "${http_proxy-}${https_proxy-}" ]; then
+        deproxy
     fi
 }
 
