@@ -67,4 +67,13 @@ NF() {
     awk '{ print $NF }'
 }
 
+enproxy-cntlm() {
+    local proxy
+    proxy=http://localhost:3128
+    echo "export http_proxy=$proxy"
+    echo "export https_proxy=$proxy"
+    export http_proxy="$proxy"
+    export https_proxy="$proxy"
+}
+
 auto-enproxy
