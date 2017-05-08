@@ -177,67 +177,67 @@ set_var_gpg() {
     export "$var=$val"
 }
 
+# AWS env stuff. You should probably use AWS profiles instead of this.
 aws-env() {
-    local domain="$1"
-    local region="$2"
+    local name="$1"
+    local region="${2:-}"
 
     local access_key_file secret_key_file
 
-    case "$domain" in
-        apiori|apiori.com)
-            access_key_file=~/.apiori/personal/aws_access_key_id.txt
-            secret_key_file=~/.apiori/personal/aws_secret_key.gpg
-            ;;
-        stripe|stripe.com)
-            access_key_file=~/.stripe/personal/aws_access_key_id.txt
-            secret_key_file=~/.stripe/personal/aws_secret_key.gpg
-            ;;
-        stri.pe|secondary)
-            access_key_file=~/.stripe/personal/secondary/aws_access_key_id.txt
-            secret_key_file=~/.stripe/personal/secondary/aws_secret_key.gpg
-            ;;
-        ctf|stripe-ctf.com)
-            access_key_file=~/.stripe/personal/secondary/aws_access_key_id.txt
-            secret_key_file=~/.stripe/personal/secondary/aws_secret_key.gpg
+    case "$name" in
+        login|login.gov|identity)
+            access_key_file=~/.aws/personal/login.gov/aws_access_key_id.txt
+            secret_key_file=~/.aws/personal/login.gov/aws_secret_key.gpg
             region="${region:-us-west-2}"
             ;;
         *)
-            echo>&2 "Unknown domain: '$domain'"
-            echo>&2 "Try one of apiori, stripe, or secondary"
+            echo>&2 "Unknown name: '$name'"
             return 2
             ;;
     esac
 
-    region="${region:-us-west-1}"
+    region="${region:-us-east-1}"
 
     # handle region nicknames
     case "$region" in
-        east|virginia|us-east-1)
+        east|virginia|va)
             region="us-east-1"
             ;;
-        west|california|us-west-1)
+        oh|ohio)
+            region="us-east-2"
+            ;;
+        west|california|ca)
             region="us-west-1"
             ;;
-        nw|northwest|oregon|us-west-2)
+        nw|northwest|oregon|or)
             region="us-west-2"
             ;;
-        eu|europe|eu-west-1)
+        eu|europe|ireland|dublin|ie)
             region="eu-west-1"
             ;;
-        au|australia|ap-southeast-2)
+        gov|govcloud)
+            region="us-gov-west-1"
+            ;;
+        au|australia)
             region="ap-southeast-2"
             ;;
     esac
 
     case "$region" in
-        eu-west-1      | \
-        sa-east-1      | \
-        us-east-1      | \
         ap-northeast-1 | \
-        us-west-2      | \
-        us-west-1      | \
-        ap-southeast-1 | \
-        ap-southeast-2 )
+        ap-northeast-2 | \
+        ap-south-1 | \
+        ap-southeast-2 | \
+        ap-southeast-2 | \
+        ca-central-1 | \
+        eu-central-1 | \
+        eu-west-1 | \
+        eu-west-2 | \
+        sa-east-1 | \
+        us-east-1 | \
+        us-east-2 | \
+        us-west-1 | \
+        us-west-2)
             export AWS_DEFAULT_REGION="$region"
             ;;
         *)
@@ -250,7 +250,7 @@ aws-env() {
     export AWS_ACCESS_KEY_ID="$AWS_ACCESS_KEY"
     set_var_gpg AWS_SECRET_KEY "$secret_key_file" || return 1
     export AWS_SECRET_ACCESS_KEY="$AWS_SECRET_KEY"
-    set_var_verbose EC2_URL "http://ec2.$region.amazonaws.com"
+    set_var_verbose AWS_DEFAULT_REGION "$region"
 }
 
 alias cur-apiori='curl -sS https://api.stripe.com/healthcheck | cut -f1,2 -d.'
@@ -586,7 +586,7 @@ ainstall() {
 git_commit_s() {
     local root
     root="$(git rev-parse --show-toplevel)" || return $?
-    if [ -e "$root/.sign-commits" -a -z "${SKIP_GIT_SIGN}" ]; then
+    if [[ -e "$root/.sign-commits" && -z "${SKIP_GIT_SIGN-}" ]]; then
         git commit -S "$@"
     else
         git commit "$@"
