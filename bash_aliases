@@ -876,14 +876,14 @@ trap '_EXIT_CODE=$?; [ -z "$BASH_SOURCE" ] && echo -e "\033[1;31m$_EXIT_CODE\033
 #export SHELL_SINK_TAGS=`hostname`
 
 # Less Colors for Man Pages
-#export LESS_TERMCAP_mb=$'\E[01;31m'       # begin blinking
-#export LESS_TERMCAP_md=$'\E[01;38;5;74m'  # begin bold
-#export LESS_TERMCAP_me=$'\E[0m'           # end mode
-#export LESS_TERMCAP_se=$'\E[0m'           # end standout-mode
-#export LESS_TERMCAP_so=$'\E[38;5;246m'    # begin standout-mode - info box
-export LESS_TERMCAP_ue=$'\E[0m'           # end underline
-#export LESS_TERMCAP_us=$'\E[04;38;5;146m' # begin underline
-export LESS_TERMCAP_us=$'\E[04;38;5;74m' # begin underline
+#export LESS_TERMCAP_mb=$'\e[01;31m'       # begin blinking
+#export LESS_TERMCAP_md=$'\e[01;38;5;74m'  # begin bold
+#export LESS_TERMCAP_me=$'\e[0m'           # end mode
+#export LESS_TERMCAP_se=$'\e[0m'           # end standout-mode
+#export LESS_TERMCAP_so=$'\e[38;5;246m'    # begin standout-mode - info box
+export LESS_TERMCAP_ue=$'\e[0m'           # end underline
+#export LESS_TERMCAP_us=$'\e[04;38;5;146m' # begin underline (purple)
+export LESS_TERMCAP_us=$'\e[04;38;5;74m' # begin underline (blue)
 
 export EDITOR=vim
 export DEBFULLNAME='Andy Brody'
