@@ -32,8 +32,8 @@ if [ -e /usr/local/bin/gls ]; then
 fi
 
 # homebrew bash completion
-if [ -f $(brew --prefix)/etc/bash_completion ]; then
-    . $(brew --prefix)/etc/bash_completion
+if [ -f "$(brew --prefix)/etc/bash_completion" ]; then
+    . "$(brew --prefix)/etc/bash_completion"
 fi
 
 # homebrew aws bash completion
@@ -65,6 +65,32 @@ export PIP_REQUIRE_VIRTUALENV=true
 
 NF() {
     awk '{ print $NF }'
+}
+
+LOCALPROXY_DIR=/Users/Shared/www/stuff
+LOCALPROXY_LINK=/Users/Shared/www/stuff/proxy-switch.pac
+localproxy-get-current() {
+    greadlink -e "$LOCALPROXY_LINK" && ret=$? || ret=$?
+    if [ "$ret" -ne 0 ]; then
+        echo >&2 "readlink: error $ret - $LOCALPROXY_LINK"
+        return "$ret"
+    fi
+}
+localproxy-enable() {
+    localproxy-switch proxy-zokor.pac
+}
+localproxy-disable() {
+    localproxy-switch proxy-disabled.pac
+}
+localproxy-switch() {
+    if [ $# -lt 1 ]; then
+        echo >&2 "usage: switch-localproxy BASENAME_PAC"
+    fi
+    local desired
+    desired="$LOCALPROXY_DIR/$1"
+    if [ ! "$(localproxy-get-current)" = "$desired" ]; then
+        ln -sfv "$desired" "$LOCALPROXY_LINK"
+    fi
 }
 
 enproxy-cntlm() {

@@ -116,10 +116,14 @@ enproxy() {
     if [ -n "${ENPROXY_USER_AGENT-}" ]; then
         set_var_verbose HTTP_USER_AGENT "$ENPROXY_USER_AGENT"
     fi
+
+    localproxy-enable
 }
 deproxy() {
     echo >&2 "+ unset -v http_proxy https_proxy noproxy HTTP_USER_AGENT"
     unset -v http_proxy https_proxy noproxy HTTP_USER_AGENT
+
+    localproxy-disable
 }
 auto-enproxy() {
     if [ -z "${ENPROXY_HOST-}" ]; then
@@ -130,6 +134,8 @@ auto-enproxy() {
         enproxy
     elif [ -n "${http_proxy-}${https_proxy-}" ]; then
         deproxy
+    else
+        localproxy-disable
     fi
 }
 
