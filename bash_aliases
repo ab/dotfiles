@@ -881,9 +881,10 @@ trap '_EXIT_CODE=$?; [ -z "$BASH_SOURCE" ] && echo -e "\033[1;31m$_EXIT_CODE\033
 #export LESS_TERMCAP_me=$'\e[0m'           # end mode
 #export LESS_TERMCAP_se=$'\e[0m'           # end standout-mode
 #export LESS_TERMCAP_so=$'\e[38;5;246m'    # begin standout-mode - info box
-export LESS_TERMCAP_ue=$'\e[0m'           # end underline
 #export LESS_TERMCAP_us=$'\e[04;38;5;146m' # begin underline (purple)
 export LESS_TERMCAP_us=$'\e[04;38;5;74m' # begin underline (blue)
+export LESS_TERMCAP_ue=$'\e[0m'           # end underline
+export LESS_TERMCAP_first=$'\e[0m'     # fake termcap to end underline in `env`
 
 export EDITOR=vim
 export DEBFULLNAME='Andy Brody'
