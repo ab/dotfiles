@@ -672,7 +672,7 @@ ge() {
     IFS=$'\n'
     # XXX TODO make sure IFS=$'\n' actually works
     # shellcheck disable=SC2046
-    "$EDITOR" $(gf "$*")
+    "$EDITOR" $(gf "${1-HEAD}")
 }
 gs-files() {
     git status --porcelain | grep -E '(^M|^A|^.M)' | cut -c 4- \
