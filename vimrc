@@ -320,3 +320,5 @@ set wildignore+=*.pyc
 " syntastic options
 " disable syntastic for puppet since it's super slow
 let g:syntastic_puppet_checkers=[]
+" add -x to shellcheck so that it follows links
+let g:syntastic_sh_shellcheck_args="-x"
