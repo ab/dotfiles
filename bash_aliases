@@ -890,7 +890,7 @@ export LESS_TERMCAP_first=$'\e[0m'     # fake termcap to end underline in `env`
 
 export EDITOR=vim
 export DEBFULLNAME='Andy Brody'
-export DEBEMAIL='andy@abrody.com'
+export DEBEMAIL='git@abrody.com'
 
 if [[ $OSTYPE == darwin* ]]; then
     [ -r ~/.conf/bash_aliases.osx ] && source ~/.conf/bash_aliases.osx
