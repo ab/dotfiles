@@ -726,6 +726,9 @@ alias runddd='ssh -MCX cs161 "(cd ~/cs161/root; ddd --debugger os161-gdb --gdb k
 alias phpcheckhere='for file in *.php; do php -l $file; done'
 alias phpcheck='find . -name "*.php" -exec php -l {} \;'
 
+# tell shellcheck it's OK to follow source files
+export SHELLCHECK_OPTS=-x
+
 ssh-aupdate() {
     if [ $# -lt 1 ]; then
         echo ssh-aupdate HOST
