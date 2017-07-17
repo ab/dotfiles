@@ -26,6 +26,11 @@ set background=dark
 "set t_Co=256
 set t_Co=16
 
+" We use a securemodelines plugin rather than modelines due to the potential
+" for arbitrary code execution from modelines CVE-2007-2438
+set nomodeline
+set modelines=0
+
 " don't display the :intro
 set shortmess+=I
 
