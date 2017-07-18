@@ -324,4 +324,6 @@ set wildignore+=*.pyc
 
 " syntastic options
 " disable syntastic for puppet since it's super slow
-let g:syntastic_puppet_checkers=[]
+let g:syntastic_puppet_checkers = []
+" enable rubocop after MRI linter
+let g:syntastic_ruby_checkers = ['mri', 'rubocop']
