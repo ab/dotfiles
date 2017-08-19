@@ -729,6 +729,15 @@ alias phpcheck='find . -name "*.php" -exec php -l {} \;'
 # tell shellcheck it's OK to follow source files
 export SHELLCHECK_OPTS=-x
 
+# SSH using gpg-agent as ssh agent (e.g. for smart card SSH)
+alias sshg='SSH_AUTH_SOCK=~/.gnupg/S.gpg-agent.ssh ssh'
+alias sshgpg='SSH_AUTH_SOCK=~/.gnupg/S.gpg-agent.ssh ssh'
+alias scpgpg='SSH_AUTH_SOCK=~/.gnupg/S.gpg-agent.ssh scp'
+
+gpg-set-ssh-agent() {
+    set_var_verbose SSH_AUTH_SOCK ~/.gnupg/S.gpg-agent.ssh
+}
+
 ssh-aupdate() {
     if [ $# -lt 1 ]; then
         echo ssh-aupdate HOST
