@@ -1,6 +1,11 @@
 #!/bin/bash
 # ^ clue vim into the fact that this is a bash file
 
+# disable Terminal bash sessions nonsense
+if ! [ -e ~/.bash_sessions_disable ]; then
+    run touch ~/.bash_sessions_disable
+fi
+
 binstall() {
     local log="$HOME/brew-install.log"
     for name in "$@"; do
