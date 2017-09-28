@@ -320,6 +320,9 @@ vimfindf() {
     # shellcheck disable=SC2046
     vim -- $(find . -name "$@")
 }
+vimgg() {
+    run git grep -lz "$@" | xargs -0 sh -xc 'vim "$@" < /dev/tty' vim
+}
 function search() { grep -rIn --color "$@" ./* ; }
 function isearch() { grep -rIni --color "$@" ./* ; }
 alias wgetn='wget -O /dev/null'
