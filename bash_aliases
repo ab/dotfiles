@@ -84,6 +84,13 @@ clone-uscis() {
         (cd "$1" && git-config-email uscis)
     )
 }
+clone-18f() {
+    (
+    set -eu
+    run git clone "git@github.com:18F/$1.git" && \
+        (cd "$1" && git-config-email gsa)
+    )
+}
 
 git-config-email() {
     local email
@@ -91,6 +98,7 @@ git-config-email() {
     case "$1" in
         stripe) email=andy@stripe.com ;;
         uscis)  email="$USCIS_EMAIL" ;;
+        gsa)    email="$GSA_EMAIL" ;;
         *)
             echo >&2 "git-config-email: No email for '$1'"
             return 1
