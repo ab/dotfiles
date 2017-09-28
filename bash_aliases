@@ -656,6 +656,10 @@ alias glf='git log --show-signature --pretty=fuller'
 alias gr='git reset'
 alias grH='git reset HEAD'
 alias grh='git reset --hard'
+grho() {
+    run git reset --hard \
+        "$(git rev-parse --abbrev-ref --symbolic-full-name '@{u}')"
+}
 alias grm='git ls-files -z --deleted | xargs -0 git rm'
 alias grp='git rev-parse'
 alias grpH='git rev-parse HEAD'
