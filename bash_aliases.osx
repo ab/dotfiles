@@ -59,11 +59,18 @@ if [ -e /usr/local/opt/groovy/libexec ]; then
     export GROOVY_HOME="/usr/local/opt/groovy/libexec"
 fi
 
-#alias sshpiv='ssh -I /usr/local/lib/opensc-pkcs11.so'
-#alias sshpivi='ssh -I /usr/local/lib/opensc-pkcs11.so -o StrictHostKeyChecking=no'
-alias sshpiv='ssh -I /usr/local/share/centrifydc/lib/pkcs11/tokendPKCS11.so'
-alias sshpivi='ssh -I /usr/local/share/centrifydc/lib/pkcs11/tokendPKCS11.so -o StrictHostKeyChecking=no'
-alias ssh-add-piv='ssh-add -s /usr/local/share/centrifydc/lib/pkcs11/tokendPKCS11.so'
+if [ -e /usr/local/share/centrifydc/lib/pkcs11/tokendPKCS11.so ]; then
+    PKCS11_LIB=/usr/local/share/centrifydc/lib/pkcs11/tokendPKCS11.so
+else
+    PKCS11_LIB=/usr/local/lib/opensc-pkcs11.so
+fi
+
+# shellcheck disable=SC2139
+alias sshpiv="ssh -I '$PKCS11_LIB'"
+# shellcheck disable=SC2139
+alias sshpivi="ssh -I '$PKCS11_LIB' -o StrictHostKeyChecking=no"
+# shellcheck disable=SC2139
+alias ssh-add-piv="ssh-add -s '$PKCS11_LIB'"
 
 # pip should only run if there is a virtualenv currently activated
 export PIP_REQUIRE_VIRTUALENV=true
