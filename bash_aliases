@@ -271,8 +271,40 @@ _c() {
     awk "{print \$$col}" "$@"
 }
 
+# USE GPG2
+if [ "$(type -t gpg2)" = "file" ]; then
+    alias gpg=gpg2
+    if ! type -t gpg1 >/dev/null; then
+        alias gpg1=/usr/bin/gpg
+    fi
+fi
+
 alias gpgk="gpg --no-default-keyring --keyring"
+# TODO replace these with --homedir
 alias gpgk.="gpg --no-default-keyring --keyring ./pubring.gpg --secret-keyring ./secring.gpg --trustdb-name ./trustdb.gpg"
+
+# SSH using gpg-agent as ssh agent (e.g. for smart card SSH)
+alias sshg='SSH_AUTH_SOCK=~/.gnupg/S.gpg-agent.ssh ssh'
+alias sshgpg='SSH_AUTH_SOCK=~/.gnupg/S.gpg-agent.ssh ssh'
+alias scpgpg='SSH_AUTH_SOCK=~/.gnupg/S.gpg-agent.ssh scp'
+
+launch-gpg-agent-ssh() {
+    # launch if not running
+    gpgconf --launch gpg-agent
+    # use as SSH agent
+    export SSH_AUTH_SOCK="$HOME/.gnupg/S.gpg-agent.ssh"
+}
+
+gpg-set-ssh-agent() {
+    set_var_verbose SSH_AUTH_SOCK ~/.gnupg/S.gpg-agent.ssh
+}
+
+# use GPG as ssh-agent, not gnome-keyring
+if [ -z "${SSH_AUTH_SOCK-}" ] \
+   || [[ $SSH_AUTH_SOCK == /run/user/*/keyring/ssh ]]; then
+    launch-gpg-agent-ssh
+fi
+
 
 # Make sudo play nice with aliases
 alias sudo='sudo '
@@ -743,15 +775,6 @@ alias phpcheck='find . -name "*.php" -exec php -l {} \;'
 
 # tell shellcheck it's OK to follow source files
 export SHELLCHECK_OPTS=-x
-
-# SSH using gpg-agent as ssh agent (e.g. for smart card SSH)
-alias sshg='SSH_AUTH_SOCK=~/.gnupg/S.gpg-agent.ssh ssh'
-alias sshgpg='SSH_AUTH_SOCK=~/.gnupg/S.gpg-agent.ssh ssh'
-alias scpgpg='SSH_AUTH_SOCK=~/.gnupg/S.gpg-agent.ssh scp'
-
-gpg-set-ssh-agent() {
-    set_var_verbose SSH_AUTH_SOCK ~/.gnupg/S.gpg-agent.ssh
-}
 
 ssh-aupdate() {
     if [ $# -lt 1 ]; then
