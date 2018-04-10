@@ -20,6 +20,8 @@ if [ -e ~/.conf/bashrc.local ]; then
     source ~/.conf/bashrc.local
 fi
 
+add_to_path ~/gov/identity-devops/bin
+
 # GNU utility overrides
 # TODO: this should maybe be done with PATH stuff instead
 if which gsha1sum >/dev/null 2>&1; then
@@ -31,6 +33,12 @@ fi
 for name in readlink stat shred; do
     alias "$name"="g$name"
 done
+
+# use GNU grep
+if [ -e /usr/local/bin/ggrep ]; then
+    alias grep='ggrep --color=auto'
+    alias rgrep='ggrep --color=auto -r'
+fi
 
 if [ -e /usr/local/bin/gls ]; then
     alias ls='/usr/local/bin/gls --color=auto'
@@ -53,7 +61,8 @@ if ! which gpg >/dev/null 2>&1 ; then
     }
 fi
 # actually skip it always on OS X
-export SKIP_GIT_SIGN=1
+#export SKIP_GIT_SIGN=1
+# actually actually keep it on
 
 if [ -e /usr/local/opt/groovy/libexec ]; then
     export GROOVY_HOME="/usr/local/opt/groovy/libexec"
