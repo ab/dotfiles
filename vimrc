@@ -98,10 +98,10 @@ set smarttab
 
 " spaces, not tabs
 set expandtab
+let g:detectindent_preferred_expandtab = 1
 
 " python files
 autocmd FileType python set textwidth=79
-autocmd FileType python let g:detectindent_preferred_expandtab = 1
 " also add a shebang automatically in new files
 autocmd BufNewFile *.py 0put =\"#!/usr/bin/env python\<nl>\"|$
 
@@ -109,7 +109,6 @@ autocmd BufNewFile *.py 0put =\"#!/usr/bin/env python\<nl>\"|$
 autocmd FileType {ruby,eruby} set textwidth=79
 autocmd FileType {ruby,eruby} set tabstop=2
 autocmd FileType {ruby,eruby} set shiftwidth=2
-autocmd FileType {ruby,eruby} let g:detectindent_preferred_expandtab = 1
 " also add a shebang automatically in new files
 autocmd BufNewFile *.rb 0put =\"#!/usr/bin/env ruby\<nl>\"|$
 
@@ -124,12 +123,16 @@ autocmd BufNewFile *.sh 0put =\"#!/bin/sh\<nl>\"|$
 " html files: indent with 2 spaces
 autocmd FileType html set tabstop=2
 autocmd FileType html set shiftwidth=2
-autocmd FileType html let g:detectindent_preferred_expandtab = 1
 
 " yaml files: indent with 2 spaces
 autocmd FileType yaml set textwidth=79
 autocmd FileType yaml set tabstop=2
 autocmd FileType yaml set shiftwidth=2
+
+" json files: indent with 2 spaces
+autocmd FileType json set textwidth=79
+autocmd FileType json set tabstop=2
+autocmd FileType json set shiftwidth=2
 
 " gitconfig
 " use tabs
@@ -318,6 +321,7 @@ let g:GPGFilePattern = '*.\(gpg\|pgp\)'
 
 " vim-go options
 let g:go_disable_autoinstall = 1
+let g:go_version_warning = 0 " ignore version < 7.4 warning
 
 " ignore some files
 set wildignore+=*.pyc
