@@ -292,7 +292,7 @@ launch-gpg-agent-ssh() {
     # launch if not running
     gpgconf --launch gpg-agent
     # use as SSH agent
-    export SSH_AUTH_SOCK="$HOME/.gnupg/S.gpg-agent.ssh"
+    export SSH_AUTH_SOCK="$(gpgconf --list-dirs agent-ssh-socket)"
 }
 
 gpg-set-ssh-agent() {

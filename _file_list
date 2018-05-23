@@ -16,4 +16,5 @@ tmux.conf	$HOME	.tmux.conf
 pwmanrc	$HOME	.pwmanrc
 pryrc	$HOME	.pryrc
 abpw.conf	$HOME	.config/abpw/abpw.conf
-
+gpg.conf	$HOME	.gnupg/gpg.conf
+gpg-agent.conf	$HOME	.gnupg/gpg-agent.conf
