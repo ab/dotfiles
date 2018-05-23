@@ -1,0 +1,14 @@
+- install gnupg (probably already done)
+- install scdaemon
+- gpg --card-status
+- export SSH_AUTH_SOCK="$(gpgconf --list-dirs agent-ssh-socket)"
+- gpg --import < yubikey.asc
+- ssh git@github.com
+
+GPG as SSH agent notes:
+- set gpg-agent with SSH_AUTH_SOCK
+Adding key to GPG agent for the first time:
+- ssh-add foo.key
+    - will prompt for existing password, then ask for new wrapping pass
+    - key will be stored in ~/.gnupg/private-keys-v1.d/
+    - key grip is saved in ~/.gnupg/sshcontrol with comments
