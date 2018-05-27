@@ -331,3 +331,13 @@ set wildignore+=*.pyc
 let g:syntastic_puppet_checkers = []
 " enable rubocop after MRI linter
 let g:syntastic_ruby_checkers = ['mri', 'rubocop']
+
+" Provide some functions to switch between python 2 and 3 syntax checking.
+" e.g. `:call Py2()` or `:call Py3()`
+function! Py2()
+    let g:syntastic_python_python_exec = 'python2.7'
+endfunction
+function! Py3()
+    let g:syntastic_python_python_exec = 'python3.6'
+endfunction
+call Py3() " default to assuming python scripts are python 3
