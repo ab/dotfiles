@@ -147,18 +147,6 @@ auto-enproxy() {
     fi
 }
 
-# docker stuff
-d-activate() {
-    eval "$(run docker-machine env "$1")"
-    if [ -n "${no_proxy-}" ]; then
-        ip=$(docker-machine ip "$1")
-        if ! [[ $no_proxy == *$ip* ]]; then
-            echo >&2 "no_proxy='$no_proxy,$ip'"
-            export no_proxy="$no_proxy,$ip"
-        fi
-    fi
-}
-
 set_var_verbose() {
     local var="$1"
     local val="$2"
@@ -292,7 +280,12 @@ launch-gpg-agent-ssh() {
     # launch if not running
     gpgconf --launch gpg-agent
     # use as SSH agent
-    export SSH_AUTH_SOCK="$(gpgconf --list-dirs agent-ssh-socket)"
+    if [ -S "$HOME/.gnupg/S.gpg-agent.ssh" ]; then
+        SSH_AUTH_SOCK="$HOME/.gnupg/S.gpg-agent.ssh"
+    else
+        SSH_AUTH_SOCK="$(gpgconf --list-dirs agent-ssh-socket)"
+    fi
+    export SSH_AUTH_SOCK
 }
 
 gpg-set-ssh-agent() {
@@ -588,6 +581,16 @@ add_to_cdpath "$HOME/stripe/ctf"
 has_command() {
     type "$@" >/dev/null 2>&1
 }
+
+# vim as manpager
+vman() {
+    # shellcheck disable=SC2016
+    MANPAGER='vimpager -c "set ft=man nomod nomodifiable | let &titlestring=\"man \" . \$MAN_PN"' \
+        man "$@"
+}
+if has_command vimpager; then
+    alias man=vman
+fi
 
 # aptitude aliases for brevity
 alias aremove='sudo aptitude remove'
