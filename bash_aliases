@@ -865,9 +865,10 @@ addindent() {
 alias sml='rlwrap sml -Cprint.depth=3000 -Cprint.length=3000'
 alias tcl='rlwrap tclsh'
 alias math='rlwrap math'
-alias py='ipython'
+alias py='ipython3'
+alias py2='ipython'
 alias py3='ipython3'
-alias pysh='ipython -p sh'
+alias pysh='ipython3 -p sh'
 
 _pyval() {
     local python_cmd
