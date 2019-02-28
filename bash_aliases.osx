@@ -88,6 +88,18 @@ NF() {
     awk '{ print $NF }'
 }
 
+mac-unquarantine() {
+    if [ $# -lt 1 ]; then
+        cat >&2 <<EOM
+usage: mac-unquarantine DIRECTORY.APP
+
+Remove the 'application downloaded from the Internet' attr from an app.
+EOM
+        return 1
+    fi
+    run xattr -r -d com.apple.quarantine "$@"
+}
+
 LOCALPROXY_DIR=/Users/Shared/www/stuff
 LOCALPROXY_LINK=/Users/Shared/www/stuff/proxy-switch.pac
 localproxy-get-current() {
