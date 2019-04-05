@@ -110,7 +110,7 @@ autocmd FileType {ruby,eruby} set textwidth=79
 autocmd FileType {ruby,eruby} set tabstop=2
 autocmd FileType {ruby,eruby} set shiftwidth=2
 " also add a shebang automatically in new files
-autocmd BufNewFile *.rb 0put =\"#!/usr/bin/env ruby\<nl>\"|$
+autocmd BufNewFile *.rb 0put =\"#!/usr/bin/env ruby\<nl># frozen_string_literal: true\<nl>\<nl>\"|$
 
 " automatically treat puppet templates as eruby
 autocmd BufRead,BufNewFile *puppet-config/*/templates/* set ft=eruby
