@@ -1,0 +1,9 @@
+[ui]
+username = Andy Brody <git@abrody.com>
+
+[extensions]
+hgext.patchbomb =
+
+[email]
+method = /usr/sbin/sendmail
+from = Andy Brody <git@abrody.com>

@@ -8,6 +8,7 @@ gitconfig	$HOME	.gitconfig
 gitignore_global	$HOME	.gitignore_global
 gpg-agent.conf	$HOME	.gnupg/gpg-agent.conf
 gpg.conf	$HOME	.gnupg/gpg.conf
+hgrc	$HOME	.hgrc
 inputrc	$HOME	.inputrc
 irbrc	$HOME	.irbrc
 known_hosts	$HOME	.ssh/known_hosts
