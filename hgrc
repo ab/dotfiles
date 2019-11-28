@@ -3,6 +3,7 @@ username = Andy Brody <git@abrody.com>
 
 [extensions]
 hgext.patchbomb =
+hgext.rebase =
 
 [email]
 method = /usr/sbin/sendmail
