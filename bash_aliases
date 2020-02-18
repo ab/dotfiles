@@ -629,6 +629,17 @@ ainstall() {
     fi
 }
 
+asnapinstall() {
+    local log="$HOME/install.snap.log"
+    for name in "$@"; do
+        if ! awk '{print $NF}' "$log" | grep -x -- "$name" >/dev/null; then
+            date "+%F %R	$name" >> "$log"
+        fi
+    done
+
+    run snap install "$@"
+}
+
 git_commit_s() {
     local root
     root="$(git rev-parse --show-toplevel)" || return $?
