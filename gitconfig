@@ -1,7 +1,7 @@
 [user]
 	name = Andy Brody
 	email = git@abrody.com
-    signingkey = 5F57CDC5
+	signingkey = 5F57CDC5
 [alias]
 	stat = status
 	co = checkout
