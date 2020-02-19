@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 import errno
 import os
 import sys
@@ -23,7 +23,7 @@ def read_file_list():
         try:
             conf, dir, dest = line.strip().split('\t')
         except ValueError:
-            print "Failed to parse line %d: '%s'" % (i, line)
+            print("Failed to parse line %d: '%s'" % (i, line))
 
         if dir in dir_map:
             dir = dir_map[dir]
@@ -39,7 +39,7 @@ class Runner(object):
         self.dirs = ['~/bin', '~/.ssh', '~/.ssh/sockets']
 
     def __str__(self):
-        print "Generic sync runner class with no action"
+        print("Generic sync runner class with no action")
 
     def pre_run(self):
         pass
@@ -52,7 +52,7 @@ class Runner(object):
             path = os.path.expanduser(d)
             if not os.path.exists(path):
                 os.mkdir(path)
-                print "created directory `%s'" % path
+                print("created directory `%s'" % path)
 
     def action(self, conf, dest):
         raise NotImplementedError("No copy action defined for this class")
@@ -61,13 +61,13 @@ class Runner(object):
         self.setup_dirs()
         self.pre_run()
 
-        for conf, (basedir, fname) in self.config_map.iteritems():
+        for conf, (basedir, fname) in self.config_map.items():
             self.action(conf, os.path.join(basedir, fname))
 
         self.post_run()
 
 def prompt_continue(prompt='Continue? [Y/n] '):
-    ans = raw_input(prompt)
+    ans = input(prompt)
     if ans in ['Y', 'y']:
         return True
     else:
@@ -93,22 +93,22 @@ class LinkRunner(Runner):
 
         try:
             cur_target = os.readlink(dest)
-        except OSError, e:
+        except OSError as e:
             if e.errno == errno.ENOENT:
                 # link doesn't exist, which is fine
                 pass
             elif e.errno == errno.EINVAL:
-                print dest, 'already exists and is not a symlink'
+                print(dest, 'already exists and is not a symlink')
                 if not prompt_overwrite():
                     return False
             else:
                 raise
         else:
             if cur_target == target:
-                print dest, 'already points to', target
+                print(dest, 'already points to', target)
                 return True
             else:
-                print dest, 'exists but points to', cur_target
+                print(dest, 'exists but points to', cur_target)
                 if not prompt_overwrite():
                     return False
 
@@ -139,7 +139,7 @@ class RsyncDryRunner(RsyncRunner):
     def action(self, conf, dest):
         v = 'v' if self.verbose else ''
         cmd = ['rsync', '-acn' + v, conf, dest]
-        print '+ ' + ' '.join(cmd)
+        print('+ ' + ' '.join(cmd))
         check_call(cmd)
 
 if __name__ == '__main__':
@@ -166,8 +166,8 @@ if __name__ == '__main__':
         runner = LinkRunner(filelist, verbose)
 
     if confirm:
-        print "About to run " + str(runner) + ",",
-        raw_input("press enter to continue. ")
+        print("About to run " + str(runner) + ",", end=' ')
+        input("press enter to continue. ")
 
     runner.run()
 
