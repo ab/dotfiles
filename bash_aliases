@@ -573,6 +573,7 @@ if [ -z "${CDPATH-}" ]; then
 fi
 add_to_cdpath "$HOME/code"
 add_to_cdpath "$HOME/gov"
+add_to_cdpath "$HOME/th"
 add_to_cdpath "$HOME/stripe"
 add_to_cdpath "$HOME/stripe/apiori"
 add_to_cdpath "$HOME/stripe/ctf"
