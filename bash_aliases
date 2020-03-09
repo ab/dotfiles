@@ -918,6 +918,9 @@ alias cdgoab='cd "$GOPATH/src/ab"'
 alias cdgobin='cd "$GOPATH/bin"'
 add_to_path "$GOPATH/bin"
 
+# Used by pip
+add_to_path ~/.local/bin
+
 # time long-running jobs
 TIMER_LONG_JOBS=30
 #TIMER_IGNORE_COMMANDS=( ssh vim bash )
