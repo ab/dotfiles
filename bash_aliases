@@ -298,6 +298,15 @@ if [ -z "${SSH_AUTH_SOCK-}" ] \
     launch-gpg-agent-ssh
 fi
 
+# 1password CLI aliases
+op-pw() {
+    local pass
+    pass="$(run op get item "$@" | \
+        jq -r '.details.fields[] | select(.designation == "password").value')"
+    echo "Making password available on X selection"
+    echo -n "$pass" | run xclip -selection primary -l 1
+}
+
 
 # Make sudo play nice with aliases
 alias sudo='sudo '
