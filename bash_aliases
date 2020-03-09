@@ -1,5 +1,6 @@
 #!/bin/bash
 # ^ clue vim in on the fact that this bash
+# shellcheck disable=SC2230
 
 add_to_path() {
     [ -d "$1" ] && export PATH="$PATH:$1"
@@ -223,7 +224,7 @@ aws-env() {
         ap-northeast-1 | \
         ap-northeast-2 | \
         ap-south-1 | \
-        ap-southeast-2 | \
+        ap-southeast-1 | \
         ap-southeast-2 | \
         ca-central-1 | \
         eu-central-1 | \
@@ -523,7 +524,7 @@ function stopwatch() {
     local log
     log=$(mktemp)
     date
-    (time read -s -n1 _) >"$log" 2>&1
+    (time read -r -s -n1 _) >"$log" 2>&1
     date
     awk '/^real/ { print $2 }' "$log"
     rm -f "$log"
@@ -878,6 +879,7 @@ function tarball() {
 
 addindent() {
     n="$1"
+    # shellcheck disable=2183
     printf -v spaces '%*s' "$n"
     sed "s/^/$spaces/"
 }
@@ -968,13 +970,14 @@ export DEBFULLNAME='Andy Brody'
 export DEBEMAIL='git@abrody.com'
 
 if [[ $OSTYPE == darwin* ]]; then
+    # shellcheck source=/dev/null
     [ -r ~/.conf/bash_aliases.osx ] && source ~/.conf/bash_aliases.osx
 fi
 
 # Preserve history indefinitely
 # It looks like this must be set in ~/.bashrc, and for some reason it doesn't
 # work when this is set here. So just warn if we have a non-infinite size.
-if [ -n "$HISTSIZE" -o -n "$HISTFILESIZE" ]; then
+if [ -n "$HISTSIZE" ] || [ -n "$HISTFILESIZE" ]; then
     echo >&2 "Warning: HISTSIZE: $HISTSIZE, HISTFILESIZE: $HISTFILESIZE"
 fi
 
