@@ -892,6 +892,7 @@ alias py='ipython3'
 alias py2='ipython'
 alias py3='ipython3'
 alias pysh='ipython3 -p sh'
+export PYTHONBREAKPOINT=ipdb.set_trace
 
 _pyval() {
     local python_cmd
