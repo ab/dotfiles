@@ -31,3 +31,5 @@
 	prompt = false
 [web]
 	browser = xdg-open
+[commit]
+	verbose = true
