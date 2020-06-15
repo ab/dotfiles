@@ -24,7 +24,8 @@ set background=dark
 " effectively use terminal's own color palette
 " TODO: figure out what to do here
 "set t_Co=256
-set t_Co=16
+"set t_Co=16
+set t_Co=8
 
 " We use a securemodelines plugin rather than modelines due to the potential
 " for arbitrary code execution from modelines CVE-2007-2438
@@ -331,6 +332,11 @@ set wildignore+=*.pyc
 let g:syntastic_puppet_checkers = []
 " enable rubocop after MRI linter
 let g:syntastic_ruby_checkers = ['mri', 'rubocop']
+" run a variety of python checkers, including mypy
+"let g:syntastic_python_checkers = ['python', 'flake8', 'pylint', 'mypy']
+" use eslint for typescript
+let g:syntastic_typescript_checkers = ['eslint']
+
 
 " Provide some functions to switch between python 2 and 3 syntax checking.
 " e.g. `:call Py2()` or `:call Py3()`
