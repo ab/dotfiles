@@ -921,6 +921,19 @@ add_to_path "$GOPATH/bin"
 
 # Used by pip
 add_to_path ~/.local/bin
+# pipx tab completion
+if which register-python-argcomplete >/dev/null 2>&1; then
+    eval "$(register-python-argcomplete pipx)"
+fi
+# poetry tab completion
+if which poetry >/dev/null 2>&1; then
+    eval "$(poetry completions bash)"
+fi
+
+# awscli bash completion
+if which aws_completer >/dev/null 2>&1; then
+    complete -C aws_completer aws
+fi
 
 # time long-running jobs
 TIMER_LONG_JOBS=30
