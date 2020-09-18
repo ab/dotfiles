@@ -342,6 +342,14 @@ alias ds='dig +short'
 alias dsa='dig-authoritative +short'
 alias diga='dig-authoritative'
 
+mydf() {
+    if type -p pydf >/dev/null; then
+        pydf | grep -v /snap/
+    else
+        df -h -x squashfs -x tmpfs -x devtmpfs
+    fi
+}
+
 case "$OSTYPE" in
     linux-*)
         alias clip='xclip -selection clipboard'
