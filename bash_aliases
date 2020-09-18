@@ -900,6 +900,7 @@ alias py='ipython3'
 alias py2='ipython'
 alias py3='ipython3'
 alias pysh='ipython3 -p sh'
+alias per='poetry run'
 export PYTHONBREAKPOINT=ipdb.set_trace
 
 _pyval() {
