@@ -135,6 +135,10 @@ autocmd FileType json set textwidth=79
 autocmd FileType json set tabstop=2
 autocmd FileType json set shiftwidth=2
 
+" typescript: indent with 2 spaces
+autocmd FileType typescript set tabstop=2
+autocmd FileType typescript set shiftwidth=2
+
 " gitconfig
 " use tabs
 autocmd FileType gitconfig set noexpandtab
