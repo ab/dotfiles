@@ -101,10 +101,27 @@ set smarttab
 set expandtab
 let g:detectindent_preferred_expandtab = 1
 
+" Return whether path starts with directory path prefix
+function PathStartsWith(path, prefix)
+    let l:path_parts = split(a:path, "/")
+    let l:prefix_parts = split(a:prefix, "/")
+
+    return l:path_parts[0:len(l:prefix_parts)-1] == l:prefix_parts
+endfunction
+
 " python files
-autocmd FileType python set textwidth=79
+autocmd FileType python call SetPythonOptions()
 " also add a shebang automatically in new files
 autocmd BufNewFile *.py 0put =\"#!/usr/bin/env python\<nl>\"|$
+
+function SetPythonOptions()
+    " Python files may be 88 cols under ~/th/, 79 elsewhere
+    if PathStartsWith(expand("%:p"), expand("~/th"))
+        set textwidth=88
+    else
+        set textwidth=79
+    endif
+endfunction
 
 " ruby files: indent with 2 spaces
 autocmd FileType {ruby,eruby} set textwidth=79
