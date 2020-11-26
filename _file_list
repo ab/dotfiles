@@ -10,6 +10,8 @@ gpg-agent.conf	$HOME	.gnupg/gpg-agent.conf
 gpg.conf	$HOME	.gnupg/gpg.conf
 hgrc	$HOME	.hgrc
 inputrc	$HOME	.inputrc
+ipython_config.py $HOME .ipython/profile_default/ipython_config.py
+ipython_ex.py $HOME .ipython/profile_default/startup/ex.py
 irbrc	$HOME	.irbrc
 known_hosts	$HOME	.ssh/known_hosts
 profile	$HOME	.profile
