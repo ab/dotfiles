@@ -270,7 +270,7 @@ fi
 
 alias gpgk="gpg --no-default-keyring --keyring"
 # TODO replace these with --homedir
-alias gpgk.="gpg --no-default-keyring --keyring ./pubring.gpg --secret-keyring ./secring.gpg --trustdb-name ./trustdb.gpg"
+alias gpgk.="gpg --no-default-keyring --keyring gnupg-ring:./pubring.gpg --secret-keyring ./secring.gpg --trustdb-name ./trustdb.gpg"
 
 # SSH using gpg-agent as ssh agent (e.g. for smart card SSH)
 alias sshg='SSH_AUTH_SOCK=~/.gnupg/S.gpg-agent.ssh ssh'
