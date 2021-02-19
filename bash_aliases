@@ -387,6 +387,8 @@ alias torssh="torsocks ssh -o ControlPath='~/.ssh/sockets/%r@%h-%p.tor'"
 alias showx509='openssl x509 -noout -text -nameopt multiline -certopt no_sigdump -in'
 alias strip-escapes='sed -r "s/\x1B\[([0-9]{1,2}(;[0-9]{1,2})?)?[m|K]//g"'
 
+export RIPGREP_CONFIG_PATH="$HOME/.ripgreprc"
+
 showx509chain() {
     if [ $# -ne 1 ]; then
         cat >&2 <<EOM

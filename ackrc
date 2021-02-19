@@ -1,0 +1,9 @@
+# Configuration for ack-grep
+
+# ignore ctags files (name exactly equal to "tags")
+--ignore-file=is:tags
+
+# color scheme
+--color-match=bold red
+--color-filename=bold yellow
+--color-lineno=bold blue

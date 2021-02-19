@@ -1,5 +1,6 @@
 #conf	base_dir	fname
 
+ackrc	$HOME	.ackrc
 abpw.conf	$HOME	.config/abpw/abpw.conf
 bash_aliases	$HOME	.bash_aliases
 bashrc	$HOME	.bashrc
@@ -17,6 +18,7 @@ known_hosts	$HOME	.ssh/known_hosts
 profile	$HOME	.profile
 pryrc	$HOME	.pryrc
 pwmanrc	$HOME	.pwmanrc
+ripgreprc	$HOME	.ripgreprc
 screenrc	$HOME	.screenrc
 ssh_config	$HOME	.ssh/config
 tmux.conf	$HOME	.tmux.conf

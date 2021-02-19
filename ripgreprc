@@ -1,0 +1,4 @@
+--colors=path:fg:yellow
+--colors=path:style:bold
+--colors=line:fg:blue
+--colors=line:style:bold
