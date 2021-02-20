@@ -388,6 +388,7 @@ alias showx509='openssl x509 -noout -text -nameopt multiline -certopt no_sigdump
 alias strip-escapes='sed -r "s/\x1B\[([0-9]{1,2}(;[0-9]{1,2})?)?[m|K]//g"'
 
 export RIPGREP_CONFIG_PATH="$HOME/.ripgreprc"
+alias g='rg'
 
 showx509chain() {
     if [ $# -ne 1 ]; then
@@ -672,7 +673,6 @@ git_commit_s() {
 }
 
 # git aliases
-alias g='git'
 alias ga='git add'
 alias gb='git branch'
 alias gg='git grep -I'
