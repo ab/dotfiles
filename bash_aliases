@@ -607,10 +607,9 @@ has_command() {
 # vim as manpager
 vman() {
     # shellcheck disable=SC2016
-    MANPAGER='vimpager -c "set ft=man nomod nomodifiable | let &titlestring=\"man \" . \$MAN_PN"' \
-        man "$@"
+    MANPAGER=vimpager-wrapper man "$@"
 }
-if has_command vimpager; then
+if has_command vimpager-wrapper; then
     alias man=vman
 fi
 
