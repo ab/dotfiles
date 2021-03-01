@@ -152,6 +152,10 @@ autocmd FileType json set textwidth=79
 autocmd FileType json set tabstop=2
 autocmd FileType json set shiftwidth=2
 
+" terraform: run terraform fmt on save
+" you can also run :TerraformFmt from vim-terraform
+let g:terraform_fmt_on_save = 1
+
 " typescript: indent with 2 spaces
 autocmd FileType typescript set tabstop=2
 autocmd FileType typescript set shiftwidth=2
