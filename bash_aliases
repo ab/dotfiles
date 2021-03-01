@@ -691,6 +691,7 @@ alias gbr='git branch'
 alias gco='git checkout'
 alias gcoh='git checkout HEAD'
 alias gco-='git checkout -'
+alias gcom='git-checkout-main'
 alias g-='git checkout -'
 alias gc='git_commit_s'
 alias gcs='git_commit_s -S'
@@ -744,6 +745,40 @@ alias gfe='git fetch'
 alias gfep='git fetch -p'
 alias grb='git rebase'
 alias gau='git-auto-update'
+
+git-main-branch() {
+    local ret
+    git rev-parse --verify --quiet master >/dev/null && ret=$? || ret=$?
+
+    case "$ret" in
+        0)
+            echo master
+            return
+            ;;
+        1)
+            # pass
+            ;;
+        *)
+            return "$ret"
+            ;;
+    esac
+
+    if git rev-parse --verify --quiet main >/dev/null; then
+        echo main
+    else
+        echo >&2 "Neither master nor main exists"
+        return 1
+    fi
+}
+
+# check out the master/main branch
+git-checkout-main() {
+    local branch
+    branch="$(git-main-branch)" || return $?
+    run git checkout "$branch"
+}
+alias master=git-checkout-main
+alias main=git-checkout-main
 
 # show files changed in most recent commit
 gf() {
