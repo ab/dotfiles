@@ -1,5 +1,18 @@
+# Nicer colors
 --colors=path:fg:yellow
 --colors=path:style:bold
 --colors=line:fg:blue
 --colors=line:style:bold
+
+# Include hidden . files by default
 --hidden
+
+# Ignore version control directories
+# These would be included otherwise thanks to --hidden
+--glob=!.git/
+--glob=!.svn/
+--glob=!.hg/
+--glob=!.bzr/
+
+# Ignore build directories
+--glob=!node_modules/
