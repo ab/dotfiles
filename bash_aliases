@@ -1022,6 +1022,12 @@ trap '_EXIT_CODE=$?; [ -z "$BASH_SOURCE" ] && echo -e "\033[1;31m$_EXIT_CODE\033
 # colon:delimited:tags
 #export SHELL_SINK_TAGS=`hostname`
 
+# Set terminal window title
+# Note that this is typically also set by $PS1 at every prompt
+function termtitle() {
+    printf "\e]0;%s\a" "$*"
+}
+
 # Less Colors for Man Pages
 #export LESS_TERMCAP_mb=$'\e[01;31m'       # begin blinking
 #export LESS_TERMCAP_md=$'\e[01;38;5;74m'  # begin bold
