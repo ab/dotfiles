@@ -112,7 +112,7 @@ endfunction
 " python files
 autocmd FileType python call SetPythonOptions()
 " also add a shebang automatically in new files
-autocmd BufNewFile *.py 0put =\"#!/usr/bin/env python\<nl>\"|$
+autocmd BufNewFile *.py 0put =\"#!/usr/bin/env python3\<nl>\"|$
 
 function SetPythonOptions()
     " Python files may be 88 cols under ~/th/, 79 elsewhere
