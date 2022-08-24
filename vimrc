@@ -322,7 +322,7 @@ endfunction
 map <silent> <F7> :call SpellOn()<cr>]s
 
 " git blame
-map <F8> :Gblame -w<cr>
+map <F8> :Git blame -w<cr>
 imap <F8> <C-o><F8>
 
 " make w!! run sudo to write to a file
