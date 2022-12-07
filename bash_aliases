@@ -976,9 +976,25 @@ add_to_path ~/.local/bin
 if which register-python-argcomplete >/dev/null 2>&1; then
     eval "$(register-python-argcomplete pipx)"
 fi
+
 # poetry tab completion
+install_poetry_completions() {
+    local completion_dir completion_file poetry_bin
+    completion_dir=~/.local/share/bash-completion/completions
+    completion_file="$completion_dir/poetry"
+
+    poetry_bin="$(readlink "$(which poetry)")"
+
+    mkdir -vp "$completion_dir"
+    if [ ! -f "$completion_file" ] || [[
+        "$poetry_bin" -nt "$completion_file"
+    ]]; then
+        echo >&2 "Updating poetry bash completions"
+        run poetry completions bash > "$completion_file"
+    fi
+}
 if which poetry >/dev/null 2>&1; then
-    eval "$(poetry completions bash)"
+    install_poetry_completions
 fi
 
 # awscli bash completion
