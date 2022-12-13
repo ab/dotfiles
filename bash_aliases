@@ -607,9 +607,6 @@ has_command() {
     type "$@" >/dev/null 2>&1
 }
 
-# Tomorrow Health stuff
-export COMPOSE_PROJECT_NAME=monorepo
-
 # vim as manpager
 vman() {
     # shellcheck disable=SC2016
