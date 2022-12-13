@@ -1071,11 +1071,20 @@ if [ -n "$HISTSIZE" ] || [ -n "$HISTFILESIZE" ]; then
     echo >&2 "Warning: HISTSIZE: $HISTSIZE, HISTFILESIZE: $HISTFILESIZE"
 fi
 
+# rbenv setup
 if [ -d "$HOME/.rbenv/bin" ]; then
    export PATH="$PATH:$HOME/.rbenv/bin"
    if [ -x "$HOME/.rbenv/bin/rbenv" ]; then
        eval "$(rbenv init -)"
    fi
+fi
+
+# pyenv setup
+if [ -d "$HOME/.pyenv/bin" ]; then
+    export PATH="$PATH:$HOME/.pyenv/bin"
+    if [ -x "$HOME/.pyenv/bin/pyenv" ]; then
+        eval "$(pyenv init -)"
+    fi
 fi
 
 # vim: ft=sh
