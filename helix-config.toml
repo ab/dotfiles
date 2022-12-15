@@ -1,0 +1,25 @@
+theme = "catppuccin_mocha"
+
+[keys.normal]
+
+# ===== Keybindings to mimic vim ======== #
+
+# ZZ and ZQ
+Z = { Q = ":quit!", Z = ":x" }
+
+# Quick iteration on config changes
+C-o = ":config-open"
+C-r = ":config-reload"
+
+# Muscle memory from vim
+"{" = ["goto_prev_paragraph", "collapse_selection"]
+"}" = ["goto_next_paragraph", "collapse_selection"]
+0 = "goto_line_start"
+"$" = "goto_line_end"
+"^" = "goto_first_nonwhitespace"
+G = "goto_file_end"
+"%" = "match_brackets"
+V = ["select_mode", "extend_to_line_bounds"]
+C = ["extend_to_line_end", "yank_main_selection_to_clipboard", "delete_selection", "insert_mode"]
+D = ["extend_to_line_end", "yank_main_selection_to_clipboard", "delete_selection"]
+S = "surround_add" # Would be nice to be able to do something after this but it isn't chainable

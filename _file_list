@@ -9,6 +9,7 @@ gitconfig	$HOME	.gitconfig
 gitignore_global	$HOME	.gitignore_global
 gpg-agent.conf	$HOME	.gnupg/gpg-agent.conf
 gpg.conf	$HOME	.gnupg/gpg.conf
+helix-config.toml	$HOME	.config/helix/config.toml
 hgrc	$HOME	.hgrc
 inputrc	$HOME	.inputrc
 ipython_config.py	$HOME	.ipython/profile_default/ipython_config.py
