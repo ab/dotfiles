@@ -33,3 +33,5 @@
 	browser = xdg-open
 [commit]
 	verbose = true
+[init]
+	defaultBranch = main
