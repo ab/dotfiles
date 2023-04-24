@@ -581,6 +581,10 @@ function unbak() {
     [ -n "$1" ] || { echo >&2 "mv: missing file operand" ; return 1 ; }
     mv -v "$1" "$(dirname "$1")/$(basename "$1" '~')"
 }
+function sunbak() {
+    [ -n "$1" ] || { echo >&2 "mv: missing file operand" ; return 1 ; }
+    sudo mv -v "$1" "$(dirname "$1")/$(basename "$1" '~')"
+}
 
 if [[ "$OSTYPE" != darwin* ]]; then
     say() {
