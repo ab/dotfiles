@@ -21,6 +21,7 @@ pryrc	$HOME	.pryrc
 pwmanrc	$HOME	.pwmanrc
 ripgreprc	$HOME	.ripgreprc
 screenrc	$HOME	.screenrc
+shellcheckrc	$HOME	.shellcheckrc
 ssh_config	$HOME	.ssh/config
 ssh_revoked_hosts	$HOME	.ssh/revoked_hosts
 tmux.conf	$HOME	.tmux.conf

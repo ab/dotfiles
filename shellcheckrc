@@ -1,0 +1,5 @@
+
+# Shellcheck linter rule configuration
+# Disable SC2230, since `which` is fine and there is no simple replacement
+# https://github.com/koalaman/shellcheck/issues/1162
+disable=SC2230
