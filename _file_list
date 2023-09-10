@@ -1,7 +1,7 @@
 #conf	base_dir	fname
 
-ackrc	$HOME	.ackrc
 abpw.conf	$HOME	.config/abpw/abpw.conf
+ackrc	$HOME	.ackrc
 bash_aliases	$HOME	.bash_aliases
 bashrc	$HOME	.bashrc
 checkhost	$HOME	bin/checkhost
@@ -16,12 +16,12 @@ ipython_config.py	$HOME	.ipython/profile_default/ipython_config.py
 ipython_ex.py	$HOME	.ipython/profile_default/startup/ex.py
 irbrc	$HOME	.irbrc
 known_hosts	$HOME	.ssh/known_hosts
-ssh_revoked_hosts	$HOME	.ssh/revoked_hosts
 profile	$HOME	.profile
 pryrc	$HOME	.pryrc
 pwmanrc	$HOME	.pwmanrc
 ripgreprc	$HOME	.ripgreprc
 screenrc	$HOME	.screenrc
 ssh_config	$HOME	.ssh/config
+ssh_revoked_hosts	$HOME	.ssh/revoked_hosts
 tmux.conf	$HOME	.tmux.conf
 vimrc	$HOME	.vimrc
