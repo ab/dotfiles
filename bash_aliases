@@ -1003,6 +1003,8 @@ fi
 # awscli bash completion
 if which aws_completer >/dev/null 2>&1; then
     complete -C aws_completer aws
+elif [ -x /snap/aws-cli/current/bin/aws_completer ]; then
+    complete -C /snap/aws-cli/current/bin/aws_completer aws
 fi
 
 # time long-running jobs
