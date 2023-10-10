@@ -625,6 +625,7 @@ alias aremove='sudo aptitude remove'
 alias asearch='aptitude search'
 alias ashow='aptitude show'
 alias awhy='aptitude why'
+# shellcheck disable=SC2154
 alias dpkg-version="dpkg-query -Wf '\${Version}\n'"
 alias apolicy='apt-cache policy'
 
@@ -665,8 +666,9 @@ asnapinstall() {
         fi
     done
 
-    run snap install "$@"
+    run sudo snap install "$@"
 }
+alias asinstall=asnapinstall
 
 git_commit_s() {
     local root
