@@ -1003,6 +1003,69 @@ if which poetry >/dev/null 2>&1; then
     install_poetry_completions
 fi
 
+# Install completions for a python CLI that uses click
+# usage: install_click_completions COMMAND
+install_click_completions() {
+    if [ $# -ne 1 ]; then
+        echo >&2 "usage: install_click_completions COMMAND"
+        return 1
+    fi
+
+    local completion_dir completion_file cmd cmd_path
+
+    cmd="$1"
+    completion_dir=~/.local/share/bash-completion/completions
+    completion_file="$completion_dir/$cmd"
+    cmd_path="$(readlink "$(which "$cmd")")"
+
+    mkdir -vp "$completion_dir"
+    if [ ! -f "$completion_file" ] || [[
+        "$cmd_path" -nt "$completion_file"
+    ]]; then
+        echo >&2 "Updating $cmd bash completions (python click CLI)"
+
+        # Click uses a weird syntax where the _${COMMAND}_COMPLETE env var must
+        # be set to "bash_source" in order to generate the completions.
+        # For example, _VIGENERE_COMPLETE=bash_source
+        # We have to define this variable dynamically, so use a nameref.
+        # $var becomes an alias for the actual variable.
+
+        declare -n var="_${cmd^^}_COMPLETE"
+        var=bash_source
+        export var
+        echo >&2 "_${cmd^^}_COMPLETE=${var}"
+        run "$cmd" > "$completion_file"
+        unset var
+    fi
+}
+
+# Click completions for vigenere-py (typically installed with pipx)
+if which vigenere >/dev/null 2>&1; then
+    install_click_completions vigenere
+fi
+
+
+# poe bash completion
+install_poe_completion() {
+    local completion_dir completion_file cmd_path
+    completion_dir=~/.local/share/bash-completion/completions
+    completion_file="$completion_dir/poe"
+
+    cmd_path="$(readlink "$(which poetry)")"
+
+    mkdir -vp "$completion_dir"
+    if [ ! -f "$completion_file" ] || [[
+        "$cmd_path" -nt "$completion_file"
+    ]]; then
+        echo >&2 "Updating poe bash completions"
+        run poe _bash_completion > "$completion_file"
+    fi
+}
+if which poe >/dev/null 2>&1; then
+    install_poe_completion
+fi
+
+
 # awscli bash completion
 if which aws_completer >/dev/null 2>&1; then
     complete -C aws_completer aws
