@@ -979,6 +979,9 @@ add_to_path ~/.local/bin
 if which register-python-argcomplete >/dev/null 2>&1; then
     eval "$(register-python-argcomplete pipx)"
 fi
+if which register-python-argcomplete3 >/dev/null 2>&1; then
+    eval "$(register-python-argcomplete3 pipx)"
+fi
 
 # poetry tab completion
 install_poetry_completions() {
