@@ -948,9 +948,15 @@ alias pysh='ipython3 -p sh'
 alias per='poetry run'
 export PYTHONBREAKPOINT=ipdb.set_trace
 
+import() {
+    echo >&2 "This is bash, not python!"
+    echo >&2 "Use /usr/bin/import if you really want ImageMagick"
+    return 1
+}
+
 _pyval() {
     local python_cmd
-    python_cmd="print $*"
+    python_cmd="print($*)"
     python -c "${python_cmd}"
 
     case "${shopts-}" in
