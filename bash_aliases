@@ -586,9 +586,7 @@ fi
 add_to_cdpath "$HOME/code"
 add_to_cdpath "$HOME/gov"
 add_to_cdpath "$HOME/th"
-add_to_cdpath "$HOME/stripe"
-add_to_cdpath "$HOME/stripe/apiori"
-add_to_cdpath "$HOME/stripe/ctf"
+add_to_cdpath "$HOME/verily"
 
 # search for command on $PATH
 has_command() {
