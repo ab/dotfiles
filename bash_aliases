@@ -995,6 +995,13 @@ if which register-python-argcomplete3 >/dev/null 2>&1; then
     eval "$(register-python-argcomplete3 pipx)"
 fi
 
+# Make sure fortune / games are on the PATH (very important)
+if [ -d /usr/games ] && [[ $PATH != *"/usr/games"* ]] \
+    && [ -n "$(ls /usr/games)" ]
+then
+    add_to_path /usr/games
+fi
+
 # poetry tab completion
 install_poetry_completions() {
     local completion_dir completion_file poetry_bin
