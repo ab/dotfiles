@@ -91,6 +91,10 @@ class LinkRunner(Runner):
         opts = '-v' if self.verbose else ''
         target = os.path.join(base, conf)
 
+        # create parent directories as needed
+        dest_parent = os.path.dirname(dest)
+        os.makedirs(dest_parent, exist_ok=True)
+
         try:
             cur_target = os.readlink(dest)
         except OSError as e:
