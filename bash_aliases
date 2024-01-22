@@ -257,31 +257,53 @@ alias gpgk="gpg --no-default-keyring --keyring"
 alias gpgk.="gpg --no-default-keyring --keyring gnupg-ring:./pubring.gpg --secret-keyring ./secring.gpg --trustdb-name ./trustdb.gpg"
 
 # SSH using gpg-agent as ssh agent (e.g. for smart card SSH)
-alias sshg='SSH_AUTH_SOCK=~/.gnupg/S.gpg-agent.ssh ssh'
-alias sshgpg='SSH_AUTH_SOCK=~/.gnupg/S.gpg-agent.ssh ssh'
-alias scpgpg='SSH_AUTH_SOCK=~/.gnupg/S.gpg-agent.ssh scp'
+alias sshg='SSH_AUTH_SOCK="$(gpgconf --list-dirs agent-ssh-socket)" ssh'
+alias sshgpg='SSH_AUTH_SOCK="$(gpgconf --list-dirs agent-ssh-socket)" ssh'
+alias scpgpg='SSH_AUTH_SOCK="$(gpgconf --list-dirs agent-ssh-socket)" scp'
 
 launch-gpg-agent-ssh() {
-    # launch if not running
-    gpgconf --launch gpg-agent
     # use as SSH agent
     if [ -S "$HOME/.gnupg/S.gpg-agent.ssh" ]; then
+        # old pre-systemd socket location
         SSH_AUTH_SOCK="$HOME/.gnupg/S.gpg-agent.ssh"
+
+        # launch if not running
+        gpgconf --launch gpg-agent
     else
+        # modern systemd socket location
         SSH_AUTH_SOCK="$(gpgconf --list-dirs agent-ssh-socket)"
+
+        # systemd will auto launch gpg-agent on first socket use
     fi
     export SSH_AUTH_SOCK
 }
 
-gpg-set-ssh-agent() {
-    set_var_verbose SSH_AUTH_SOCK ~/.gnupg/S.gpg-agent.ssh
+# Return 0 if gpg-agent has config enable-ssh-support true
+#
+# Copied from /usr/lib/systemd/user-environment-generators/90gpg-agent
+#
+is-gpg-agent-ssh-enabled() {
+    local get_okay
+    # see gpgconf(1): $5 is the "okay" field.
+    # shellcheck disable=SC2016
+    get_okay='BEGIN{ret=1} /^gpg-agent:/{if ($5 == "1") { ret=0; exit 0 } } END {exit ret}'
+
+    if gpgconf --check-options gpg-agent | awk -F: "$get_okay" && \
+           [ -n "$(gpgconf --list-options gpg-agent | \
+                  awk -F: '/^enable-ssh-support:/{ print $10 }')" ]; then
+        # SSH enabled
+        return 0
+    fi
+    return 2
 }
 
-# use GPG as ssh-agent, not gnome-keyring
-# TODO: is this needed anymore thanks to
-# /usr/lib/systemd/user-environment-generators/90gpg-agent ?
-# This may be obsolete
-if [[ -z "${SSH_AUTH_SOCK-}" ]]
+# Use GPG as ssh-agent, not gnome-keyring, if gpg-agent is configured with
+# enable-ssh-support.
+#
+# For some reason the native systemd env for doing this isn't working for me in
+# Ubuntu 22.04, so just duplicate that code here.
+# See /usr/lib/systemd/user-environment-generators/90gpg-agent
+if [[ -z "${SSH_AUTH_SOCK-}" ]] || is-gpg-agent-ssh-enabled
 then
     launch-gpg-agent-ssh
 fi
