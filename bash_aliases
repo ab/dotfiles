@@ -6,13 +6,7 @@ add_to_path() {
     [ -d "$1" ] && export PATH="$PATH:$1"
 }
 
-# stripe stuff
-add_to_path ~/stripe/space-commander/bin
-add_to_path ~/stripe/password-vault/bin
-export SPACECOMMANDER_LOG_LEVEL=0
-export SPACECOMMANDER_NO_SSH_COMMANDLINE=1
-export SC_USER=andy
-
+# host-specific env changes
 case $HOSTNAME in
     endor|endor.agb.me)
         export PASSWORD_VAULT_SELECTION=clipboard
@@ -80,32 +74,16 @@ github-clone() {
     esac
 }
 
-clone-chalk() {
-    run git clone git@github.com:stripe/"$1".git && \
-        (cd "$1" && git-config-email stripe)
-}
-clone-uscis() {
-    (
-    set -eu
-    run git clone "git@$USCIS_GIT_HOST:USCIS/$1.git" && \
-        (cd "$1" && git-config-email uscis)
-    )
-}
-clone-18f() {
-    (
-    set -eu
-    run git clone "git@github.com:18F/$1.git" && \
-        (cd "$1" && git-config-email gsa)
-    )
+clone-verily() {
+    run git clone git@github.com:verily-src/"$1".git && \
+        (cd "$1" && git-config-email verily)
 }
 
 git-config-email() {
     local email
 
     case "$1" in
-        stripe) email=andy@stripe.com ;;
-        uscis)  email="$USCIS_EMAIL" ;;
-        gsa)    email="$GSA_EMAIL" ;;
+        verily) email=abrody@verily.com ;;
         *)
             echo >&2 "git-config-email: No email for '$1'"
             return 1

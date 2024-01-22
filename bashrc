@@ -12,6 +12,9 @@ esac
 # See bash(1) for more options
 HISTCONTROL=ignoreboth
 
+# Enable timestamps in bash_history
+HISTTIMEFORMAT="[%F %T %z] "
+
 # append to the history file, don't overwrite it
 shopt -s histappend
 
