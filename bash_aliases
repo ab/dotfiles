@@ -21,6 +21,9 @@ case $HOSTNAME in
     kessel)
         export SKIP_GIT_SIGN=1
         ;;
+    abrody-glaptop)
+        export SKIP_GIT_SIGN=1
+        ;;
 esac
 
 gsutil-md5() {
