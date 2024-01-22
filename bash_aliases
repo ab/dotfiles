@@ -278,8 +278,11 @@ gpg-set-ssh-agent() {
 }
 
 # use GPG as ssh-agent, not gnome-keyring
-if [ -z "${SSH_AUTH_SOCK-}" ] \
-   || [[ $SSH_AUTH_SOCK == /run/user/*/keyring/ssh ]]; then
+# TODO: is this needed anymore thanks to
+# /usr/lib/systemd/user-environment-generators/90gpg-agent ?
+# This may be obsolete
+if [[ -z "${SSH_AUTH_SOCK-}" ]]
+then
     launch-gpg-agent-ssh
 fi
 
