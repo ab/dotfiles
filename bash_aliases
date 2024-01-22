@@ -588,6 +588,9 @@ add_to_cdpath "$HOME/gov"
 add_to_cdpath "$HOME/th"
 add_to_cdpath "$HOME/verily"
 
+# Other Verily stuff
+alias v1="cd ~/verily/verily1"
+
 # search for command on $PATH
 has_command() {
     type "$@" >/dev/null 2>&1
