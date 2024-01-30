@@ -93,6 +93,18 @@ git-config-email() {
     run git config --local user.email "$email"
 }
 
+
+vgh-env() {
+    # store this token with:
+    # secret-tool store --label='Verily readonly Github PAT' \
+    #     ab_id verily-github-pat-readonly
+
+    GH_READ_TOKEN="$(run secret-tool lookup ab_id verily-github-pat-readonly)"
+    export GH_READ_TOKEN
+    echo >&2 "+ export GH_READ_TOKEN"
+}
+
+
 # proxy stuff
 enproxy() {
     if [ -z "${ENPROXY_HOST-}" ]; then
