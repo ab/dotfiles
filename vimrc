@@ -164,6 +164,10 @@ autocmd FileType typescript set shiftwidth=2
 " use tabs
 autocmd FileType gitconfig set noexpandtab
 
+" golang
+" use tabs
+autocmd FileType go set noexpandtab
+
 " processing docs location
 let processing_doc_path = "/opt/processing/reference"
 
