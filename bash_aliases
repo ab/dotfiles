@@ -572,14 +572,39 @@ fi
 
 # like set -x
 run() {
+    if [ $# -gt 0 ] && [[ "$1" == "-h" || "$1" == "--help" ]]; then
+        cat >&2 <<'EOM'
+usage: run COMMAND [ARGS...]
+usage: daterun COMMAND [ARGS...]
+
+Print the name and args of a command, then run it. This is like `set -x`,
+but just for a single command.
+
+If executed as `daterun`, also print the date before running the command.
+
+For example:
+
+    run ls -ld /bin
+    + ls -ld /bin
+    lrwxrwxrwx 1 root root 7 Dec 19 15:41 /bin -> usr/bin
+
+    daterun ls -ld /bin
+    @ 2012-01-08 18:47:21 -0800
+    + ls -ld /bin
+    lrwxrwxrwx 1 root root 7 Dec 19 15:41 /bin -> usr/bin
+
+EOM
+        return
+    fi
+
+
     echo >&2 "+ $*"
     "$@"
 }
 
 daterun() {
     date >&2 '+@ %F %T %z'
-    echo >&2 "+ $*"
-    "$@"
+    run "$@"
 }
 
 # NB: vim's syntax highlighting doesn't like nested quotes, but it does work
