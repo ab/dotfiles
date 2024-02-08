@@ -1,15 +1,35 @@
-#!/bin/sh
+#!/bin/bash
 
-git checkout github
-git reset --hard main
+run() {
+    echo >&2 "+ $*"
+    "$@"
+}
 
-git config commit.gpgsign false
+if ! git diff-index --quiet HEAD --; then
+    run git status
+    echo >&2
+    echo >&2 "$0: error: refusing to run with files changed in repo!"
+    exit 1
+fi
+
+run git checkout github
+run git reset --hard main
+
+run git config commit.gpgsign false
+
+# TODO this is broken
+#run git filter-repo --invert-paths \
+#    --path ssh_config --path known_hosts --path authorized_keys_export
+
+# yes I know I should use filter-repo, but it's very different
+export FILTER_BRANCH_SQUELCH_WARNING=1
 
 git filter-branch --force --msg-filter \
     'sed "/iQIcBA.*/,/.*END PGP SIGNATURE.*/d"' -- github
 
 git filter-branch --force --index-filter \
-    'git rm --cached --ignore-unmatch ssh_config known_hosts' --prune-empty -- github
+    'git rm --cached --ignore-unmatch ssh_config known_hosts authorized_keys_export' --prune-empty -- github
 
-git config commit.gpgsign true
+run git config commit.gpgsign true
 
+echo "All done! Examine the results and push to Github as desired."
