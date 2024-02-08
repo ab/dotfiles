@@ -1,6 +1,12 @@
 #!/bin/bash
 # ^ clue vim in on the fact that this bash
 # shellcheck disable=SC2230
+#
+# v 2024-02
+
+reload-aliases() {
+    run source ~/.bash_aliases
+}
 
 add_to_path() {
     [ -d "$1" ] && export PATH="$PATH:$1"
@@ -407,6 +413,7 @@ alias syslog='less +F /var/log/syslog'
 alias torssh="torsocks ssh -o ControlPath='~/.ssh/sockets/%r@%h-%p.tor'"
 alias showx509='openssl x509 -noout -text -nameopt multiline -certopt no_sigdump -in'
 alias strip-escapes='sed -r "s/\x1B\[([0-9]{1,2}(;[0-9]{1,2})?)?[m|K]//g"'
+alias ncdu-root='run sudo ncdu -rx /'
 
 export RIPGREP_CONFIG_PATH="$HOME/.ripgreprc"
 alias g='rg'
@@ -495,8 +502,17 @@ EOM
 }
 
 function swap() {
-    if [ $# -lt 2 ]; then
-        echo>&2 "swap file1 file2"
+    if [ $# -ne 2 ]; then
+        cat >&2 <<'EOM'
+usage: swap FILE1 FILE2
+
+Switch contents of FILE1 and FILE2 using three `mv` calls.
+
+For example:
+
+    swap foo foo.bak
+
+EOM
         return 1
     fi
     mv -iv "$2" "$1.$$" || return $?
@@ -644,7 +660,6 @@ if [ -z "${CDPATH-}" ]; then
 fi
 add_to_cdpath "$HOME/code"
 add_to_cdpath "$HOME/gov"
-add_to_cdpath "$HOME/th"
 add_to_cdpath "$HOME/verily"
 
 # Other Verily stuff
@@ -787,7 +802,6 @@ alias gru='git remote update'
 alias gpl='git pull --ff-only'
 alias gplr='git pull --rebase'
 alias gps='git push'
-alias gpss='git push stripe master && git push'
 alias gpsu='git push --set-upstream origin $(git rev-parse --abbrev-ref HEAD)'
 alias gpsr='git push || { git pull --rebase && { gcs || true; } && git push; }'
 alias gpush='git push'
