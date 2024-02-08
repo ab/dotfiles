@@ -1,7 +1,7 @@
 #!/bin/sh
 
 git checkout github
-git reset --hard master
+git reset --hard main
 
 git config commit.gpgsign false
 
